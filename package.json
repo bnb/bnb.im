@@ -1,0 +1,26 @@
+{
+  "name": "bnb.im",
+  "version": "2.0.0",
+  "description": "Personal Metalsmith site.",
+  "main": "run.js",
+  "scripts": {
+    "deploy": "gh-pages-deploy",
+    "clean-source": "rimraf README.md src webroot package.json"
+  },
+  "author": "&! (bitandbang)",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "npm run gh-pages",
+    "gh-pages": "gh-pages -d build -b gh-pages"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.8.0",
+    "handlebars": "^4.0.4",
+    "metalsmith": "^2.1.0",
+    "metalsmith-assets": "^0.1.0",
+    "metalsmith-collections": "^0.7.0",
+    "metalsmith-layouts": "^1.4.1",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-prism": "^2.1.1"
+  }
+}

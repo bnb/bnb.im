@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="code-index">
+{{> html-head }}
+
+<body>
+    {{> header }}
+
+    <div id="main">
+        <div class="container">
+
+            <ul class="code-list">
+                {{#each collections.code-post}}
+                  {{#if title}}
+                    <div class="code-item">
+                        <div class="code-meta">
+                          <a href="./code/{{slug}}.html" class="codeLink"><h1 class="code-title">{{title}}</h1></a>
+                          <span class="datetime"><time>{{posted}}</time></span>
+                        </div>
+                        <div class="content code-block">
+                          {{{ snippet }}}
+                        </div>
+                      </div>
+                    {{/if}}
+                {{/each}}
+            </ul>
+
+        </div>
+    </div>
+</body>
+</html>
