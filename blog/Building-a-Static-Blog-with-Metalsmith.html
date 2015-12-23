@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type"  content="text/html; charset=utf-8">
+    <meta charset="utf-8"/>
+
+    <title>Building a Static Blog with Metalsmith | &amp;! (bnb, bang, bitandbang)</title> <!-- Title of the page -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../favicon.ico"> <!-- Add your favicon -->
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> <!-- Icon font for navbar. -->
+    <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/TeX+Gyre+Heros:400,700:f/Source+Serif+Pro:400/Playfair+Display:700i/Alegreya:400i,700i"> <!-- serif/sans serif typography -->
+
+      <link rel="stylesheet" href="../assets/css/blog-post.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
+
+    <link rel="stylesheet" href="../assets/css/normalize.css"> <!-- normalize all the styles! -->
+    <link rel="stylesheet" href="../assets/css/prism.css"> <!-- Add Prism theme. -->
+    <link rel="stylesheet" href="../assets/css/main.css"> <!-- Use main css attributes. -->
+</head>
+
+<body>
+    <header class="top"> <!-- Header element -->
+      <div class="headerContainer">
+        <nav>
+          <ul> <!-- List the social media icons with links using Font Awesome icons -->
+            <li><a href="../blog.html"><i class="fa fa-paragraph"></i></a></li>
+            <li><a href="../code.html"><i class="fa fa-code-fork"></i></a></li>
+            <li><a href="https://bnb.cupcake.is"><i class="fa fa-chevron-up"></i></a></li>
+            <li><a href="https://github.com/bnb"><i class="fa fa-github-alt"></i></a></li>
+            <li><a href="https://keybase.io/bang"><i class="fa fa-eye-slash"></i></a></li>
+          </ul>
+        </nav>
+    
+        <a href="/">
+          <a href="../index.html"><h1 class="logo">bnb</h1></a> <!-- Link the logo back to the index of the site. -->
+        </a>
+      </div>
+    </header>
+
+    <div id="main">
+        <div class="container">
+
+            <article>
+
+                <div class="humongous cover-img" style="background-image: url(..//assets/img/spanners_hires.jpg);">
+                    <h1 class="hello">Building a Static Blog with Metalsmith</h1>
+                    <span class="datetime"><time>December 11, 2015 at 9:10AM</time></span>
+                </div>
+                <div class="content">
+                 <h1 id="what-is-metalsmith-">What is Metalsmith?</h1>
+<p>Metalsmith is a platform. It&#x2019;s a platform that allows the developer to plug and play modules - these modules can be anything from compilers for SASS, to Markdown to HTML transformers, to Gulp aides, to just about any other content processing a web developer needs.</p>
+<p>We&#x2019;re going to use it to make a statically presented blog - Metalsmith is excellent for this, to the point that it can mimic Wintersmith or Jekyll, which can be a huge benefit. That&#x2019;s awesome, but we&#x2019;re going a different path: rolling our own, completely custom blog, with a few additional website functions.</p>
+<h1 id="getting-started">Getting Started</h1>
+<p>To get started with Metalsmith, we&#x2019;re going to need to create a local directory where our project can live, and set it to the current active directory. Let&#x2019;s do that:</p>
+<pre><code class="language-bash">$ <span class="token function">mkdir</span> metalsmith-blog <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> metalsmith-blog
+</code></pre>
+<p>We need to initialize our repository with an npm <code>package.json</code>. I am going to throw the <code>--yes</code> flag in there, so we don&#x2019;t need to worry about the initial values of the content of <code>package.json</code>.</p>
+<pre><code class="language-bash">$ npm init --yes
+</code></pre>
+<p>Now, we&#x2019;re going to need to install Metalsmith. We&#x2019;re going to save Metalsmith with the npm flag <code>--save-dev</code> &#x2013; the same goes for all the other plugins we are using for our blog. This command automatically adds a module to the <code>devDependencies</code> object in our <code>package.json</code>. Why? Doing this allows us to install modules only when we&#x2019;re in a development environment. We&#x2019;re always in a development environment with Metalsmith, until we are finished and ready to publish our Wintersmith project to the web.</p>
+<pre><code class="language-bash">$ npm <span class="token function">install</span> metalsmith --save-dev
+</code></pre>
+<p>Now we have a foundation for our metalsmith project!</p>
+<h2 id="setting-up-the-site">Setting up the site</h2>
+<h3 id="package-json">package.json</h3>
+<p>You should open <code>package.json</code>, and change the value in <code>&quot;main&quot;</code> to <code>&quot;build.js&quot;</code>, or whatever you want to call it. I call it <code>build</code> because we&#x2019;re going to run it every time we want to rebuild the static Metalsmith files in the <code>build</code> directory.</p>
+<pre><code class="language-diff"><span class="token deleted">-  &quot;main&quot;: &quot;index.js&quot;,</span>
+<span class="token inserted">+  &quot;main&quot;: &quot;build.js&quot;,</span>
+</code></pre>
+<p>Feel free to edit any of the information in <code>package.json</code> to reflect the scope of your project. If you&#x2019;re going to publish the actual project, not just the build result, to somewhere like GitHub, having this information filled out makes things a lot easier for managing the codebase.</p>
+<h3 id="build-js">build.js</h3>
+<p>Go ahead and create a <code>build.js</code> file in your <code>metalsmith</code> directory, and open it in your text editor of choice. Let&#x2019;s add the basics of a Metalsmith project to it:</p>
+<pre><code class="language-js"><span class="token keyword">var</span> metalsmith <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;metalsmith&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">metalsmith</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>In this code, we&#x2019;re requiring the Metalsmith module from <code>node_modules</code> (which we downloaded earlier via <code>npm install metalsmith --save-dev</code>) and assigning it to a variable named <code>metalsmith</code>. We call the Metalsmith module&#x2019;s main function, and pass <code>__dirname</code>. Finally, we call the Metalsmith module&#x2019;s <code>build</code> function, which initiates the build process.5</p>
+<h1 id="installing-dependencies">Installing dependencies</h1>
+<p>There are several dozen Metalsmith modules that are useful to accomplish a variety of tasks within Metalsmith. A good number of them are for writing and publishing, which is what we&#x2019;re looking to use. Here&#x2019;s the list of the Modules we&#x2019;re going to use from that list:</p>
+<ul>
+<li><a href="https://github.com/segmentio/metalsmith-markdown">Metalsmith Markdown</a></li>
+<li><a href="https://github.com/Availity/metalsmith-prism">Metalsmith Prism</a></li>
+<li><a href="https://github.com/treygriffith/metalsmith-assets">Metalsmith Assets</a></li>
+<li><a href="https://github.com/segmentio/metalsmith-collections">Metalsmith Collections</a></li>
+<li><a href="https://github.com/superwolff/metalsmith-layouts">Metalsmith Layouts</a></li>
+</ul>
+<p>Additionally, we need to install Handlebars as our templating engine.</p>
+<ul>
+<li><a href="https://github.com/wycats/handlebars.js">Handlebars</a></li>
+</ul>
+<p>Let&#x2019;s install these packages and save them as <code>devDependencies</code> in <code>package.json</code>.</p>
+<pre><code class="language-js">$ npm install metalsmith<span class="token operator">-</span>markdown <span class="token operator">--</span>save<span class="token operator">-</span>dev
+$ npm install metalsmith<span class="token operator">-</span>prism <span class="token operator">--</span>save<span class="token operator">-</span>dev
+$ npm install metalsmith<span class="token operator">-</span>assets <span class="token operator">--</span>save<span class="token operator">-</span>dev
+$ npm install metalsmith<span class="token operator">-</span>collections <span class="token operator">--</span>save<span class="token operator">-</span>dev
+$ npm install metalsmith<span class="token operator">-</span>layouts <span class="token operator">--</span>save<span class="token operator">-</span>dev
+$ npm install handlebars <span class="token operator">--</span>save<span class="token operator">-</span>dev
+</code></pre>
+<h1 id="authoring-build-js">Authoring build.js</h1>
+<p>Let&#x2019;s build our <code>build.js</code> file, using the above plugins. Each plugin call is annotated below, so we can understand what they&#x2019;re doing. Here it is:</p>
+<pre><code class="language-js"><span class="token keyword">var</span> metalsmith  <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;metalsmith&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> markdown    <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;metalsmith-markdown&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> prism       <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;metalsmith-prism&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> assets      <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;metalsmith-assets&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> collections <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;metalsmith-collections&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> layouts     <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;metalsmith-layouts&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">// DEBUG Function</span>
+<span class="token comment" spellcheck="true">// Uncomment to console.log() at every .use() step for fine-grain debugging</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">// var plugin = function(files, metalsmith, done) {</span>
+<span class="token comment" spellcheck="true">//     console.log(files);</span>
+<span class="token comment" spellcheck="true">//     done();</span>
+<span class="token comment" spellcheck="true">// };</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">// USAGE:</span>
+<span class="token comment" spellcheck="true">//  .use(plugin)</span>
+
+
+
+<span class="token function">metalsmith</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">markdown</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// Convert Markdown to HTML, using smartypants, GitHub markdown, and table syntax.</span>
+    smartypants<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    gfm<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    tables<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    langPrefix<span class="token punctuation">:</span> <span class="token string">&apos;language-&apos;</span> <span class="token comment" spellcheck="true">//For Prism&apos;s use.</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">prism</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//Make the code syntax highlighting work.</span>
+  <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">assets</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// Compiles assets from working directory to build directory.</span>
+    source<span class="token punctuation">:</span> <span class="token string">&apos;./assets&apos;</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// relative to the working directory</span>
+    destination<span class="token punctuation">:</span> <span class="token string">&apos;./assets&apos;</span> <span class="token comment" spellcheck="true">// relative to the build directory</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">collections</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// Collections - use these to categorize different types of pages.</span>
+    <span class="token string">&apos;blog-post&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// We&apos;re only using a blog-post type of page for now.</span>
+      <span class="token string">&apos;sort-by&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;date&apos;</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Organizes posts by the `date` front-matter.</span>
+      <span class="token string">&apos;reverse&apos;</span><span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Reverse chronological order (newest first).</span>
+      <span class="token string">&apos;refer&apos;</span>  <span class="token punctuation">:</span> <span class="token keyword">false</span> <span class="token comment" spellcheck="true">// Adds a reference to the next post in the series.</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">layouts</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//Layouts plugin</span>
+    engine<span class="token punctuation">:</span> <span class="token string">&quot;handlebars&quot;</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Use Handlebars.</span>
+    partials<span class="token punctuation">:</span> <span class="token string">&quot;partials&quot;</span> <span class="token comment" spellcheck="true">// Partials are in the &quot;partials&quot; directory.</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// Can we build it? Yes we can!</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword">throw</span> err<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// This throws all errors.</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h1 id="directory-structure-">Directory Structure.</h1>
+<p>Now that we&#x2019;ve got our <code>build.js</code> in place, we need to build the directory structure that it scaffolds. Create each of these folders and files in their respective places:</p>
+<pre><code class="language-bash"><span class="token operator">|</span> assets
+<span class="token operator">|</span>-- css
+<span class="token operator">|</span>---- main.css
+<span class="token operator">|</span>---- normalize.css <span class="token comment" spellcheck="true"># Found here: https://necolas.github.io/normalize.css/</span>
+<span class="token operator">|</span>---- blog-post.css
+<span class="token operator">|</span>---- index.css
+<span class="token operator">|</span>---- prism.css <span class="token comment" spellcheck="true"># Pick your style and download the CSS here: http://prismjs.com/</span>
+<span class="token operator">|</span> layouts
+<span class="token operator">|</span>-- blog-post.hbs
+<span class="token operator">|</span>-- index.hbs
+<span class="token operator">|</span> partials
+<span class="token operator">|</span>-- header.hbs
+<span class="token operator">|</span>-- html-head.hbs
+<span class="token operator">|</span> src
+<span class="token operator">|</span>-- posts
+<span class="token operator">|</span>---- hello.md
+<span class="token operator">|</span>-- blog.md
+<span class="token operator">|</span> build.js
+</code></pre>
+<h1 id="templates-index-hbs-amp-blog-post-hbs">Templates: index.hbs &amp; blog-post.hbs</h1>
+<p>Templates are the foundation for content in our Metalsmith blog. Both the index file and all blog posts are routed through their respective templates, which produces our site with the structure we want.</p>
+<p>Our index file allows us to list all our posts in one place, where someone interested in looking at our writing can find all of it.</p>
+<p>The current implementation is only title, date, and two vector scrolls that have been exported to view on the page. There are a ton of other <a href="http://metalsmith.io">Metalsmith plugins</a> that can help you further build your index - excerpts, pagination, tagging, and many others are available. Metalsmith is an incredibly simple plug-and-play tool, so it won&#x2019;t be hard to integrate other features you may want.</p>
+<p>Here&#x2019;s our <strong>index.hbs</strong>, with functionality commented where appropriate:</p>
+<pre><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>blog-index<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+{{&gt; html-head }}  <span class="token comment" spellcheck="true">&lt;!-- A partial - this will be explained in the next section! --&gt;</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    {{&gt; header }} <span class="token comment" spellcheck="true">&lt;!-- A partial - this will be explained in the next section! --&gt;</span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>blog-list<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+                {{#each collections.blog-post}} <span class="token comment" spellcheck="true">&lt;!-- A Handlebars iterative function. --&gt;</span>
+                    {{#if title}} <span class="token comment" spellcheck="true">&lt;!-- If a post has a title element, it will be listed. --&gt;</span>
+                      &lt;div class=&quot;humongous {{#unless cover-img}}no-cover{{/unless}}&quot; {{#if cover-img}}style=&quot;background-image: {{cover-img}};&quot;{{/if}}&gt;<span class="token comment" spellcheck="true">&lt;!-- Two handlebars helpers that test for a background-image in each humongous element. --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>./assets/img/vector-scroll-top.png<span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>grayscale<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+                          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>./blog/posts/{{ slug }}.html<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>hello<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{title}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Slug is a property of each document&apos;s metadata, called front-matter. See the section on front matter below. --&gt;</span>
+                          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>datetime<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span><span class="token punctuation">&gt;</span></span>{{posted}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+                          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>./assets/img/vector-scroll-bottom.png<span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>grayscale<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+                      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+                    {{/if}}
+                {{/each}}
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Our implementation of our blog post page uses a humongous element, and then prints the contents of the Markdown file after it has been converted to HTML by <code>metalsmith-markdown</code>.</p>
+<p>Here&#x2019;s our <code>blog-post.hbs</code> template:</p>
+<pre><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+{{&gt; html-head }}
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    {{&gt; header }}
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span><span class="token punctuation">&gt;</span></span>
+
+                &lt;div class=&quot;humongous {{#unless cover-img}}no-cover{{/unless}}&quot; {{#if cover-img}}style=&quot;background-image: {{cover-img}};&quot;{{/if}}&gt;
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>hello<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{title}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>datetime<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span><span class="token punctuation">&gt;</span></span>{{posted}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+                 {{{ contents }}}
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">&gt;</span></span>
+;
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<h1 id="partials-html-head-and-header">Partials: html-head and header</h1>
+<p>Partials in Handlebars are snippets of code that you can reuse in multiple places within your project - including them is simple - use the following syntax to do so:</p>
+<pre><code class="language-html">{{&gt; partial-name }}
+</code></pre>
+<p><code>partial-name</code> would be the filename of the partial located in the <code>partials/</code> directory in the project root. The inclusion of partials will be noted when they are used in the handlebars layouts.</p>
+<p>This is our <code>html-head.hbs</code> partial, which defines the <code>head</code> HTML element in all our pages:</p>
+<pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Content-Type<span class="token punctuation">&quot;</span></span>  <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text/html; charset<span class="token punctuation">=</span>utf-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>utf-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>{{#if title}}{{ title }} | {{/if}}<span class="token entity" title="&amp;">&amp;amp;</span>! (bnb, bang, bitandbang)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Title of the page --&gt;</span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>viewport<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>width<span class="token punctuation">=</span>device-width, initial-scale<span class="token punctuation">=</span>1.0<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>icon<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>../favicon.ico<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Add your favicon --&gt;</span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Icon font for navbar. --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>http://brick.a.ssl.fastly.net/TeX+Gyre+Heros:400,700:f/Source+Serif+Pro:400/Playfair+Display:700i/Alegreya:400i,700i<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- serif/sans serif typography --&gt;</span>
+
+    {{#if collection}}
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>../assets/css/{{collection}}.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. --&gt;</span>
+    {{/if}}
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>../assets/css/normalize.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- normalize all the styles! --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>../assets/css/prism.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Add Prism theme. --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>../assets/css/main.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Use main css attributes. --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Additionally, we are defining a <code>header</code> partial element that will be consistent across all our pages, including the index, blog post, and any other pages you may create.</p>
+<p>Here&#x2019;s our <code>header.hbs</code> partial:</p>
+<pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>top<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Header element --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>headerContainer<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- List the social media icons with links using Font Awesome icons --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>http://<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>fa fa-paragraph<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>https://<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>fa fa-chevron-up<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>https://<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>fa fa-github-alt<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>https://<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>fa fa-eye-slash<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>../{{ path }}/index.html<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>logo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>bnb<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Link the logo back to the index of the site. --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<h1 id="src-content-management">src: content management</h1>
+<p>We&#x2019;re almost done building our blog! The only thing that&#x2019;s left is <strong>our content</strong>. Our content lives in the <code>src/</code> (shorthand for &#x201C;source&#x201D;) directory. The content comes in two forms: the core file (<em>index.md</em>), which simply calls the <code>index.hbs</code> template with no actual markup of its own, and content files (<em>post-title.md</em>), whose content iteratively gets piped into the <code>blog-post.hbs</code> template.</p>
+<h2 id="learning-src-front-matter">Learning src: front-matter</h2>
+<p>Front-matter is an important tool in Metalsmith. It is metadata content put at the top of your source files that help Metalsmith plugins and Handlebars (or other templating engines) templates parse the content of your site correctly.</p>
+<p>Here&#x2019;s an example of front-matter:</p>
+<pre><code class="language-html">---
+title: A Short List of Excellent JavaScript Podcasts
+layout: blog-post.hbs
+collection: blog-post
+slug: A-Short-List-of-Excellent-JavaScript-Podcasts
+posted: &quot;April 12, 2014 at 8:13PM&quot;
+date: 2014-04-12 20:13:00
+---
+</code></pre>
+<p>Each of the items listed here gives data to one plugin or another. <code>title</code> gets used when <code>{{ title }}</code> is called in Handlebars. <code>layout</code> determines what layout the document is applied to. <code>collection</code> is an organizer of content. <code>slug</code> is used to create links to individual posts in the index. <code>posted</code> is a human-readable date that we display on both the <code>index</code> and the <code>blog-post</code> templates. And <code>date</code> is a machine-readable date that is for standardized record keeping and search engine crawling.</p>
+<h2 id="src-index-md">src: index.md</h2>
+<pre><code class="language-html">---
+title: bnb
+layout: index.hbs
+collection: index
+---
+<span class="token entity" title="&#xA0;">&amp;nbsp;</span>
+</code></pre>
+<p>As you can see, its content is only a non-breaking space. This is because we define all the generated markup in the <code>index.hbs</code> layout, and don&#x2019;t need content to be inserted from this file.</p>
+<h2 id="src-post-name-md">src: <post-name>.md</post-name></h2>
+<p>The strategy of no internal content is the opposite of files in our <code>src/post/</code> directory. They include similar, but more detailed, front-matter. The difference is that to make a new post, you write below the front-matter in Markdown. Let&#x2019;s take a look at one of my personal blog entries:</p>
+<pre><code class="language-html">---
+title: A Short List of Excellent JavaScript Podcasts
+layout: blog-post.hbs
+collection: blog-post
+slug: A-Short-List-of-Excellent-JavaScript-Podcasts
+posted: &quot;April 12, 2014 at 8:13PM&quot;
+date: 2014-04-12 20:13:00
+---
+
+JavaScript is wonderful. I know I&apos;m always keen to hear what&apos;s new in JS or related technologies. Podcasts on the topic are an excellent way to have a good time while learning about JS.
+
+Below is a list of my favorite podcasts on JS in no particular order. You should check a few of them out to see which ones you like; there&apos;s always at least one gem-of-a-podcast for everybody. Have you found yours?
+
+### [The JavaScript Show](http://javascriptshow.com/)
+
+The JavaScript Show is a podcast that covers a lot of JS-related news. The hosts talk about a variety of topics within JS; it is an excellent way to get JS news.
+
+### [JavaScript Jabber](http://javascriptjabber.com/)
+
+JavaScript Jabber is an extremely active and well-loved podcast. The crew focuses mainly on one topic per podcast, which is an interesting and beneficial format for a code podcast.
+
+### [Changelog](http://thechangelog.com/)
+
+Changelog is a member-supported blog that also has a podcast. While it&apos;s not solely about JavaScript, the topic comes up frequently enough to be added here. Excellent podcast and excellent community.
+
+### [Build Podcast](http://build-podcast.com/)
+
+The Build Podcast, like Changelog, isn&apos;t completely focused on JavaScript, but JS is discussed frequently enough. Like Jabber, the show focuses mainly on one topic per episode in a short, digestible format.
+
+### [NodeUp](http://nodeup.com/)
+
+NodeUp is the go-to podcast for Node discussion. They have intelligent discussion on the various topics that Node encompasses, with various JS teams that the hosts interview. Highly recommended.
+
+### [Ember Watch Podcast List](http://emberwatch.com/podcasts.html)
+
+While not a specific podcast, this site links to various episodes of podcasts that are on the topic of Ember. A very interesting idea for a website, as well as a very useful one.
+</code></pre>
+<p>As you can see, the front-matter is defined and provides useful information that is utilized throughout the site. Below the front-matter is simple content, which is translated into the body of your blog post. So, we&#x2019;ve got content! Now we need to style.</p>
+<h1 id="assets-css">Assets: CSS</h1>
+<p>The blog&#x2019;s CSS assets are important. They create the visual structure of your blog, which is an important factor in getting readers. This part can be largely changed by you to fit your stylistic views - the code presented here is a working example of how it <em>can</em> be done, but not exclusively <em>how</em> it should be done. You get to be creative here - you&#x2019;ve got the templates, partials, and content. Make it yours!</p>
+<p>Here&#x2019;s how I wrote my base <strong>main.css</strong> file:</p>
+<pre><code class="language-css"><span class="token selector">*</span> <span class="token punctuation">{</span>
+    <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.clearfix</span> <span class="token punctuation">{</span>
+    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.right</span> <span class="token punctuation">{</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.left</span> <span class="token punctuation">{</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">a</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #bbb<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> color 0.5s<span class="token punctuation">;</span>
+    <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">a:hover</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #b13737<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> color 0.5s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">small, p, a</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&apos;Source Serif Pro&apos;</span><span class="token punctuation">;</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 400<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.content pre</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.content pre code</span> <span class="token punctuation">{</span>
+    <span class="token property">max-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+    <span class="token property">max-height</span><span class="token punctuation">:</span> 600px<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 1em auto<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1em 0<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> scroll<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.em</span> <span class="token punctuation">{</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #b13737<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> all 0.15s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.em:hover</span> <span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> all 0.15s<span class="token punctuation">;</span>
+    <span class="token property">border-bottom</span><span class="token punctuation">:</span> 2px solid #b13737<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.inline</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+    <span class="token property">vertical-align</span><span class="token punctuation">:</span> top<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.half</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* Or thereabouts */</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 49.8%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2em 0 1.7em 0<span class="token punctuation">;</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&apos;TeX Gyre Heros&apos;</span><span class="token punctuation">;</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+  <span class="token property">border-bottom</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">h2</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1.7em 0 1.5em 0<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&apos;Tex Gyre Heros&apos;</span><span class="token punctuation">;</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 400<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">h3</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1.5em 0 1.3em 0<span class="token punctuation">;</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&apos;TeX Gyre Heros&apos;</span><span class="token punctuation">;</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.content li</span> <span class="token punctuation">{</span>
+  <span class="token property">list-style</span><span class="token punctuation">:</span>inside<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #888<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.content li a</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #888<span class="token punctuation">;</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> underline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">blockquote</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #f6f6f6<span class="token punctuation">;</span>
+    <span class="token property">border-top</span><span class="token punctuation">:</span> 8px solid #efefef<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&quot;Alegreya&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 400<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.6em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">blockquote strong</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #f6f6f6<span class="token punctuation">;</span>
+    <span class="token property">border-top</span><span class="token punctuation">:</span> 8px solid #efefef<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&quot;Alegreya&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">blockquote a</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&quot;Alegreya&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 400<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 543px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">blockquote</span> <span class="token punctuation">{</span>
+        <span class="token property">width</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Next, I filled out my <strong>index.css</strong> file:</p>
+<pre><code class="language-css"><span class="token comment" spellcheck="true">/* Components */</span>
+
+<span class="token comment" spellcheck="true">/* Component: .top (top navigation) */</span>
+<span class="token selector">header.top</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 15px 20%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top .headerContainer</span> <span class="token punctuation">{</span>
+    <span class="token property">max-width</span><span class="token punctuation">:</span> 1000px<span class="token punctuation">;</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top h1</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> inline<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 2px solid #b13737<span class="token punctuation">;</span>
+    <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #b13737<span class="token punctuation">;</span>
+    <span class="token property">text-transform</span><span class="token punctuation">:</span> lowercase<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 5px 10px<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> background 0.5s, color 0.5s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top h1:hover</span> <span class="token punctuation">{</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 2px solid #b13737<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #b13737<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> background 0.5s, color 0.5s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top ul</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top li</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> inline<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0 5px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.3rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment" spellcheck="true">/* Component: humongous */</span>
+
+<span class="token selector">.humongous</span> <span class="token punctuation">{</span>
+    <span class="token property">border-top</span><span class="token punctuation">:</span> 1px solid #e9e9e9<span class="token punctuation">;</span>
+    <span class="token property">border-bottom</span><span class="token punctuation">:</span> 1px solid #e9e9e9<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #f6f6f6<span class="token punctuation">;</span>
+    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 125px 10px 100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.humongous .hello</span> <span class="token punctuation">{</span>
+    <span class="token property">margin-top</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+    <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.humongous h1</span> <span class="token punctuation">{</span>
+  <span class="token property">text-transform</span><span class="token punctuation">:</span> uppercase<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* End components */</span>
+
+
+
+<span class="token comment" spellcheck="true">/* Custom: blog-index */</span>
+<span class="token selector">.blog-index .content</span> <span class="token punctuation">{</span>
+      <span class="token property">padding</span><span class="token punctuation">:</span> 0.25em 0<span class="token punctuation">;</span>
+      <span class="token property">margin-top</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .content p, .content h1</span> <span class="token punctuation">{</span>
+      <span class="token property">max-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+      <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .humongous:not(:nth-of-type(2n))</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .grayscale</span> <span class="token punctuation">{</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .humongous h1.hello</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 2.25em<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0.25em<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index ul</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .datetime</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 0 1em 0<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* End components */</span>
+
+
+
+<span class="token comment" spellcheck="true">/* Custom: blog-index */</span>
+<span class="token selector">.blog-index .content</span> <span class="token punctuation">{</span>
+      <span class="token property">padding</span><span class="token punctuation">:</span> 0.25em 0<span class="token punctuation">;</span>
+      <span class="token property">margin-top</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .content p, .content h1</span> <span class="token punctuation">{</span>
+      <span class="token property">max-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+      <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .humongous:not(:nth-of-type(2n))</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .grayscale</span> <span class="token punctuation">{</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .humongous h1.hello</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 2.25em<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0.25em<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index ul</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blog-index .datetime</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 0 1em 0<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Finally, I wrote my <strong>blog-post.css</strong> fie:</p>
+<pre><code class="language-css"><span class="token comment" spellcheck="true">/* Custom */</span>
+<span class="token selector">.content</span> <span class="token punctuation">{</span>
+      <span class="token property">padding</span><span class="token punctuation">:</span> 0.25em 0<span class="token punctuation">;</span>
+      <span class="token property">margin-top</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.content p, .content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .content blockquote, .content li</span> <span class="token punctuation">{</span>
+      <span class="token property">max-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+      <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* Component: .top (top navigation) */</span>
+<span class="token selector">header.top</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 15px 20%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top .headerContainer</span> <span class="token punctuation">{</span>
+    <span class="token property">max-width</span><span class="token punctuation">:</span> 1000px<span class="token punctuation">;</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top h1</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> inline<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 2px solid #b13737<span class="token punctuation">;</span>
+    <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #b13737<span class="token punctuation">;</span>
+    <span class="token property">text-transform</span><span class="token punctuation">:</span> lowercase<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 5px 10px<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> background 0.5s, color 0.5s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top h1:hover</span> <span class="token punctuation">{</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 2px solid #b13737<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #b13737<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> background 0.5s, color 0.5s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top ul</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header.top li</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> inline<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0 5px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.3rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* Component: humongous */</span>
+
+<span class="token selector">.humongous</span> <span class="token punctuation">{</span>
+    <span class="token property">border-top</span><span class="token punctuation">:</span> 1px solid #e9e9e9<span class="token punctuation">;</span>
+    <span class="token property">border-bottom</span><span class="token punctuation">:</span> 1px solid #e9e9e9<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #f6f6f6<span class="token punctuation">;</span>
+    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 125px 10px 100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.humongous .hello</span> <span class="token punctuation">{</span>
+    <span class="token property">margin-top</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+    <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 3.5em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>And, with that, we have built a blog.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Metalsmith is an extremely powerful tool for building websites. It&#x2019;s plug-and-play capability leaves the implementation of the site up to the creator. This is one of my favorite features, as it allows me to create my site the way I want it with precision accuracy.</p>
+<p>There&#x2019;s no end to what you can do with Metalsmith - you now have an idea of how to develop a site with it, and I think you can tweak it to match your idea of a perfect website with just a bit of work.</p>
+
+                </div>
+
+            </article>
+
+        </div>
+    </div>
+
+</body>
+</html>

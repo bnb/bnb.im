@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="code-post">
+<head>
+    <meta http-equiv="Content-Type"  content="text/html; charset=utf-8">
+    <meta charset="utf-8"/>
+
+    <title>Metalsmith - build.js | &amp;! (bnb, bang, bitandbang)</title> <!-- Title of the page -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../favicon.ico"> <!-- Add your favicon -->
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> <!-- Icon font for navbar. -->
+    <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/TeX+Gyre+Heros:400,700:f/Source+Serif+Pro:400/Playfair+Display:700i/Alegreya:400i,700i"> <!-- serif/sans serif typography -->
+
+      <link rel="stylesheet" href="../assets/css/code-post.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
+
+    <link rel="stylesheet" href="../assets/css/normalize.css"> <!-- normalize all the styles! -->
+    <link rel="stylesheet" href="../assets/css/prism.css"> <!-- Add Prism theme. -->
+    <link rel="stylesheet" href="../assets/css/main.css"> <!-- Use main css attributes. -->
+</head>
+
+<body>
+    <header class="top"> <!-- Header element -->
+      <div class="headerContainer">
+        <nav>
+          <ul> <!-- List the social media icons with links using Font Awesome icons -->
+            <li><a href="../blog.html"><i class="fa fa-paragraph"></i></a></li>
+            <li><a href="../code.html"><i class="fa fa-code-fork"></i></a></li>
+            <li><a href="https://bnb.cupcake.is"><i class="fa fa-chevron-up"></i></a></li>
+            <li><a href="https://github.com/bnb"><i class="fa fa-github-alt"></i></a></li>
+            <li><a href="https://keybase.io/bang"><i class="fa fa-eye-slash"></i></a></li>
+          </ul>
+        </nav>
+    
+        <a href="/">
+          <a href="../index.html"><h1 class="logo">bnb</h1></a> <!-- Link the logo back to the index of the site. -->
+        </a>
+      </div>
+    </header>
+
+    <div id="main">
+        <div class="container">
+
+            <article>
+
+              <div class="code-item">
+                  <div class="code-meta">
+                    <h1 class="code-title">Metalsmith - build.js</h1></a>
+                    <span class="datetime"><time>December 10, 2015 at 1:09PM</time></span>
+                  </div>
+                  <div class="content code-block">
+                   &lt;pre&gt;&lt;code class&#x3D;&quot;language-js&quot;&gt;&lt;span class&#x3D;&quot;token keyword&quot;&gt;var&lt;/span&gt; metalsmith  &lt;span class&#x3D;&quot;token operator&quot;&gt;&#x3D;&lt;/span&gt; &lt;span class&#x3D;&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;metalsmith&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class&#x3D;&quot;token keyword&quot;&gt;var&lt;/span&gt; markdown    &lt;span class&#x3D;&quot;token operator&quot;&gt;&#x3D;&lt;/span&gt; &lt;span class&#x3D;&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;metalsmith-markdown&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class&#x3D;&quot;token keyword&quot;&gt;var&lt;/span&gt; prism       &lt;span class&#x3D;&quot;token operator&quot;&gt;&#x3D;&lt;/span&gt; &lt;span class&#x3D;&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;metalsmith-prism&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class&#x3D;&quot;token keyword&quot;&gt;var&lt;/span&gt; assets      &lt;span class&#x3D;&quot;token operator&quot;&gt;&#x3D;&lt;/span&gt; &lt;span class&#x3D;&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;metalsmith-assets&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class&#x3D;&quot;token keyword&quot;&gt;var&lt;/span&gt; collections &lt;span class&#x3D;&quot;token operator&quot;&gt;&#x3D;&lt;/span&gt; &lt;span class&#x3D;&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;metalsmith-collections&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class&#x3D;&quot;token keyword&quot;&gt;var&lt;/span&gt; layouts     &lt;span class&#x3D;&quot;token operator&quot;&gt;&#x3D;&lt;/span&gt; &lt;span class&#x3D;&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;metalsmith-layouts&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// DEBUG Function&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Uncomment to console.log() at every .use() step for fine-grain debugging&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;//&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// var plugin &#x3D; function(files, metalsmith, done) {&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;//     console.log(files);&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;//     done();&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// };&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;//&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// USAGE:&lt;/span&gt;
+&lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;//  .use(plugin)&lt;/span&gt;
+
+
+
+&lt;span class&#x3D;&quot;token function&quot;&gt;metalsmith&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;use&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;markdown&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Convert Markdown to HTML, using smartypants, GitHub markdown, and table syntax.&lt;/span&gt;
+    smartypants&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token keyword&quot;&gt;true&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    gfm&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token keyword&quot;&gt;true&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    tables&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token keyword&quot;&gt;true&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    langPrefix&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;language-&amp;apos;&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;//For Prism&amp;apos;s use.&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;use&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;prism&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;//Make the code syntax highlighting work.&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;use&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;assets&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Compiles assets from working directory to build directory.&lt;/span&gt;
+    source&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;./assets&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// relative to the working directory&lt;/span&gt;
+    destination&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;./assets&amp;apos;&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// relative to the build directory&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;use&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;collections&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Collections - use these to categorize different types of pages.&lt;/span&gt;
+    &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;blog-post&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// We&amp;apos;re only using a blog-post type of page for now.&lt;/span&gt;
+      &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;sort-by&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;date&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Organizes posts by the &#x60;date&#x60; front-matter.&lt;/span&gt;
+      &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;reverse&amp;apos;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token keyword&quot;&gt;true&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Reverse chronological order (newest first).&lt;/span&gt;
+      &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;apos;refer&amp;apos;&lt;/span&gt;  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token keyword&quot;&gt;false&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Adds a reference to the next post in the series.&lt;/span&gt;
+    &lt;span class&#x3D;&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;use&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;layouts&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;//Layouts plugin&lt;/span&gt;
+    engine&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;quot;handlebars&amp;quot;&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Use Handlebars.&lt;/span&gt;
+    partials&lt;span class&#x3D;&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class&#x3D;&quot;token string&quot;&gt;&amp;quot;partials&amp;quot;&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Partials are in the &amp;quot;partials&amp;quot; directory.&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class&#x3D;&quot;token function&quot;&gt;build&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class&#x3D;&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;err&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class&#x3D;&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// Can we build it? Yes we can!&lt;/span&gt;
+    &lt;span class&#x3D;&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;(&lt;/span&gt;err&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class&#x3D;&quot;token keyword&quot;&gt;throw&lt;/span&gt; err&lt;span class&#x3D;&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class&#x3D;&quot;token comment&quot; spellcheck&#x3D;&quot;true&quot;&gt;// This throws all errors.&lt;/span&gt;
+  &lt;span class&#x3D;&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class&#x3D;&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+                  </div>
+                </div>
+              </ul>
+            </article>
+
+        </div>
+    </div>
+
+</body>
+</html>
