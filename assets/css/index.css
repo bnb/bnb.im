@@ -415,6 +415,7 @@ h2.tlh:after {
   margin: 0 auto;
   padding: 0.25em;
   max-width: 800px;
+  color: #bcbcbc;
 }
 
 .blog-index ul {
