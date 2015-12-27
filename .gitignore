@@ -44,5 +44,4 @@ Temporary Items
 
 # Project
 node_modules/
-build/
 .publish/
