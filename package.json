@@ -2,17 +2,9 @@
   "name": "bnb.im",
   "version": "2.0.0",
   "description": "Personal Metalsmith site.",
-  "main": "run.js",
-  "scripts": {
-    "deploy": "gh-pages-deploy",
-    "clean-source": "rimraf README.md src webroot package.json"
-  },
+  "main": "build.js",
   "author": "&! (bitandbang)",
   "license": "MIT",
-  "scripts": {
-    "deploy": "npm run gh-pages",
-    "gh-pages": "gh-pages -d build -b gh-pages"
-  },
   "devDependencies": {
     "gh-pages": "^0.8.0",
     "handlebars": "^4.0.4",
