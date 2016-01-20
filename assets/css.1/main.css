@@ -26,7 +26,7 @@ a:hover {
 }
 
 .content a {
-    border-bottom: solid 2px #df3737;
+    border-bottom: solid 3px #df3737;
 }
 
 .content a:hover {
@@ -179,78 +179,12 @@ blockquote a {
     font-size: 1em;
 }
 
-@media screen and (min-width: 1110px) {
-    .wia .wiaItem blockquote {
-    width: 35%;
-    }
+.wia .wiaItem blockquote {
+  width: 35%;
 }
 
-@media screen and (max-width: 1109px) {
-    .half {
-        width: 80%;
-        display: block;
-        margin: 0 auto; 
-    }
-    
-    .right, .left {
-        float: none;
-    }
-    
-    h2:not(.tlh) {
-        padding: 0 0 1em;
-        text-align: center;
-    }
-    
-    .socialSec ul {
-        text-align: center;
-    }
-    
-    .socialSec .formSec {
-        padding: 20px 0 0;  
-    }
-    
-    .formSec {
-        border-left: none;
-        border-top: 2px solid #b13737;
-    }
-    .formSec form {
-        width: 400px;
-        display: block;
-        margin: 0px auto;
-    }
-}
-
-@media screen and (max-width: 970px) {
-    .content pre code {
-        padding: 1em 2em;
-    }
-}
-
-@media screen and (max-width: 610px) {
-    header.top {
-        padding: 0;
-        text-align: center;l
-    }
-    
-    header.top .headerContainer a.logoLink {
-        text-align: center;
-        display: block;
-        float: none;
-        margin: 1.5em;
-    }
-    header.top .headerContainer nav {
-        float: none; 
-        display: inline-block; 
-        height: 25px;
-    }
-    
-    header.top .headerContainer nav ul {ß
-        width: 155.45px;
-        height: 22.4px;
-    }
-    
-    header.top .headerContainer nav ul li {
-        width: 155.45px;
-        height: 22.4px;
+@media screen and (max-width: 543px) {
+    blockquote {
+        width: inherit;
     }
 }

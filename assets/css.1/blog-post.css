@@ -1,6 +1,6 @@
 /* Custom */
 .content {
-      padding: 2em 4em 4em;
+      padding: 0.25em 0 3em 0;
       margin-top: 2em;
 }
 
@@ -84,17 +84,4 @@ header.top li {
     font-size: 3.5em;
     max-width: 800px;
     margin: 0 auto;
-}
-
-@media screen and (max-width: 825px) {
-    .humongous .hello {
-        font-size: 3em;
-    }   
-}
-
-
-@media screen and (max-width: 600px) {
-    .humongous .hello {
-        font-size: 2.5em;
-    }   
 }

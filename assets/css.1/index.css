@@ -487,38 +487,3 @@ h2.tlh:after {
   padding: 1em;
   line-height: `1.5em``;
 }
-
-
-@media screen and (max-width: 865px) {
-    .wid > p {
-        width: 65%;
-    }
-    
-    .wia .wiaItem > blockquote {
-        width: 85%;
-    }
-    
-    h2.tlh::after {
-        top: 120%;
-        width: 150%;
-        left: -10%;
-    }
-    
-    h2.tlh span {
-        padding: 0 8px;
-    }
-}
-
-@media screen and (max-width: 610px) {
-    .wid > p {
-        width: 80%;
-    }
-    
-    .wia .wiaItem > blockquote {
-        width: 90%;
-    }
-    
-    h2.tlh span {
-        padding: 0 4px;
-    }
-}
