@@ -32,17 +32,7 @@ metalsmith(__dirname)
     source: './assets', // relative to the working directory
     destination: './assets' // relative to the build directory
   }))
-  /*.use(uncss({
-        css: ['bootstrap.css','app.css'],   // CSS files to run through UnCSS
-        html: ['index.html','test.html'],   // HTML files to test the CSS files against
-        output: 'uncss-output.css',         // output CSS filename
-        basepath: 'styles',                 // optional base path where all your css files are stored
-        removeOriginal: true,               // remove original CSS files from the build
-        uncss: {                            // uncss options - passed directly to UnCSS
-            ignore: ['.added-at-runtime','#do-not-remove']
-        }
-    }))*/
-  .use(cleanCSS({ // NEW
+  .use(cleanCSS({
     files: 'assets/css/**/*.css'
   }))
   .use(snippet())
@@ -64,11 +54,14 @@ metalsmith(__dirname)
   }))
   .use(watch({
       paths: {
-        "assets/**/*": true,
-        "layouts/**/*": "**/*.hbs",
+        "assets/**/*.css": true,
+        "assets/**/*.js": true,
+        "assets/**/*.png": true,
+        "assets/**/*.jpg": true,
+        "assets/**/*.pdf": true,
         "${source}/**/*.md": true,
-        // This rebuilds 0 files, "**/*.hbs" doesn't work either.
-        // "partials/**/*": true,
+        "partials/**/*.hbs": true,
+        "layouts/**/*.hbs": true
       }
     }))
   .build(function(err) {

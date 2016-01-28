@@ -293,13 +293,22 @@ h2.tlh:after {
     transition: all 0.5s;
 }
 
+.socialSec a.twitter:hover {
+    background-color: #55acee;
+    border: 2px solid #55acee;
+    color: #fff;
+    transition: all 0.5s;
+}
+
 .socialSec a.kb:hover {
     background-color: #FF8648;
     border: 2px solid #FF8648;
     color: #fff;
     transition: all 0.5s;
 }
+
 .socialSec a i {
+    float: left;
     padding-right: 5px;
 }
 
