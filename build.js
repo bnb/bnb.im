@@ -2,7 +2,6 @@ var metalsmith  = require('metalsmith');
 var markdown    = require('metalsmith-markdown');
 var prism       = require('metalsmith-prism');
 var assets      = require('metalsmith-assets');
-var uncss       = require('metalsmith-uncss');
 var cleanCSS    = require('metalsmith-clean-css');
 var collections = require('metalsmith-collections');
 var layouts     = require('metalsmith-layouts');
