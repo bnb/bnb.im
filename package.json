@@ -1,18 +1,18 @@
-{ 
+{
   "name": "bnb.im",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Personal Metalsmith site.",
   "author": {
-      "name":  "&! (bitandbang)",
-      "url":   "https://bnb.im",
-      "email": "hello@bnb.im"
+    "name": "&! (bitandbang)",
+    "url": "https://bnb.im",
+    "email": "hello@bnb.im"
   },
   "main": "build.js",
   "scripts": {
-    "build":    "node build",
-    "clean":    "trash 'build/**/*'",
+    "build": "node build",
+    "clean": "trash 'build/**/*'",
     "gh-pages": "git push origin `git subtree split --prefix build master`:gh-pages --force",
-    "deploy":   "npm run clean && npm run gh-pages"
+    "deploy": "npm run clean && npm run gh-pages"
   },
   "dependencies": {
     "handlebars": "^4.0.4",
