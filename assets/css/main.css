@@ -16,13 +16,13 @@
 
 a {
     color: #df3737;
-    transition: all 0.2s;
+    transition: 0.2s 0.2s all;
     text-decoration: none;
 }
 
 a:hover {
     color: #b13737;
-    transition: all 0.2s;
+    transition: 0.2s 0.2s all;
 }
 
 .content a {
@@ -53,43 +53,34 @@ small, p, a {
     overflow: scroll;
 }
 
-input {
+input, textarea {
     background-color: transparent;
     border: 1px solid #dedede;
     border-bottom: 3px solid #dedede;
     display: block;
-    width: 200px;
     outline: none;
-    margin-top: 10px;
     box-shadow: none;
-    transition: all 0.2s;
+    padding: 11px;
+    margin-bottom: 10px;
+    transition: padding 0.1s linear 0.1s, border-bottom 0.1s linear 0.1s;
 }
 
-input:focus {
+input:focus, textarea:focus {
     background-color: #efefef;
     border: 1px solid #b13737;
     border-bottom: 5px solid #b13737;
-    transition: all 0.2s;
+    padding: 11px 6px 9px;
+    transition: padding 0.1s linear 0.1s, border 0.1s linear 0.1s;    
+}
+
+input {
+    width: 200px;
 }
 
 textarea {
-    background-color: transparent;
-    border: 1px solid #dedede;
-    border-bottom: 3px solid #dedede;
     display: block;
-    margin-top: 10px;
     min-height: 100px;
     min-width: 400px;
-    box-shadow: none;
-    transition: all 0.2s;
-}
-
-textarea:focus {
-    outline: none;
-    background-color: #efefef;
-    border: 1px solid #b13737;
-    border-bottom: 5px solid #b13737;
-    transition: all 0.2s;
 }
 
 .em {
@@ -229,7 +220,7 @@ blockquote a {
 @media screen and (max-width: 610px) {
     header.top {
         padding: 0;
-        text-align: center;l
+        text-align: center;
     }
     
     header.top .headerContainer a.logoLink {
@@ -244,7 +235,7 @@ blockquote a {
         height: 25px;
     }
     
-    header.top .headerContainer nav ul {ß
+    header.top .headerContainer nav ul {
         width: 155.45px;
         height: 22.4px;
     }

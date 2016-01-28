@@ -66,8 +66,9 @@ metalsmith(__dirname)
       paths: {
         "assets/**/*": true,
         "layouts/**/*": "**/*.hbs",
-        "partials/**/*": "**/*.hbs",
         "${source}/**/*.md": true,
+        // This rebuilds 0 files, "**/*.hbs" doesn't work either.
+        // "partials/**/*": true,
       }
     }))
   .build(function(err) {

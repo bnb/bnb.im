@@ -1,23 +1,30 @@
-{
+{ 
   "name": "bnb.im",
   "version": "2.0.0",
   "description": "Personal Metalsmith site.",
   "main": "build.js",
-  "author": "&! (bitandbang)",
+  "scripts": {
+    "build":    "node build",
+    "clean":    "trash 'build/**/*'",
+    "gh-pages": "git push origin `git subtree split --prefix build master`:gh-pages --force",
+    "deploy":   "npm run clean && npm run gh-pages"
+  },
+  "author": {
+      "name":  "&! (bitandbang)",
+      "url":   "https://bnb.im",
+      "email": "hello@bnb.im"
+  },
   "license": "MIT",
-  "devDependencies": {
-    "gh-pages": "^0.8.0",
+  "dependencies": {
     "handlebars": "^4.0.4",
     "metalsmith": "^2.1.0",
-    "metalsmith-assets": "^0.1.0",
-    "metalsmith-collections": "^0.7.0",
-    "metalsmith-layouts": "^1.4.1",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-prism": "^2.1.1",
-    "metalsmith-uncss": "^0.2.0",
-    "metalsmith-watch": "^1.0.1"
-  },
-  "dependencies": {
-    "metalsmith-clean-css": "^2.0.0"
+    "metalsmith-assets": "^0.1.0",
+    "metalsmith-clean-css": "^2.0.0",
+    "metalsmith-collections": "^0.7.0",
+    "metalsmith-layouts": "^1.4.1",
+    "metalsmith-watch": "^1.0.1",
+    "trash-cli": "^1.2.0"
   }
 }
