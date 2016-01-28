@@ -58,6 +58,7 @@ metalsmith(__dirname)
         "assets/**/*.png": true,
         "assets/**/*.jpg": true,
         "assets/**/*.pdf": true,
+        "assets/**/*.zip": true,
         "${source}/**/*.md": true,
         "partials/**/*.hbs": true,
         "layouts/**/*.hbs": true
