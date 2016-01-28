@@ -46,3 +46,4 @@ Temporary Items
 node_modules/
 build/
 .publish/
+npm-debug.log
