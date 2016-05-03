@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> <!-- Icon font for navbar. -->
     <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/TeX+Gyre+Heros:400,700:f/Source+Serif+Pro:400/Playfair+Display:700i/Alegreya:400i,700i"> <!-- serif/sans serif typography -->
 
+    <link rel="stylesheet" href="./assets/css/normalize.css"> <!-- normalize all the styles! -->
+    <link rel="stylesheet" href="./assets/css/main.css"> <!-- Use main css attributes. -->
+    
       <link rel="stylesheet" href="./assets/css/index.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
 
-    <link rel="stylesheet" href="./assets/css/normalize.css"> <!-- normalize all the styles! -->
     <link rel="stylesheet" href="./assets/css/prism.css"> <!-- Add Prism theme. -->
-    <link rel="stylesheet" href="./assets/css/main.css"> <!-- Use main css attributes. -->
 </head>
 
 <body>
@@ -28,14 +29,12 @@
             <li><a href="./blog.html"><i class="fa fa-paragraph"></i></a></li>
             <li><a href="./code.html"><i class="fa fa-code-fork"></i></a></li>
             <li><a href="https://bnb.cupcake.is"><i class="fa fa-chevron-up"></i></a></li>
+            <li><a href="https://twitter.com/bitandbang"><i class="fa fa-twitter"></i></a></li>
             <li><a href="https://github.com/bnb"><i class="fa fa-github-alt"></i></a></li>
             <li><a href="https://keybase.io/bang"><i class="fa fa-eye-slash"></i></a></li>
           </ul>
         </nav>
-    
-        <a href="/">
-          <a href="./index.html"><h1 class="logo">bnb</h1></a> <!-- Link the logo back to the index of the site. -->
-        </a>
+        <a href="./index.html" class="logoLink"><h1 class="logo">bnb</h1></a> <!-- Link the logo back to the index of the site. -->
       </div>
     </header>
 
@@ -43,6 +42,12 @@
         <div class="container">
 
             <ul class="blog-list">
+                      <div class="humongous cover-img" style="background-image: url(./assets/img/node-board.jpg);">
+                        <img src="./assets/img/vector-scroll-top.png" alt="" class="grayscale">
+                          <a href="./blog/Individual-Membership-on-the-Board-of-Directors-for-Node-js.html"><h1 class="hello">Individual Membership on the Board of Directors for Node.js</h1></a>
+                          <span class="datetime"><time>January 7, 2016 at 6:04PM</time></span>
+                          <img src="./assets/img/vector-scroll-bottom.png" alt="" class="grayscale">
+                      </div>
                       <div class="humongous cover-img" style="background-image: url(./assets/img/spanners_hires.jpg);">
                         <img src="./assets/img/vector-scroll-top.png" alt="" class="grayscale">
                           <a href="./blog/Building-a-Static-Blog-with-Metalsmith.html"><h1 class="hello">Building a Static Blog with Metalsmith</h1></a>

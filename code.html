@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> <!-- Icon font for navbar. -->
     <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/TeX+Gyre+Heros:400,700:f/Source+Serif+Pro:400/Playfair+Display:700i/Alegreya:400i,700i"> <!-- serif/sans serif typography -->
 
+    <link rel="stylesheet" href="./assets/css/normalize.css"> <!-- normalize all the styles! -->
+    <link rel="stylesheet" href="./assets/css/main.css"> <!-- Use main css attributes. -->
+    
       <link rel="stylesheet" href="./assets/css/index.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
 
-    <link rel="stylesheet" href="./assets/css/normalize.css"> <!-- normalize all the styles! -->
     <link rel="stylesheet" href="./assets/css/prism.css"> <!-- Add Prism theme. -->
-    <link rel="stylesheet" href="./assets/css/main.css"> <!-- Use main css attributes. -->
 </head>
 
 <body>
@@ -28,14 +29,12 @@
             <li><a href="./blog.html"><i class="fa fa-paragraph"></i></a></li>
             <li><a href="./code.html"><i class="fa fa-code-fork"></i></a></li>
             <li><a href="https://bnb.cupcake.is"><i class="fa fa-chevron-up"></i></a></li>
+            <li><a href="https://twitter.com/bitandbang"><i class="fa fa-twitter"></i></a></li>
             <li><a href="https://github.com/bnb"><i class="fa fa-github-alt"></i></a></li>
             <li><a href="https://keybase.io/bang"><i class="fa fa-eye-slash"></i></a></li>
           </ul>
         </nav>
-    
-        <a href="/">
-          <a href="./index.html"><h1 class="logo">bnb</h1></a> <!-- Link the logo back to the index of the site. -->
-        </a>
+        <a href="./index.html" class="logoLink"><h1 class="logo">bnb</h1></a> <!-- Link the logo back to the index of the site. -->
       </div>
     </header>
 
@@ -555,9 +554,9 @@
 
 <span class="token function">metalsmith</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">markdown</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// Convert Markdown to HTML, using smartypants, GitHub markdown, and table syntax.</span>
-    smartypants<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
-    gfm<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
-    tables<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    smartypants<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    gfm<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    tables<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     langPrefix<span class="token punctuation">:</span> <span class="token string">&apos;language-&apos;</span> <span class="token comment" spellcheck="true">//For Prism&apos;s use.</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">prism</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//Make the code syntax highlighting work.</span>
@@ -568,8 +567,8 @@
   <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">collections</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// Collections - use these to categorize different types of pages.</span>
     <span class="token string">&apos;blog-post&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// We&apos;re only using a blog-post type of page for now.</span>
       <span class="token string">&apos;sort-by&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;date&apos;</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Organizes posts by the `date` front-matter.</span>
-      <span class="token string">&apos;reverse&apos;</span><span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Reverse chronological order (newest first).</span>
-      <span class="token string">&apos;refer&apos;</span>  <span class="token punctuation">:</span> <span class="token keyword">false</span> <span class="token comment" spellcheck="true">// Adds a reference to the next post in the series.</span>
+      <span class="token string">&apos;reverse&apos;</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Reverse chronological order (newest first).</span>
+      <span class="token string">&apos;refer&apos;</span>  <span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// Adds a reference to the next post in the series.</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">layouts</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//Layouts plugin</span>
