@@ -1,13 +1,11 @@
 var metalsmith  = require('metalsmith');
-var markdown    = require('metalsmith-markdown');
-var prism       = require('metalsmith-prism');
+var markdown    = require('metalsmith-markdown')
 var assets      = require('metalsmith-assets');
 var cleanCSS    = require('metalsmith-clean-css');
 var collections = require('metalsmith-collections');
 var layouts     = require('metalsmith-layouts');
-var watch       = require('metalsmith-watch');
 var snippet     = require('./metalsmith-code-snippet');
-
+var prism       = require('metalsmith-prism');
 
 // DEBUG Function
 // var plugin = function(files, metalsmith, done) {
@@ -18,52 +16,38 @@ var snippet     = require('./metalsmith-code-snippet');
 // USAGE:
 //  .use(plugin)
 
-
 metalsmith(__dirname)
-  .use(markdown({ // Convert Markdown to HTML, using smartypants, GitHub markdown, and table syntax.
-    smartypants: true,
-    gfm: true,
-    tables: true,
-    langPrefix: 'language-' //For Prism's use.
-  }))
-  .use(prism()) //Make the code syntax highlighting work.
-  .use(assets({ // Compiles assets from working directory to build directory.
-    source: './assets', // relative to the working directory
-    destination: './assets' // relative to the build directory
-  }))
-  .use(cleanCSS({
-    files: 'assets/css/**/*.css'
-  }))
-  .use(snippet())
-  .use(collections({ // Collections - use these to categorize different types of pages.
-    'blog-post': {
-      'sort-by': 'date', // Organizes posts by the `date` front-matter.
-      'reverse': true, // Reverse chronological order (newest first).
-      'refer'  : false // Adds a reference to the next post in the series.
-    },
-    'code-post': {
-      'sort-by': 'date', // Organizes posts by the `date` front-matter.
-      'reverse': true, // Reverse chronological order (newest first).
-      'refer'  : false // Adds a reference to the next post in the series.
-    }
-  }))
-  .use(layouts({ //Layouts plugin
-    engine: "handlebars", // Use Handlebars.
-    partials: "partials" // Partials are in the "partials" directory.
-  }))
-  .use(watch({
-      paths: {
-        "assets/**/*.css": true,
-        "assets/**/*.js": true,
-        "assets/**/*.png": true,
-        "assets/**/*.jpg": true,
-        "assets/**/*.pdf": true,
-        "assets/**/*.zip": true,
-        "${source}/**/*.md": true,
-        "partials/**/*.hbs": true,
-        "layouts/**/*.hbs": true
+    .use(markdown({
+        smartypants: true,
+        gfm: true,
+        tables: true,
+        langPrefix: 'language-' //For Prism's use.
+    }))
+    .use(prism())
+    .use(assets({
+        source: './assets',
+        destination: './assets'
+    }))
+    .use(cleanCSS({
+        files: 'assets/css/**/*.css'
+    }))
+    .use(snippet()) // PERSONAL USE
+    .use(collections({ // Collections - use these to categorize different types of pages.
+      'blog-post': {
+        'sort-by': 'date', // Organizes posts by the `date` front-matter.
+        'reverse': true, // Reverse chronological order (newest first).
+        'refer'  : false // Adds a reference to the next post in the series.
+      },
+      'code-post': {
+        'sort-by': 'date', // Organizes posts by the `date` front-matter.
+        'reverse': true, // Reverse chronological order (newest first).
+        'refer'  : false // Adds a reference to the next post in the series.
       }
     }))
-  .build(function(err) {
-    if(err) throw err;
-  });
+    .use(layouts({
+      engine: "handlebars", // Use Handlebars.
+      partials: "partials" // Partials are in the "partials" directory.
+    }))
+    .build(function(err){
+        if(err) throw(err)
+    });
