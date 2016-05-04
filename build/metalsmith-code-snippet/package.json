@@ -1,0 +1,19 @@
+{
+  "name": "metalsmith-code-snippet",
+  "version": "0.1.0",
+  "description": "Code Snippets in Metalsmith",
+  "main": "plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Metalsmith",
+    "plugin",
+    "snippet"
+  ],
+  "author": "&! (bitandbang)",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.19.0"
+  }
+}
