@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "pull": "git checkout master -- build/",
+    "move": "cp -a ./build/. ."
+  }
+}
