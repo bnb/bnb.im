@@ -1,6 +1,7 @@
 {
   "scripts": {
     "pull": "git checkout master -- build/",
-    "move": "cp -a ./build/. ."
+    "move": "mv ./build/* .",
+    "return": "git checkout master"
   }
 }
