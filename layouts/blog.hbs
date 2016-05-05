@@ -14,7 +14,7 @@
                       <div class="humongous {{#unless cover-img}}no-cover{{/unless}}{{#if cover-img}}cover-img{{/if}}" {{#if cover-img}}style="background-image: url(./assets/img/{{cover-img}});"{{/if}}>
                         <img src="./assets/img/vector-scroll-top.png" alt="" class="grayscale">
                           <a href="./blog/{{ slug }}.html"><h1 class="hello">{{title}}</h1></a>
-                          <span class="datetime"><time>{{posted}}</time></span>
+                          <span class="datetime"><time>Posted on {{posted}}</time></span> / <span class="readtime">{{wordCount}} words - about a {{readingTime}} read</span>
                           <img src="./assets/img/vector-scroll-bottom.png" alt="" class="grayscale">
                       </div>
                     {{/if}}

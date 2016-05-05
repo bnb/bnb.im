@@ -1,11 +1,27 @@
 var metalsmith  = require('metalsmith');
-var markdown    = require('metalsmith-markdown')
+
+//Metalsmith meta
+var ifttt       = require("metalsmith-if")
+
+//Content Meta
 var assets      = require('metalsmith-assets');
 var cleanCSS    = require('metalsmith-clean-css');
 var collections = require('metalsmith-collections');
 var layouts     = require('metalsmith-layouts');
+
+//Display/rendering
+var markdown    = require('metalsmith-markdown')
 var snippet     = require('./metalsmith-code-snippet');
 var prism       = require('metalsmith-prism');
+var wordcount   = require("metalsmith-word-count");
+
+
+// Begin Build System
+
+var options = {};
+
+options.beautify = true;
+options.watch = false;
 
 // DEBUG Function
 // var plugin = function(files, metalsmith, done) {
@@ -24,12 +40,16 @@ metalsmith(__dirname)
         langPrefix: 'language-' //For Prism's use.
     }))
     .use(prism())
+    .use(wordcount({
+      metaKeyCount: "wordCount",
+      metaKeyReadingTime: "readingTime"
+    }))
     .use(assets({
         source: './assets',
         destination: './assets'
     }))
     .use(cleanCSS({
-        files: 'assets/css/**/*.css'
+      files: 'build/assets/css/**/*.css'
     }))
     .use(snippet()) // PERSONAL USE
     .use(collections({ // Collections - use these to categorize different types of pages.
