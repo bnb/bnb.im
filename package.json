@@ -31,7 +31,6 @@
     "metalsmith-layouts": "^1.4.2",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-prism": "^2.1.1",
-    "metalsmith-project-images": "^1.0.1",
     "metalsmith-validate": "^0.1.4",
     "metalsmith-word-count": "0.0.4"
   },
