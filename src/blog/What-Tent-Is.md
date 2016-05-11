@@ -1,10 +1,19 @@
 ---
-root: "../"
 title: What Tent Is
-layout: blog-post.hbs
-cover-img: what-tent-is-cover.jpg
-collection: blog-post
 slug: What-Tent-Is
+cover: true
+tags:
+  - What
+  - Tent
+  - Is
+  - description
+  - explain
+  - protocol
+  - hosting
+  - data
+  - privacy
+  - freedom
+  - decentralized
 posted: "September 9, 2014 at 4:49PM"
 date: 2014-09-05 16:49:05
 ---

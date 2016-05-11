@@ -1,8 +1,5 @@
 ---
-root: "../"
 title: Interesting Uses for the JavaScript Progress Bar
-layout: blog-post.hbs
-collection: blog-post
 slug: Interesting-Uses-for-the-JavaScript-Progress-Bar
 tags:
   - PACE

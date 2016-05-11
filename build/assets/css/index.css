@@ -322,14 +322,14 @@ h2.tlh
   padding:0;
 }
 
-.blog-index .humongous h1.hello
+/*.blog-index .humongous h1.hello
 {
   font-size:2.25em;
   max-width:800px;
   color:#b13737;
   margin:0 auto;
   padding:.25em;
-}
+}*/
 
 .code-index .code-block
 {

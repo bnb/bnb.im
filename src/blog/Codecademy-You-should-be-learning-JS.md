@@ -1,8 +1,5 @@
 ---
-root: "../"
 title: Codecademy - You should be learning JS
-layout: blog-post.hbs
-collection: blog-post
 slug: Codecademy-You-should-be-learning-JS
 tags:
   - codecademy

@@ -18,5 +18,7 @@
       <link rel="stylesheet" href="{{root}}assets/css/{{collection}}.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
     {{/if}}
 
-    <link rel="stylesheet" href="{{root}}assets/css/prism.css"> <!-- Add Prism theme. -->
+    {{#if programming}}
+      <link rel="stylesheet" href="{{root}}assets/css/prism.css"> <!-- Add Prism theme. -->
+    {{/if}}
 </head>

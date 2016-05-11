@@ -1,10 +1,7 @@
 ---
-root: "../"
 title: Building a Static Blog with Metalsmith
-cover-img: spanners_hires.jpg
-layout: blog-post.hbs
-collection: blog-post
 slug: Building-a-Static-Blog-with-Metalsmith
+cover: true
 tags:
   - Metalsmith
   - blog
@@ -13,6 +10,7 @@ tags:
   - static
   - site
   - generator
+programming: true
 posted: "December 11, 2015 at 9:10AM"
 date: 2015-12-11 00:09:10
 ---

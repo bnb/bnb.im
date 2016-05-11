@@ -1,11 +1,7 @@
 ---
-root: "../"
 title: Individual Membership on the Board of Directors for Node.js
-cover-img: node-board.jpg
-layout: blog-post.hbs
-collection: blog-post
 slug: Individual-Membership-on-the-Board-of-Directors-for-Node-js
-linkPath: Individual-Membership-on-the-Board-of-Directors-for-Node-js.html
+cover: true
 tags:
   - node
   - nodejs
@@ -19,7 +15,6 @@ tags:
 posted: "January 7, 2016 at 6:04PM"
 date: 2016-01-07 6:04:00
 ---
-# 
 There has been an [issue](https://github.com/nodejs/membership/issues/12) open for a while requesting applications for the two Individual Membership seats on the Board of Directors for Node.js. I had been carefully tracking conversations surrounding this issue, as the position greatly interests me.
 
 I've discussed the position with several people who are important to me, and have decided to present myself as an applicant for one of the two seats.
@@ -40,7 +35,7 @@ I have been submitting pull requests to the various projects I use and have an i
 
 # Why should I be elected to the Node.js Board of Directors?
 
-* **I want to see Node flourish to become the strongest programming platform**: All my time, attention, and energy as a board member would be geared toward ensuring that Node has a very bright future - one that leads it to become the strongest, friendliest, most stable programming platform in the world. 
+* **I want to see Node flourish to become the strongest programming platform**: All my time, attention, and energy as a board member would be geared toward ensuring that Node has a very bright future - one that leads it to become the strongest, friendliest, most stable programming platform in the world.
 * **I have a focus on assisting in the creation of tools for developers to learn and adopt Node**: As a Node developer, my main interest is creating tools to help other developers. I want to help others learn Node, its frameworks, its libraries, and its APIs. Helping another developer learn a tool, write a line of code, or create a project gives me more satisfaction than anything else. I want nothing more than to help developers help themselves.
 * **I do not have any secondary agendas**: I don't work for a company, so I have no ulterior motives to have Node take a certain path that will help me succeed. I don't make money from Node, so I am not wearing rose-colored glasses that will lead to me making choices that benefit myself. My only intentions are out in the open: I want to see Node succeed, and I will only propose, support, and rally behind decisions that will make this a reality.
 

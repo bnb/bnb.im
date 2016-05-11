@@ -1,10 +1,7 @@
 ---
-root: "../"
 title: 'Quick and Dirty Drafts for Ghost Bloggers'
-cover-img: tablet_book_2_hires.jpg
-layout: blog-post.hbs
-collection: blog-post
 slug: Quick-and-Dirty-Drafts-for-Ghost-Bloggers
+cover: true
 tags:
   - GitHub
   - ghost

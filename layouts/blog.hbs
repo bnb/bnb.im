@@ -9,9 +9,9 @@
         <div class="container">
 
             <ul class="blog-list">
-                {{#each collections.blog-post}}
+                {{#each collections.posts}}
                     {{#if title}}
-                      <div class="humongous {{#unless cover-img}}no-cover{{/unless}}{{#if cover-img}}cover-img{{/if}}" {{#if cover-img}}style="background-image: url(./assets/img/{{cover-img}});"{{/if}}>
+                      <div class="humongous {{#unless cover}}no-cover{{/unless}}{{#if cover}}cover-img{{/if}}" {{#if cover}}style="background-image: url(./assets/img/blog/{{slug}}.jpg);"{{/if}}>
                         <img src="./assets/img/vector-scroll-top.png" alt="" class="grayscale">
                           <a href="./blog/{{ slug }}.html"><h1 class="hello">{{title}}</h1></a>
                           <span class="datetime"><time>Posted on {{posted}}</time></span> / <span class="readtime">{{wordCount}} words - about a {{readingTime}} read</span>

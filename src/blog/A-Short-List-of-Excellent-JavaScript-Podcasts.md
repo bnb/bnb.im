@@ -1,10 +1,7 @@
 ---
-root: "../"
 title: A Short List of Excellent JavaScript Podcasts
-cover-img: sound_mixer_hires.jpg
-layout: blog-post.hbs
-collection: blog-post
 slug: A-Short-List-of-Excellent-JavaScript-Podcasts
+cover: true
 tags:
   - list
   - podcast

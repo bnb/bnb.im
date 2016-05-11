@@ -1,10 +1,7 @@
 ---
-root: "../"
 title: 'Open-Sourcing Your Work - the Way of the Present, the Way of the Future'
-layout: blog-post.hbs
-cover-img: open-source-cover.jpg
-collection: blog-post
 slug: Open-Sourcing-Your-Work-the-Way-of-the-Present-the-Way-of-the-Future
+cover: true
 tags:
   - beginner
   - open-source

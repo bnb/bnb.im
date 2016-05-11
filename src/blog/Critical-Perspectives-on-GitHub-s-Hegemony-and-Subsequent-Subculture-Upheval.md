@@ -1,11 +1,7 @@
 ---
-root: "../"
 title: Critical Perspectives on GitHub's Hegemony and Subsequent Subculture Upheval
-cover-img: github-subculture.jpg
-layout: blog-post.hbs
-collection: blog-post
 slug: Critical-Perspectives-on-GitHub-s-Hegemony-and-Subsequent-Subculture-Upheval
-linkPath: Critical-Perspectives-on-GitHub-s-Hegemony-and-Subsequent-Subculture-Upheval.html
+cover: true
 tags:
   - GitHub
   - open-source

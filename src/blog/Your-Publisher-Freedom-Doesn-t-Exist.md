@@ -1,10 +1,7 @@
 ---
-root: "../"
 title: "Your Publisher Freedom Doesn't Exist"
-layout: blog-post.hbs
-cover-img: publisher-freedom.jpg
-collection: blog-post
 slug: Your-Publisher-Freedom-Doesn-t-Exist
+cover: true
 tags:
   - npm
   - publisher

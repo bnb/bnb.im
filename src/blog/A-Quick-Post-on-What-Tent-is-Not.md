@@ -1,10 +1,6 @@
 ---
-root: "../"
 title: A Quick Post on What Tent is Not.
-layout: blog-post.hbs
-collection: blog-post
 slug: A-Quick-Post-on-What-Tent-is-Not
-linkPath: A-Quick-Post-on-What-Tent-is-Not.html
 tags:
   - tent
   - is

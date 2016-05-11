@@ -1,27 +1,29 @@
-var metalsmith  = require('metalsmith');
+var metalsmith    = require('metalsmith');
 
-//Metalsmith meta
-var ifttt       = require("metalsmith-if")
+// Metalsmith meta
+var ifttt         = require("metalsmith-if")
 
-//Content Meta
-var assets      = require('metalsmith-assets');
-var cleanCSS    = require('metalsmith-clean-css');
-var collections = require('metalsmith-collections');
-var layouts     = require('metalsmith-layouts');
 
-//Display/rendering
-var markdown    = require('metalsmith-markdown')
-var snippet     = require('./metalsmith-code-snippet');
-var prism       = require('metalsmith-prism');
-var wordcount   = require("metalsmith-word-count");
+// Content Meta
+var assets        = require('metalsmith-assets');
+var cleanCSS      = require('metalsmith-clean-css');
+var collections   = require('metalsmith-collections');
+var layouts       = require('metalsmith-layouts');
+var validate      = require('metalsmith-validate');
+var fileMetadata  = require('metalsmith-filemetadata');
+
+// Display/content
+var markdown      = require('metalsmith-markdown')
+var snippet       = require('./metalsmith-code-snippet');
+var prism         = require('metalsmith-prism');
+var wordcount     = require("metalsmith-word-count");
 
 
 // Begin Build System
 
 var options = {};
 
-options.beautify = true;
-options.watch = false;
+// options.watch     = false;
 
 // DEBUG Function
 // var plugin = function(files, metalsmith, done) {
@@ -32,7 +34,76 @@ options.watch = false;
 // USAGE:
 //  .use(plugin)
 
+
 metalsmith(__dirname)
+    .use(fileMetadata([
+      {
+        pattern: "blog/*",
+        metadata: {
+          "root": "../",
+          "layout": "post.hbs",
+          "collection": "posts"
+        }
+      },
+      {
+        pattern: "code/*",
+        metadata: {
+          "root": "../",
+          "layout": "snippet.hbs",
+          "collection": "snippets"
+        }
+      }//,
+        // {
+        //   pattern: "posts/*",
+        //   metadata: {
+        //     "section": "blogs",
+        //     "type": "post"
+        //   }
+        // },
+    ]))
+    .use(validate([ //Validate source files metadata before building anything!
+      {
+        pattern: 'blog/*',
+        metadata: {
+            tags: true
+        }
+      },
+      {
+        pattern: 'code/*',
+        metadata: {
+            description: true
+        }
+      },
+      {
+        pattern: 'code/*' && 'blog/*',
+        metadata: {
+          root: {
+            exists: true,
+            type: 'String'
+          },
+          title: {
+            exists: true,
+            type: 'String'
+          },
+          layout: {
+            exists: true,
+            type: 'String'
+          },
+          collection: {
+            exists: true,
+            type: 'String'
+          },
+          slug: {
+            exists: true,
+            type: 'String'
+          },
+          date: {
+            exists: true
+            //, pattern: match 2014-10-27 22:09:14
+          }
+        }
+      }
+    ]))
     .use(markdown({
         smartypants: true,
         gfm: true,
@@ -53,12 +124,12 @@ metalsmith(__dirname)
     }))
     .use(snippet()) // PERSONAL USE
     .use(collections({ // Collections - use these to categorize different types of pages.
-      'blog-post': {
+      'posts': {
         'sort-by': 'date', // Organizes posts by the `date` front-matter.
         'reverse': true, // Reverse chronological order (newest first).
         'refer'  : false // Adds a reference to the next post in the series.
       },
-      'code-post': {
+      'snippets': {
         'sort-by': 'date', // Organizes posts by the `date` front-matter.
         'reverse': true, // Reverse chronological order (newest first).
         'refer'  : false // Adds a reference to the next post in the series.

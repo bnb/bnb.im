@@ -1,8 +1,5 @@
 ---
-root: "../"
 title: 'Metalsmith - build.js'
-layout: code-post.hbs
-collection: code-post
 description: The build.js (root file) for my Metalsmith instance.
 slug: metalsmith-build-js
 posted: "December 10, 2015 at 1:09PM"

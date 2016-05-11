@@ -1,8 +1,5 @@
 ---
-root: "../"
 title: 'Metalsmith - /assets/css/index.js'
-layout: code-post.hbs
-collection: code-post
 description: The index.js file for my Metalsmith instance. It contains universal styles for all `index` pages as well as individual, class-specified index pages.
 slug: metalsmith-build-js
 posted: "December 11, 2015 at 7:07AM"

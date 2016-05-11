@@ -1,8 +1,5 @@
 ---
-root: "../"
 title: 'Re: Why is Node Being Forked? (Or, there is a damn good reason.)'
-layout: blog-post.hbs
-collection: blog-post
 slug: Re-Why-is-Node-Being-Forked-Or-there-is-a-damn-good-reason
 tags:
   - nodejs
