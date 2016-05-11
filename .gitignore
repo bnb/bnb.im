@@ -45,7 +45,8 @@ Temporary Items
 # Project
 node_modules/
 build/
-build/*
 .publish/
 npm-debug.log
+
+# Personal
 assets/files/rachel/

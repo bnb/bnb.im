@@ -16,9 +16,8 @@
     <link rel="stylesheet" href="../assets/css/normalize.css"> <!-- normalize all the styles! -->
     <link rel="stylesheet" href="../assets/css/main.css"> <!-- Use main css attributes. -->
 
-      <link rel="stylesheet" href="../assets/css/blog-post.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
+      <link rel="stylesheet" href="../assets/css/posts.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
 
-    <link rel="stylesheet" href="../assets/css/prism.css"> <!-- Add Prism theme. -->
 </head>
 
 <body>
@@ -43,12 +42,16 @@
 
             <article>
 
-                <div class="humongous cover-img" style="background-image: url(..//assets/img/publisher-freedom.jpg);">
+                <div class="humongous no-cover" >
                     <h1 class="hello">Your Publisher Freedom Doesn&#x27;t Exist</h1>
-                    <span class="datetime"><time>March 2, 2014 at 11:20PM</time></span>
                 </div>
-                <div class="content">
-                 <p><em>Note: This article is a response to <a href="https://medium.com/p/271013ff33c5">An attack on publisher freedom</a>, found on Medium by author <a href="https://twitter.com/@3rdEden">Arnout Kazemier</a>.</em></p>
+                <section class="content-container">
+                  <section class="content">
+                    <aside class="content-meta">
+                      <span class="datetime"><time>Posted on March 2, 2014 at 11:20PM</time></span> / <span class="readtime">1372 words - about a 5 min read</span>
+                    </aside>
+                    <section class="content-body">
+                      <p><em>Note: This article is a response to <a href="https://medium.com/p/271013ff33c5">An attack on publisher freedom</a>, found on Medium by author <a href="https://twitter.com/@3rdEden">Arnout Kazemier</a>.</em></p>
 <h1 id="from-the-beginning">From the beginning</h1>
 <p>Let’s start from the beginning of Arnout’s article.</p>
 <h2 id="the-namespace-of-modules">The namespace of modules</h2>
@@ -101,7 +104,9 @@
 <h1 id="the-finale-think-critically">The finale: think critically</h1>
 <p>It’s clear from my post what I think of the Arnout/Isaac/npm, Inc. incident. You, however, have got to use critical thinking skills and come to your own conclusion. Balance what I’ve said with what Arnout has said, and <em>you</em> decide what’s right and what’s wrong–and you should act accordingly.</p>
 
-                </div>
+                    </section>
+                 </section>
+               </section>
 
             </article>
 

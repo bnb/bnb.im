@@ -16,9 +16,8 @@
     <link rel="stylesheet" href="../assets/css/normalize.css"> <!-- normalize all the styles! -->
     <link rel="stylesheet" href="../assets/css/main.css"> <!-- Use main css attributes. -->
 
-      <link rel="stylesheet" href="../assets/css/blog-post.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
+      <link rel="stylesheet" href="../assets/css/posts.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
 
-    <link rel="stylesheet" href="../assets/css/prism.css"> <!-- Add Prism theme. -->
 </head>
 
 <body>
@@ -43,12 +42,16 @@
 
             <article>
 
-                <div class="humongous cover-img" style="background-image: url(..//assets/img/tablet_book_2_hires.jpg);">
+                <div class="humongous no-cover" >
                     <h1 class="hello">Quick and Dirty Drafts for Ghost Bloggers</h1>
-                    <span class="datetime"><time>September 18, 2014 at 11:37AM</time></span>
                 </div>
-                <div class="content">
-                 <h1 id="writing-with-ghost">Writing with Ghost</h1>
+                <section class="content-container">
+                  <section class="content">
+                    <aside class="content-meta">
+                      <span class="datetime"><time>Posted on September 18, 2014 at 11:37AM</time></span> / <span class="readtime">529 words - about a 2 min read</span>
+                    </aside>
+                    <section class="content-body">
+                      <h1 id="writing-with-ghost">Writing with Ghost</h1>
 <p>I was working on my <a href="http://bnb.im/blog/what-tent-is/">What Tent Is</a> post for a long time. In the process, I wanted to show it to some people and get their feedback. It was pretty damn hard to find a good method to do this. But I did: GitHub Gists.</p>
 <h1 id="the-failures">The Failures</h1>
 <h2 id="dropbox-and-email">Dropbox and Email</h2>
@@ -74,7 +77,9 @@
 </ul>
 <p>To use Gists, just copy (highlight all, then <code>Ctrl</code> + <code>c</code>) and paste (<code>Ctrl</code> + <code>v</code>) into the <a href="https://gist.github.com/">Gist site</a>, and press the yellow, “Create secret Gist” button. And… <strong>BAM</strong>! You’ve got yourself an easy to use, editable draft for your post.</p>
 
-                </div>
+                    </section>
+                 </section>
+               </section>
 
             </article>
 

@@ -16,9 +16,8 @@
     <link rel="stylesheet" href="../assets/css/normalize.css"> <!-- normalize all the styles! -->
     <link rel="stylesheet" href="../assets/css/main.css"> <!-- Use main css attributes. -->
 
-      <link rel="stylesheet" href="../assets/css/blog-post.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
+      <link rel="stylesheet" href="../assets/css/posts.css"> <!-- Call custom CSS for collection type, if there is a collection attribute on the metadata (front-matter) for the page. -->
 
-    <link rel="stylesheet" href="../assets/css/prism.css"> <!-- Add Prism theme. -->
 </head>
 
 <body>
@@ -43,12 +42,16 @@
 
             <article>
 
-                <div class="humongous cover-img" style="background-image: url(..//assets/img/sound_mixer_hires.jpg);">
+                <div class="humongous no-cover" >
                     <h1 class="hello">A Short List of Excellent JavaScript Podcasts</h1>
-                    <span class="datetime"><time>April 12, 2014 at 8:13PM</time></span>
                 </div>
-                <div class="content">
-                 <p>JavaScript is wonderful. I know I’m always keen to hear what’s new in JS or related technologies. Podcasts on the topic are an excellent way to have a good time while learning about JS.</p>
+                <section class="content-container">
+                  <section class="content">
+                    <aside class="content-meta">
+                      <span class="datetime"><time>Posted on April 12, 2014 at 8:13PM</time></span> / <span class="readtime">274 words - about a 1 min read</span>
+                    </aside>
+                    <section class="content-body">
+                      <p>JavaScript is wonderful. I know I’m always keen to hear what’s new in JS or related technologies. Podcasts on the topic are an excellent way to have a good time while learning about JS.</p>
 <p>Below is a list of my favorite podcasts on JS in no particular order. You should check a few of them out to see which ones you like; there’s always at least one gem-of-a-podcast for everybody. Have you found yours?</p>
 <h3 id="-the-javascript-show-http-javascriptshow-com-"><a href="http://javascriptshow.com/">The JavaScript Show</a></h3>
 <p>The JavaScript Show is a podcast that covers a lot of JS-related news. The hosts talk about a variety of topics within JS; it is an excellent way to get JS news.</p>
@@ -63,7 +66,9 @@
 <h3 id="-ember-watch-podcast-list-http-emberwatch-com-podcasts-html-"><a href="http://emberwatch.com/podcasts.html">Ember Watch Podcast List</a></h3>
 <p>While not a specific podcast, this site links to various episodes of podcasts that are on the topic of Ember. A very interesting idea for a website, as well as a very useful one.</p>
 
-                </div>
+                    </section>
+                 </section>
+               </section>
 
             </article>
 
