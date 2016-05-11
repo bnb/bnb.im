@@ -3,7 +3,8 @@
   "version": "2.2.0",
   "description": "My personal Metalsmith site.",
   "scripts": {
-    "build": "node build"
+    "build": "node build",
+    "pages": "git checkout gh-pages"
   },
   "author": {
     "name": "&! (bitandbang)",
