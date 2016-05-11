@@ -1,7 +1,9 @@
 {
   "scripts": {
-    "pull": "git checkout master -- build/",
-    "move": "mv ./build/* .",
+    "copy": "cp -r ./build/. .",
+    "status": "git status",
+    "add": "git add -A",
+    "commit": "git commit -a -m",
     "return": "git checkout master"
   }
 }
