@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "copy": "cp -r ./build/. .",
+    "status": "git status",
+    "add": "git add",
+    "add-all": "git add -A",
+    "commit": "git commit -a -m",
+    "push": "git push",
+    "return": "git checkout master",
+    "deploy": "npm run push && npm run return"
+  }
+}
