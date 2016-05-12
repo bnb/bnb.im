@@ -168,8 +168,8 @@ h2.tlh
 .widItem .fa
 {
   font-size:3em;
-  -webkit-transition:font-size 1in 1s 1s;
-  transition:font-size 1in 1s 1s;
+  -webkit-transition:font-size 1s 1s 1s;
+  transition:font-size 1s 1s 1s;
 }
 
 .widItem:hover .fa
