@@ -84,7 +84,7 @@ header.top li {
 h1.tlh span,
 h2.tlh span {
     background: #fff;
-    padding: 0 20px
+    padding: 0 3px
 }
 h1.tlh:after,
 h2.tlh:after {
@@ -97,7 +97,6 @@ h2.tlh:after {
 }
 h1.tlh {
     position: relative;
-    margin-top: 0
 }
 h1.tlh span {
     z-index: 2;
@@ -446,7 +445,7 @@ padding:0 0 1em;
         left: -10%
     }
     h2.tlh span {
-        padding: 0 8px
+        padding: 0 3px
     }
 }
 @media screen and (max-width: 610px) {
