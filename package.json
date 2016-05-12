@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "copy": "rm -rf assets && rm -rf blog && rm -rf code && mv -f ./build/* .",
+    "copy": "rm -rf assets && rm -rf blog && rm -rf code && mv -f ./build/**/* .",
     "status": "git status",
     "add": "git add",
     "add-all": "git add -A",
