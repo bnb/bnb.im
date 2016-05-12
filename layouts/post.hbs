@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+{{> html-head }}
+
+<body>
+    {{> header }}
+
+    <div id="main">
+        <div class="container">
+
+            <article>
+
+                <div class="humongous {{#unless cover}}no-cover{{/unless}}{{#if cover}}cover-img{{/if}}" {{#if cover}}style="background-image: url({{root}}assets/img/blog/{{slug}}.jpg);"{{/if}}>
+                    <h1 class="hello">{{title}}</h1>
+                    <aside class="aboutblock">
+                      <span class="datetime"><time>Posted on {{posted}}</time></span><span class="readtime">{{wordCount}} words - about a {{readingTime}} read</span>
+                    </aside>
+                </div>
+                <div class="content">
+                 {{{ contents }}}
+                </div>
+
+            </article>
+
+        </div>
+    </div>
+
+</body>
+</html>

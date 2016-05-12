@@ -83,3 +83,22 @@ header.top li
   padding:.25em;
   text-transform:uppercase;
 }
+
+.aboutblock::before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 5px solid #ddd;
+}
+
+.aboutblock {
+  background-color: rgb(238, 238, 238);
+  padding: 1em;
+  margin: 0px auto;
+  max-width: 30em;
+  border: 1px solid #aaa;
+}

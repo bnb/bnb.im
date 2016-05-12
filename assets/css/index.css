@@ -397,7 +397,7 @@ h2.tlh
   background-color:#F6F6F6;
 }
 
-.blog-index .content,.code-index .container
+.blog-index .content, .code-index .container
 {
   margin-top:2em;
   padding:.25em 0;
@@ -419,6 +419,37 @@ h2.tlh
 {
   display:block;
   padding:0 0 1em;
+}
+
+.blog-index .no-cover h1 {
+  color: #333;
+  text-shadow: 2px 2px 0px rgb(200, 0, 0), 3px 3px 1px rgb(0,0,0);
+  text-decoration: underline;
+}
+
+.blog-index .no-cover h1:hover {
+  color: #b13737;
+  text-shadow: 2px 2px 0px rgb(0,0,0), 3px 3px 1px rgb(200, 0, 0);
+  text-decoration: underline;
+}
+
+.blog-index .no-cover .aboutblock {
+  color: #333;
+  padding: 1em;
+  margin: 0px auto;
+  max-width: 30em;
+  border: 1px solid #aaa;
+}
+
+
+.blog-index .cover-img .aboutblock {
+  background-color: rgba(238, 238, 238, 0.3);
+  text-shadow: 2px 2px 0px rgb(0, 0, 0), 3px 3px 1px rgb(255, 255, 255);
+  color: rgb(221, 221, 221);
+  padding: 1em;
+  margin: 0px auto;
+  max-width: 30em;
+  border: 1px solid #aaa;
 }
 
 @media screen and max-width920px {
