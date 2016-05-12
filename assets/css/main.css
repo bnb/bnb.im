@@ -175,8 +175,9 @@ blockquote
   font-family:Alegreya;
   font-style:italic;
   font-weight:400;
-  font-size:1.2em;
+  font-size:1.5emem;
   padding:14px 15px 8px;
+  max-width: 400px;
 }
 
 blockquote>blockquote
