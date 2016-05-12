@@ -193,6 +193,15 @@ color: #000;
 transition:opacity 1s, color 1s;
 }
 
+.widItem:hover p, .widItem:hover .em {
+opacity:1;
+}
+
+.widItem:hover .em {
+  color: #b13737;
+}
+
+
 .contact,
 .wia {
     padding: 50px 0 100px
