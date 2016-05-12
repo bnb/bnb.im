@@ -197,53 +197,7 @@ transition:opacity 1s, color 1s;
 .wia {
     padding: 50px 0 100px
 }
-.widItem:first-child {
-    background-color: #fafafa;
-    border-right: 1px solid #dbdbdb
-}
-.widItem:last-child {
-    background-color: #f1f1f1;
-    border-left: 1px solid #dbdbdb
-}
-.widItem:hover {
-    background-color: #272727;
-    color: #fff
-}
-.widItem .fa {
-    font-size: 3em;
-    -webkit-transition: font-size 1s, margin-top 1s, -webkit-transform 1s;
-    transition: font-size 1s, margin-top 1s, transform 1s
-}
-.widItem:hover .fa {
-    font-size: 2em;
-    margin-top: 5px
-}
-.widItem h2 {
-    font-size: 2.5em;
-    -webkit-transition: font-size 1s, -webkit-transform 1s;
-    transition: font-size 1s, transform 1s
-}
-.widItem:hover h2 {
-    font-size: 1.5em
-}
-.widItem p {
-    opacity: 0;
-    -webkit-transition: opacity 1s, -webkit-transform 1s;
-    transition: opacity 1s, transform 1s
-}
-.widItem:hover p {
-    opacity: 1
-}
-.widItem .em {
-    opacity: 0;
-    -webkit-transition: opacity 1s;
-    transition: opacity 1s
-}
-.widItem:hover .em {
-    opacity: 1;
-    color: #b13737;
 
-}
 .wia {
     border-bottom: 1px solid #e9e9e9;
 }
