@@ -124,6 +124,7 @@ border-left:#ddd;
 transition:background-color 1s 1s 1s;
 margin:0;
 padding:50px;
+overflow: hidden;
 }
 
 .widItem:first-child {
