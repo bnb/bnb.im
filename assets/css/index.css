@@ -330,9 +330,12 @@ text-align:center;
 padding:50px 0 100px;
 }
 
-.widItem:hover p,.widItem:hover .em {
+.widItem:hover p, .widItem:hover .em {
 opacity:1;
-color: #b13737;
+}
+
+.widItem:hover .em {
+  color: #b13737;
 }
 
 .contact,.contact h1 span {
