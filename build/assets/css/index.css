@@ -434,6 +434,7 @@ h2.tlh
 }
 
 .blog-index .no-cover .aboutblock {
+  background-color: transparent;
   color: #333;
   padding: 1em;
   margin: 0px auto;
@@ -441,11 +442,10 @@ h2.tlh
   border: 1px solid #aaa;
 }
 
-
 .blog-index .cover-img .aboutblock {
-  background-color: rgba(238, 238, 238, 0.3);
-  text-shadow: 2px 2px 0px rgb(0, 0, 0), 3px 3px 1px rgb(255, 255, 255);
-  color: rgb(221, 221, 221);
+  background-color: rgba(238, 238, 238, 0.6);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0), 3px 3px 1px rgb(255, 255, 255);
+  color: #fff;
   padding: 1em;
   margin: 0px auto;
   max-width: 30em;

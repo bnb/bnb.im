@@ -4,14 +4,10 @@ header.top h1,header.top h1:hover
   transition:background .5s,color .5s;
 }
 
-.content-container {
-  padding:2em 4em 4em;
-}
-
 .content {
   max-width: 1000px;
   margin: -12em auto 6em;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(255, 255, 255);
   border: 1px solid rgb(238, 238, 238);
   padding: 0px 4em;
 }
@@ -117,6 +113,7 @@ header.top li
 }
 
 .no-cover .aboutblock {
+  background-color: transparent;
   color: #333;
   padding: 1em;
   margin: 0px auto;
@@ -124,10 +121,10 @@ header.top li
   border: 1px solid #aaa;
 }
 
-.cover .aboutblock {
+.cover-img .aboutblock {
   background-color: rgba(238, 238, 238, 0.6);
   text-shadow: 1px 1px 1px rgb(0, 0, 0), 3px 3px 1px rgb(255, 255, 255);
-  color: rgb(221, 221, 221);
+  color: #fff;
   padding: 1em;
   margin: 0px auto;
   max-width: 30em;
