@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "copy": "cp -r ./build/. .",
+    "copy": "cp -r -f ./build/. .",
     "status": "git status",
     "add": "git add",
     "add-all": "git add -A",
