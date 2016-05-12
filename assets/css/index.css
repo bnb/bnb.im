@@ -144,8 +144,8 @@ color:#fff;
 
 .widItem .fa {
 font-size:3em;
--webkit-transition:font-size 1s;
-transition:font-size 1s;
+-webkit-transition:font-size 1s, color 1s;
+transition:font-size 1s, color 1s;
 }
 
 .widItem:hover .fa {
@@ -155,8 +155,8 @@ margin-top:5px;
 
 .widItem h2 {
 font-size:2.5em;
--webkit-transition:font-size 1s;
-transition:font-size 1s;
+-webkit-transition:font-size 1s, color 1s;
+transition:font-size 1s, color 1s;
 }
 
 .widItem:hover h2 {
@@ -165,14 +165,14 @@ font-size:1.5em;
 
 .widItem p {
 opacity:0;
--webkit-transition:opacity 1s;
-transition:opacity 1s;
+-webkit-transition:opacity 1s, color 1s;
+transition:opacity 1s, color 1s;
 }
 
 .widItem .em {
 opacity:0;
--webkit-transition:opacity 1s;
-transition:opacity 1s;
+-webkit-transition:opacity 1s, color 1s;
+transition:opacity 1s, color 1s;
 }
 
 .wia {
