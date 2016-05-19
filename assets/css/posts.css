@@ -1,7 +1,7 @@
-header.top h1,header.top h1:hover
-{
-  border:2px solid #b13737;
-  transition:background .5s,color .5s;
+blockquote {
+  float: left;
+  width: 40%;
+  max-width: 775px;
 }
 
 .content {
@@ -10,20 +10,6 @@ header.top h1,header.top h1:hover
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(238, 238, 238);
   padding: 0px 4em;
-}
-.content-meta {
-
-}
-
-.content-body blockquote,.content-body h1,.content-body h2,.content-body h3,.content-body h4,.content-body h5,.content-body h6,.content-body li,.content-body p, .content-meta *
-{
-  max-width:800px;
-  margin:0 auto;
-}
-
-.content-body p
-{
-  padding:1em 0;
 }
 
 .cover-img
@@ -39,49 +25,6 @@ header.top h1,header.top h1:hover
 {
   text-shadow:1px 1px 1px #000,3px 3px 1px #fff;
   color:#b13737;
-}
-
-header.top
-{
-  padding:15px 20%;
-}
-
-header.top .headerContainer
-{
-  max-width:1000px;
-  content:"";
-  clear:both;
-}
-
-header.top h1
-{
-  display:inline;
-  text-decoration:none;
-  background:0 0;
-  color:#b13737;
-  text-transform:lowercase;
-  margin:0;
-  padding:5px 10px;
-}
-
-header.top h1:hover
-{
-  background:#b13737;
-  color:#fff;
-}
-
-header.top ul
-{
-  float:right;
-  margin:10px;
-  padding:0;
-}
-
-header.top li
-{
-  display:inline;
-  font-size:1.3rem;
-  padding:0 5px;
 }
 
 .humongous
@@ -131,14 +74,28 @@ header.top li
   border: 1px solid #aaa;
 }
 
-@media screen and max-width825px {
+@media screen and (max-width: 1024px) {
+  blockquote {
+    width: 70%;
+    margin: 1em;
+    max-width: none;
+  }
+
+@media screen and (max-width: 825px) {
+  blockquote {
+    float: none;
+    width: 100%;
+    margin: 0;
+    max-width: none;
+  }
+
   .humongous .hello
   {
     font-size:3em;
   }
 }
 
-@media screen and max-width600px {
+@media screen and (max-width: 600px) {
   .humongous .hello
   {
     font-size:2.5em;
