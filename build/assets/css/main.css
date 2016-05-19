@@ -1,3 +1,7 @@
+#main {
+  overflow: hidden;
+}
+
 a,a:hover
 {
   transition:.2s .2s all;
@@ -168,6 +172,52 @@ h3:not(.tlh)
   text-decoration:underline;
 }
 
+header.top a.logoLink {
+  font-family:'TeX Gyre Heros';
+  font-weight:700;
+  border-bottom:none;
+  padding: 6px 12px;
+}
+
+header.top a.logoLink,
+header.top a.logoLink:hover {
+    border: 2px solid #b13737;
+    transition: background .5s, color .5s
+}
+
+header.top h1 {
+  padding: 0;
+}
+
+header.top {
+    padding: 15px 20%
+}
+header.top .headerContainer {
+    max-width: 1000px;
+    content: "";
+    clear: both
+}
+header.top a.logoLink {
+    text-decoration: none;
+    background: 0 0;
+    color: #b13737;
+    text-transform: lowercase;
+}
+header.top a.logoLink:hover {
+    background: #b13737;
+    color: #fff
+}
+header.top ul {
+    margin: 10px;
+    padding: 0;
+    float: right
+}
+header.top li {
+    display: inline;
+    padding: 0 5px;
+    font-size: 1.3rem
+}
+
 blockquote
 {
   background-color:#f6f6f6;
@@ -257,18 +307,22 @@ blockquote a
   }
 }
 
-@media screen and max-width970px {
+@media screen and (max-width: 970px) {
   .content pre code
   {
     padding:1em 2em;
   }
 }
 
-@media screen and max-width610px {
+@media screen and (max-width: 610px) {
   header.top
   {
     text-align:center;
     padding:0;
+  }
+
+  header.top .headerContainer h1.logo {
+    margin: 0;
   }
 
   header.top .headerContainer a.logoLink
@@ -276,19 +330,20 @@ blockquote a
     text-align:center;
     display:block;
     float:none;
-    margin:1.5em;
+    margin: 0.5em 1.25em
   }
 
   header.top .headerContainer nav
   {
-    float:none;
-    display:inline-block;
-    height:25px;
+    float: none;
+    display: inline;
+    height: 25px;
+    margin: 0.75em 0 0 0;
   }
 
-  header.top .headerContainer nav ul,header.top .headerContainer nav ul li
+  header.top ul
   {
-    width:155.45px;
-    height:22.4px;
+    text-align: center;
+    float: none;
   }
 }

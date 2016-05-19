@@ -3,55 +3,8 @@
 * Header
 *
 */
-header.top h1,header.top h1:hover
-{
-  border:2px solid #b13737;
-  transition:background .5s,color .5s;
-}
 
-header.top
-{
-  padding:15px 20%;
-}
-
-header.top .headerContainer
-{
-  max-width:1000px;
-  content:"";
-  clear:both;
-}
-
-header.top h1
-{
-  display:inline;
-  text-decoration:none;
-  background:0 0;
-  color:#b13737;
-  text-transform:lowercase;
-  margin:0;
-  padding:5px 10px;
-}
-
-header.top h1:hover
-{
-  background:#b13737;
-  color:#fff;
-}
-
-header.top ul
-{
-  float:right;
-  margin:10px;
-  padding:0;
-}
-
-header.top li
-{
-  display:inline;
-  font-size:1.3rem;
-  padding:0 5px;
-}
-
+/* Header is currently in main.css */
 
 /*
 *
