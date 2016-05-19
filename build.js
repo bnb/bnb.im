@@ -6,7 +6,6 @@ var metalsmith    = require('metalsmith');
 
 // Content Meta
 var assets        = require('metalsmith-assets');
-var cleanCSS      = require('metalsmith-clean-css');
 var collections   = require('metalsmith-collections');
 var layouts       = require('metalsmith-layouts');
 var validate      = require('metalsmith-validate');
@@ -107,9 +106,6 @@ metalsmith(__dirname)
     .use(assets({
         source: './assets',
         destination: './assets'
-    }))
-    .use(cleanCSS({
-      files: 'build/assets/css/**/*.css'
     }))
     //.use(snippet()) // PERSONAL USE
     .use(collections({ // Collections - use these to categorize different types of pages.
