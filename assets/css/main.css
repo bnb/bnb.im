@@ -215,7 +215,7 @@ header.top ul {
 header.top li {
     display: inline;
     padding: 0 5px;
-    font-size: 1.3rem;
+    font-size: 1.3rem
 }
 
 blockquote
@@ -238,7 +238,7 @@ blockquote>blockquote
   padding:0;
 }
 
-blockquote a,blockquote strong
+blockquote a, blockquote strong
 {
   font-family:Alegreya;
   font-style:italic;
@@ -254,57 +254,6 @@ blockquote strong
 blockquote a
 {
   font-weight:400;
-}
-
-@media screen and min-width1110px {
-  .wia .wiaItem blockquote
-  {
-    width:35%;
-  }
-}
-
-@media screen and max-width1109px {
-  .socialSec ul,h2:not(.tlh)
-  {
-    text-align:center;
-  }
-
-  .formSec form,.half
-  {
-    display:block;
-    margin:0 auto;
-  }
-
-  .half
-  {
-    width:80%;
-  }
-
-  .left,.right
-  {
-    float:none;
-  }
-
-  h2:not(.tlh)
-  {
-    padding:0 0 1em;
-  }
-
-  .socialSec .formSec
-  {
-    padding:20px 0 0;
-  }
-
-  .formSec
-  {
-    border-left:none;
-    border-top:2px solid #b13737;
-  }
-
-  .formSec form
-  {
-    width:400px;
-  }
 }
 
 @media screen and (max-width: 970px) {
