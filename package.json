@@ -1,6 +1,6 @@
 {
   "name": "bnb.im",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "My personal Metalsmith site.",
   "scripts": {
     "build": "node build",
