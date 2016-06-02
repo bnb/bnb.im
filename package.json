@@ -1,10 +1,10 @@
 {
   "name": "bnb.im",
-  "version": "2.4.0",
+  "version": "2.3.0",
   "description": "My personal Metalsmith site.",
   "scripts": {
     "build": "node build",
-    "pages": "git checkout gh-pages"
+    "deploy": "gh-pages -d build"
   },
   "author": {
     "name": "&! (bitandbang)",
