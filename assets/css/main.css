@@ -169,7 +169,7 @@ h3:not(.tlh)
 .content li a
 {
   color:#444;
-  text-decoration:underline;
+  text-decoration:none;
 }
 
 header.top a.logoLink {

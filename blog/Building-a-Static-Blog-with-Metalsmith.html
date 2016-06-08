@@ -50,7 +50,7 @@
                     <aside class="aboutblock">
                       <span class="datetime"><time>Posted on December 11, 2015 at 9:10AM</time></span>
                       <br>
-                      <span class="readtime">3063 words - about a 11 min read</span>
+                      <span class="readtime">3054 words - about a 11 min read</span>
                     </aside>
                 </div>
                 <div class="content">
@@ -196,10 +196,8 @@ $ npm install handlebars <span class="token operator">--</span>save<span class="
                 {{#each collections.blog-post}} <span class="token comment" spellcheck="true">&lt;!-- A Handlebars iterative function. --&gt;</span>
                     {{#if title}} <span class="token comment" spellcheck="true">&lt;!-- If a post has a title element, it will be listed. --&gt;</span>
                       &lt;div class=&quot;humongous {{#unless cover-img}}no-cover{{/unless}}&quot; {{#if cover-img}}style=&quot;background-image: {{cover-img}};&quot;{{/if}}&gt;<span class="token comment" spellcheck="true">&lt;!-- Two handlebars helpers that test for a background-image in each humongous element. --&gt;</span>
-                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>./assets/img/vector-scroll-top.png<span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>grayscale<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>./blog/posts/{{ slug }}.html<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>hello<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{title}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Slug is a property of each document&apos;s metadata, called front-matter. See the section on front matter below. --&gt;</span>
                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>datetime<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span><span class="token punctuation">&gt;</span></span>{{posted}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
-                          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>./assets/img/vector-scroll-bottom.png<span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>grayscale<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
                     {{/if}}
                 {{/each}}
@@ -233,7 +231,6 @@ $ npm install handlebars <span class="token operator">--</span>save<span class="
                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">&gt;</span></span>
-;
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 
@@ -250,7 +247,7 @@ $ npm install handlebars <span class="token operator">--</span>save<span class="
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Content-Type<span class="token punctuation">&quot;</span></span>  <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text/html; charset<span class="token punctuation">=</span>utf-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>utf-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>{{#if title}}{{ title }} | {{/if}}<span class="token entity" title="&amp;">&amp;amp;</span>! (bnb, bang, bitandbang)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Title of the page --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>{{#if title}}{{ title }} | {{/if}} My Awesome Blog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Title of the page --&gt;</span>
 
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>viewport<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>width<span class="token punctuation">=</span>device-width, initial-scale<span class="token punctuation">=</span>1.0<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
 
@@ -282,7 +279,7 @@ $ npm install handlebars <span class="token operator">--</span>save<span class="
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">&gt;</span></span>
 
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>../{{ path }}/index.html<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>logo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>bnb<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Link the logo back to the index of the site. --&gt;</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>../{{ path }}/index.html<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>logo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>blog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span class="token comment" spellcheck="true">&lt;!-- Link the logo back to the index of the site. --&gt;</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">&gt;</span></span>
@@ -304,7 +301,7 @@ date: 2014-04-12 20:13:00
 <p>Each of the items listed here gives data to one plugin or another. <code>title</code> gets used when <code>{{ title }}</code> is called in Handlebars. <code>layout</code> determines what layout the document is applied to. <code>collection</code> is an organizer of content. <code>slug</code> is used to create links to individual posts in the index. <code>posted</code> is a human-readable date that we display on both the <code>index</code> and the <code>blog-post</code> templates. And <code>date</code> is a machine-readable date that is for standardized record keeping and search engine crawling.</p>
 <h2 id="src-index-md">src: index.md</h2>
 <pre><code class="language-html">---
-title: bnb
+title: blog
 layout: index.hbs
 collection: index
 ---
@@ -717,13 +714,13 @@ While not a specific podcast, this site links to various episodes of podcasts th
         </div>
     </div>
 
-<script type="text/javascript" src="../assets/js/scrollProgress.js"></script>
+<script type="text/javascript" src="../assets/js/collections/posts.min.js"></script>
 <script type="text/javascript">
-scrollProgress.set({
-    color: '#df3737',
-    height: '6px',
-    bottom: false
-});
+  scrollProgress.set({
+      color: '#df3737',
+      height: '6px',
+      bottom: false
+  });
 </script>
 
 </script>
