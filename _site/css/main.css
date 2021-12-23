@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.mono {
+  font-family: 'Courier Prime', monospace;
+  line-height: 1.5rem;
+}
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+footer {  
+  margin-bottom: 30rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: underline;
+  color: #ff0099;
+  transition-property: color, text-decoration;
+  transition-duration: 300ms;
+}
+
+h3 a {
+  text-decoration: underline;
+  color: #000;
+  transition-property: color, text-decoration;
+  transition-duration: 300ms;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ff00ff;
+  transition-property: color, text-decoration;
+  transition-duration: 300ms;
+}
+
+.global a {
+  text-decoration: none;
+  color: #000;
+  transition-property: color, text-decoration;
+  transition-duration: 300ms;
+}
+
+.global a:hover {
+  text-decoration: underline;
+  color: #ff00ff;
+  transition-property: color, text-decoration;
+  transition-duration: 300ms;
+}
+
+.container {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.global > .container {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.post-title {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+
+.grow-4 {
+  flex-grow: 4;
+}
+
+.p-l-1rem {
+  padding-left: 1rem;
+}
+
+.post-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+.post-list-description::before {
+  content: '> ';
+  margin-right: 0.5rem;
+}
+
+.post-list-read-more::before {
+  content: '[';
+}
+
+.post-list-read-more::after {
+  content: '...]';
+}
+
+.post-list-entry a {
+  text-decoration: none;
+}

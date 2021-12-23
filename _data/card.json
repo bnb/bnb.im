@@ -1,0 +1,23 @@
+{
+  "name": "Tierney Cyren",
+  "handle": "bitandbang",
+  "website": "https://bnb.im",
+  "pronouns": "he/him",
+  "work": {
+    "title": "Senior Cloud Developer Advocate",
+    "company": "Microsoft"
+  },
+  "code": {
+    "npm": "https://npm.im/~bnb",
+    "github": "https://github.com/bnb"
+  },
+  "social": {
+    "twitter": "https://twitter.com/bitandbang",
+    "instagram": "https://www.instagram.com/bitandbang/",
+    "twitch": "https://www.twitch.tv/bitandbang",
+    "linkedin": "https://www.linkedin.com/in/bitandbang/"
+  },
+  "proofs": {
+    "keybase": "https://keybase.io/bang"
+  }
+}

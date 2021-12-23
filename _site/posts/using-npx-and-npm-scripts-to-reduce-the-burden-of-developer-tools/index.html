@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Using npx and npm scripts to Reduce the Burden of Developer Tools</title>
+  <meta name="description" content="A quick tip about how you can use npx and npm scripts together to automate repetitive execution of CLIs that others have published to npm.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+<meta name="twitter:card" content="" />
+<meta name="twitter:creator" content= />
+<meta property="og:url" content="/posts/using-npx-and-npm-scripts-to-reduce-the-burden-of-developer-tools/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image" content="" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title">Using npx and npm scripts to Reduce the Burden of Developer Tools</h2>
+  <sub>Originally posted on <time datetime="2019-04-22">22 Apr 2019</time>
+</sub>
+  <p>On Friday, I was working on a <a href="https://github.com/bnb/step-by-step-express-workshop">workshop-ified version</a> of <a href="https://github.com/bnb/step-by-step-express">Step by Step Express</a> for <a href="http://flawlesshacks.com/">Flawless Hacks</a> in Brooklyn.</p>
+<p>In the workshop-ified version, I've modified each step so there is an <code>app.js</code> and an <code>app.complete.js</code> so that attendees could start with a clean slate from the previous step and know what they're aiming for to complete in the step that they're working on.</p>
+<p>I figured there was probably a tool on npm that would allow me to lower the barrier even further to let attendees/users know what they need to do to complete the step and check their code against <code>app.complete.js</code> if their code isn't doing what they think it is.</p>
+<p>After a bit of searching, I was able to find <a href="https://www.npmjs.com/package/prettydiff">Pretty Diff</a>, which exposes a CLI tool that allows you to diff two files, and show the difference in the console.</p>
+<p>I tested the CLI a bit after globally installing it and was able to figure out that because of how I structured the changes (<code>app.js</code> and <code>app.complete.js</code> in each folder in addition to each folder having its own <code>package.json</code>), I was able to use the same command for every single step:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">diff</span> source:<span class="token string">"app.js"</span> diff:<span class="token string">"app.complete.js"</span></code></pre>
+<p>Awesome! I found a tool that will hopefully lower the barrier to finding success with the code that they'll be writing. There's only one problem: they'll need the CLI to be installed for the above command to work. That sounds like a <em>fantastic</em> way to increase the barrier to entry and waste time on tooling that was intended to improve the experience, not take away from it 😱</p>
+<h2 id="enter-npx" tabindex="-1">Enter npx <a class="direct-link" href="#enter-npx" aria-hidden="true">#</a></h2>
+<p>Luckily, there's this excellent tool that everyone who has a modern version of <code>npm</code> installed already has: <code>npx</code>.</p>
+<p>In case you're not familiar, <code>npx</code> is a CLI that the <code>npm</code> team ships which automagically executes a CLI from a module on the npm registry. Ideally, most modules will only ship one top-level command – for those modules, you can simply run <code>npx &lt;module name&gt;</code> and the command will be executed.</p>
+<p>In our case, we're looking to run the <code>prettydiff</code> module and pass the <code>diff</code> command. Luckily, <code>npx</code> makes this super easy:</p>
+<pre class="language-bash"><code class="language-bash">npx prettydiff <span class="token function">diff</span> source:<span class="token string">"app.js"</span> diff:<span class="token string">"app.complete.js"</span></code></pre>
+<p>Workshop attendees can 100% run this in any of the steps' directories and they'll be able to see a diff of the before/after!</p>
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/hczjz1wyriurmcsjfdhr.png" alt="What a terminal looks like after a participant runs  in the step-two directory"></p>
+<p>Awesome! I've found a workable solution... that is 58 characters long and has some weird syntax that may be difficult to remember for everyone. It works, but it's not necessarily ideal. Luckily, we can make it even easier.</p>
+<h2 id="using-npm-scripts" tabindex="-1">Using npm scripts <a class="direct-link" href="#using-npm-scripts" aria-hidden="true">#</a></h2>
+<p>npm scripts are a super handy utility in our toolbelt that makes repetitive tasks and long commands easy. Awesomely, you can use <code>npx</code> inside of npm scripts – meaning you can use <strong>any</strong> CLI on npm to do work in your project without ever needing to actually install it. This is fantastic for build steps, productivity tools, and (in our case) diffing code.</p>
+<p>In my case, I added a <code>diff</code> command to my <code>package.json</code>:</p>
+<pre class="language-json"><code class="language-json">  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"lint"</span><span class="token operator">:</span> <span class="token string">"standard"</span><span class="token punctuation">,</span><br>    <span class="token property">"diff"</span><span class="token operator">:</span> <span class="token string">"npx prettydiff diff source:\"app.js\" diff:\"app.complete.js\""</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<p>Now, instead of needing to write out <code>npx prettydiff diff source:&quot;app.js&quot; diff:&quot;app.complete.js&quot;</code> attendees of my workshop can just type <code>npm run diff</code> and the command will execute 🤗</p>
+<h2 id="fin" tabindex="-1">Fin <a class="direct-link" href="#fin" aria-hidden="true">#</a></h2>
+<p>I love npx and think npx + npm scripts is a super powerful combination that allows end-users of our JavaScript code to reduce the cognitive load of repetitive commands that aid their workflow. I wanted to share this quick example of how I've used it in hopes of enabling others to focus more on code rather than getting caught up on workflows ✨</p>
+<p>If you've got any questions about npx, npm scripts, or anything else I've talked about in this article, please don't hesitate to ask in the comments – more than happy to answer any questions you may have!</p>
+
+</section>
+<section class="poke">
+</section>
+  </seciton>
+  <footer></footer>
+</body>
+</html>

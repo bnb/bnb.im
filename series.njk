@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.series
+  size: 1
+  alias: series
+permalink: "series/{{ series.slug }}/index.html"
+---
+<section class="series">
+  <h1 class="center">{{ series.title }}</h2>
+  <sub>{{ series.description }}</sub>
+  <ul class="post-list">
+    {% for post in series.posts %}
+      <li class="post-list-entry"><a href="{{ post.url }}">Part {{ post.part }}: {{ post.title }}</a>
+    {% endfor %}
+  </ul>
+</section>

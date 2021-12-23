@@ -1,0 +1,21 @@
+{
+  "title": "Tierney Cyren",
+  "url": "https://bnb.im/",
+  "language": "en",
+  "description": "On JavaScript, the Web, and software in general.",
+  "feed": {
+    "subtitle": "On Node.js, JavaScript, the Web, and software in general.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://bnb.im/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://bnb.im/feed/feed.json"
+  },
+  "author": {
+    "name": "Tierney Cyren",
+    "email": "hello@bnb.im",
+    "url": "https://bnb.im"
+  }
+}

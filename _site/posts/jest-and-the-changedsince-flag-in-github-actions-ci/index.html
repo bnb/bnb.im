@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jest and the `--changedSince` flag in GitHub Actions CI</title>
+  <meta name="description" content="Today I worked through getting Jest&#39;s `--changedSince` flag working on GitHub Actions CI. Let&#39;s dig into why, what happened, and how each of the moving parts work in a way that&#39;s seemingly not documented anywhere else.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+<meta name="twitter:card" content="" />
+<meta name="twitter:creator" content= />
+<meta property="og:url" content="/posts/jest-and-the-changedsince-flag-in-github-actions-ci/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image" content="" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title">Jest and the `--changedSince` flag in GitHub Actions CI</h2>
+  <sub>Originally posted on <time datetime="2020-04-09">09 Apr 2020</time>
+</sub>
+  <p>Recently, I've been working a lot more with GitHub Actions - both writing actions and creating CI pipelines for projects. Last week I picked up a project I started a bit ago: the <a href="https://github.com/nodejs/examples">nodejs/examples</a> repository.</p>
+<blockquote>
+<p><strong>Note:</strong> The examples repository is still in its early stages. As such, there's still a bunch of WIP work we're doing - we've intentionally not talked a bunch publicly about it yet. That said, if you're interested in helping, feel free to reach out to me on <a href="https://twitter.com/bitandbang">Twitter</a> or the <a href="http://slack.openjsf.org">OpenJS Slack</a> ❤️</p>
+</blockquote>
+<p>The goal of this repository is to be home to a bunch of distinct and well-tested examples of real-world Node.js that go beyond &quot;hello, world!&quot;. This means there's hopefully going to be a boatload of distinct projects in there.</p>
+<p>This structure presents a challenge when trying to be straightforward for new contributions; specifically, it's a barrier to run a full test suite for many projects when someone submitting a PR only needs to see the results of the one they've worked on.</p>
+<h2 id="jest's-solutions" tabindex="-1">Jest's Solutions <a class="direct-link" href="#jest's-solutions" aria-hidden="true">#</a></h2>
+<p>Jest has a super handy <a href="https://jestjs.io/docs/en/cli.html#--onlychanged"><code>--onlyChanged</code></a> feature that only tells you what has changed in the current repository. This is super duper handy, but the functionality is slightly unclear in one way: does it diff with master or just with the previous commit? It does indeed seem to be the latter (though I could totally be wrong!), which is not particularly helpful in the case of PRs with multiple commits.</p>
+<p>As such, I looked through the flags that Jest exposes and found the <a href="https://jestjs.io/docs/en/cli.html#--changedsince"><code>--changedSince</code></a> flag which compares the current work with a different branch. Since - in the case of nodejs/examples - master will always be a source of truth, this is perfect for the use case of potentially having multiple commits while still wanting to run only the tests relevant to a proposed change.</p>
+<h2 id="-changedsince-and-github-actions-ci" tabindex="-1"><code>--changedSince</code> and GitHub Actions CI <a class="direct-link" href="#-changedsince-and-github-actions-ci" aria-hidden="true">#</a></h2>
+<p>Previously, the <code>--onlyChanged</code> flag worked flawlessly with GitHub Actions CI. When trying to simply change from <code>--onlyChanged</code> to <code>--changedSince</code>, the CI build immediately nuked itself with the following command:</p>
+<pre class="language-bash"><code class="language-bash">  ● Test suite failed to run<br><br>    fatal: bad revision <span class="token string">'^master'</span></code></pre>
+<p>This was bizarre to me since the test was working completely fine on my machine (shocker, I know). Upon investigating, this is a <code>git</code> error and not a Jest error - Jest is merely acting as a courier for that error.</p>
+<p>It turns out that the <code>actions/checkout</code> GitHub Action does not checkout your full repository, but only the code relevant to the PR. As such, <code>master</code> as a branch did not exist. Further, my specific use case of wanting to have <code>master</code> in the run but have the PR branch checked out is not particularly well supported by <code>actions/checkout</code> at present since it is somewhat of an edge case (though I did <a href="https://github.com/actions/checkout/issues/214">open an issue</a> to request it).</p>
+<p>While the examples are helpful, they don't solve my somewhat complex but not over the top use case. Layer on that I'm not super excellent with git, and you have a challenging mixture.</p>
+<p>I reached out to <a href="https://twitter.com/codebytere/">Shelley Vohr</a>, who's extremely talented with git (amongst many other things) and explained what I was facing. She suggested that I'd need to go one step beyond what the <code>actions/checkout</code> repo recommended:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> fetch --no-tags --prune --depth<span class="token operator">=</span><span class="token number">1</span> origin +refs/heads/*:refs/remotes/origin/* <span class="token comment"># fetches all branches</span></code></pre>
+<p>... and needed to checkout <code>master</code> with the following command:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> checkout -b master <span class="token comment"># -b creates and checks out a new branch</span></code></pre>
+<p>... and then switch back to the PR branch. Luckily, GitHub provides that data in the YAML config:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> checkout $ <span class="token comment"># checks out the SHA of the HEAD from the PR</span></code></pre>
+<p>This was all able to be combined as a part of a <code>run</code> property in the YAML for the step, which runs whatever commands are passed to it:</p>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2<br>    <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string"><br>        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/* # fetches all branches<br>        git checkout -b master # -b creates and checks out a new branch<br>        git checkout $ # checks out the SHA of the HEAD from the PR</span></code></pre>
+<p>However, that's a rather bulky git fetch that can potentially artificially increase the build times as more branches are added to the repo. As such, I figured I should try to cut it down to just what I needed. After a bit of searching around, I found the <code>git fetch &lt;remote&gt; &lt;branch&gt;</code> structure. Since I know I'll always want to use master, this was a pretty easy change (while also ditching <code>--prune</code> since it seems potentially useless in this case):</p>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2<br>    <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string"><br>        git fetch --no-tags --depth=1 origin master<br>        git checkout -b master<br>        git checkout $</span></code></pre>
+<p>In addition to all this YAML CI config, I also included a new npm script called <code>test:changedsince</code> which is a handy shortcut for the Jest command I want to run:</p>
+<pre class="language-json"><code class="language-json">  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"jest --coverage"</span><span class="token punctuation">,</span><br>    <span class="token property">"test:changedsince"</span><span class="token operator">:</span> <span class="token string">"jest --changedSince=master --coverage"</span><span class="token punctuation">,</span><br>    <span class="token property">"lint"</span><span class="token operator">:</span> <span class="token string">"standard"</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<p>This new npm script took the place of the previous <code>test:onlychanged</code> npm script in my final GitHub Actions CI YAML config, seen below. <strong>Note</strong>: if you copy-paste this config into your own CI, you'll need ensure that you have <code>jest</code> as a <code>devDependency</code> so it's installed on your CI build.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> tests(push) <span class="token punctuation">-</span> install<span class="token punctuation">,</span> lint<span class="token punctuation">,</span> test<span class="token punctuation">:</span>changedsince<br><br><span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>push<span class="token punctuation">]</span><br><br><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">build</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> $<br>    <span class="token key atrule">strategy</span><span class="token punctuation">:</span><br>      <span class="token key atrule">matrix</span><span class="token punctuation">:</span><br>        <span class="token key atrule">os</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>ubuntu<span class="token punctuation">-</span>latest<span class="token punctuation">,</span> windows<span class="token punctuation">-</span>latest<span class="token punctuation">,</span> macOS<span class="token punctuation">-</span>latest<span class="token punctuation">]</span><br>        <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>10.x<span class="token punctuation">,</span> 12.x<span class="token punctuation">]</span><br>    <span class="token key atrule">steps</span><span class="token punctuation">:</span><br>    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2<br>    <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string"><br>        git fetch --no-tags --depth=1 origin master<br>        git checkout -b master<br>        git checkout $</span><br>    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Use Node.js $NaN on $<br>      <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v1<br>      <span class="token key atrule">with</span><span class="token punctuation">:</span><br>        <span class="token key atrule">node-version</span><span class="token punctuation">:</span> $NaN<br>    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> npm install<br>      <span class="token key atrule">run</span><span class="token punctuation">:</span> npm install<br>      <span class="token key atrule">env</span><span class="token punctuation">:</span><br>        <span class="token key atrule">CI</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <br>    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> npm run test<span class="token punctuation">:</span>changedsince<br>      <span class="token key atrule">run</span><span class="token punctuation">:</span> jest <span class="token punctuation">-</span><span class="token punctuation">-</span>changedSince=master <span class="token punctuation">-</span><span class="token punctuation">-</span>coverage<br>      <span class="token key atrule">env</span><span class="token punctuation">:</span><br>        <span class="token key atrule">CI</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
+<p>Now, this seems to be working perfectly - it'll diff changes between the current PR's <code>HEAD</code> and <code>master</code>, running only the tests that are different across <em>all</em> commits and not just between the most recent commit and the one prior.</p>
+
+</section>
+<section class="poke">
+</section>
+  </seciton>
+  <footer></footer>
+</body>
+</html>

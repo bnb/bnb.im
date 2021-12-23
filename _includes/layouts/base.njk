@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title or metadata.title }}</title>
+  <meta name="description" content="{{ description or metadata.description }}">
+  <link rel="stylesheet" href="{{ "/css/main.css" | urlize }}">
+  <link rel="stylesheet" href="{{ "/css/prism.ghcolors.css" | urlize }}">
+<meta name="twitter:card" content="{{cardType}}" />
+<meta name="twitter:creator" content={{site.authorTwitterUrl}} />
+<meta property="og:url" content="{{site.url}}{{page.url}}" />
+<meta property="og:title" content="{{cardTitle}}" />
+<meta property="og:description" content="{% if excerpt %}{{excerpt}}{% else %}{{site.summary}}{% endif %}" />
+<meta name="twitter:image" content="{{cardImage}}" />
+<meta property="og:image" content="{{cardImage}}" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="{{ "/" | urlize}}"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    {{ content | safe}}
+  </seciton>
+  <footer></footer>
+</body>
+</html>

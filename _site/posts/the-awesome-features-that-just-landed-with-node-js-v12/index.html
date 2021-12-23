@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Awesome Features that Just Landed with Node.js v12</title>
+  <meta name="description" content="Node.js v12.0.0 just shipped! Let&#39;s take a look at what&#39;s new.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+<meta name="twitter:card" content="" />
+<meta name="twitter:creator" content= />
+<meta property="og:url" content="/posts/the-awesome-features-that-just-landed-with-node-js-v12/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image" content="" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title">The Awesome Features that Just Landed with Node.js v12</h2>
+  <sub>Originally posted on <time datetime="2019-04-25">25 Apr 2019</time>
+</sub>
+  <p>This week, we saw the release of Node.js v12, the next Node.js release line that will become LTS. I wanted to go through the various posts that went out and the changelog and condense the information into an easily consumable digest of what's new in Node.js v12.x to share with everyone. 💖</p>
+<h2 id="the-changes" tabindex="-1">The 🔥 Changes <a class="direct-link" href="#the-changes" aria-hidden="true">#</a></h2>
+<p>Let's dig into some of the most important and remarkable changes that have landed in v12.0.0!</p>
+<h3 id="new-es-modules-who-dis" tabindex="-1">New ES Modules, who dis <a class="direct-link" href="#new-es-modules-who-dis" aria-hidden="true">#</a></h3>
+<p>With the release of Node.js v12.0.0, we see the introduction of a new implementation of ES Modules in Node.js. 🎉</p>
+<blockquote>
+<p><strong>Note:</strong> ES Modules features are still <strong>Experimental</strong> and as such should <em>not</em> be used in production code until they are finalized.</p>
+</blockquote>
+<p>At release, this new implementation has replaced the previous implementation behind the <code>--experimental-modules</code> flag. This is intended to help get the new implementation out there and tested so the project can get feedback. If all goes well (🤞), this can ship unflagged once Node.js v12 goes LTS in October!</p>
+<p>Up front, I want to say this is going to be a tl;dr. If you're interested in a deeper dive into the new hotness around ESM in Node.js, please check out the blog post by <a href="https://medium.com/@nodejs/announcing-a-new-experimental-modules-1be8d2d6c2ff">the Modules Team</a> on Medium.</p>
+<h4 id="previous-implementation" tabindex="-1">Previous implementation <a class="direct-link" href="#previous-implementation" aria-hidden="true">#</a></h4>
+<p>Many of the previous implementation's features carried over. This includes ES2015 <code>import</code> statements, various kinds of <code>export</code>, Node.js <code>export</code> support on all core modules, WIP imports for CommonJS, <strong>very</strong> WIP loader API, and explicit ESM parsing if the <code>.mjs</code> file extension is present.</p>
+<h4 id="new-implementation-features" tabindex="-1">New implementation features <a class="direct-link" href="#new-implementation-features" aria-hidden="true">#</a></h4>
+<p>These features are 100% new with the enhancements the Modules Team has been working on, and are available behind the <code>--experimental-modules</code> flag in Node.js v12.0.0.</p>
+<ul>
+<li>Import and export syntax in <code>.js</code> files
+<ul>
+<li>there was lots of feedback that Node.js needs to provide a way to use import/export in <code>.js</code> files.</li>
+<li>Two different solutions were implemented for this (keep reading!)</li>
+</ul>
+</li>
+<li>Support for <code>&quot;type&quot;: &quot;module&quot;</code> in <code>package.json</code>
+<ul>
+<li>If this is detected, Node.js will treat <em>all</em> <code>.js</code> files in your project as ES Modules.</li>
+<li>If you still have CommonJS files, you can rename them with the <code>.cjs</code> file extension, which will tell Node.js to parse them as CommonJS explicitly</li>
+<li>An <code>--input-type</code> flag for cases like <code>--eval</code> and STDIN</li>
+</ul>
+</li>
+</ul>
+<h4 id="current-wip-features" tabindex="-1">Current WIP Features <a class="direct-link" href="#current-wip-features" aria-hidden="true">#</a></h4>
+<p>These features are currently being worked on by the Modules team and are either implemented but are likely going to change <em>or</em> are being worked on but did not ship in Node.js v12.0.0.</p>
+<ul>
+<li>JSON imports
+<ul>
+<li>Currently does not work, but is being actively worked on.</li>
+</ul>
+</li>
+<li>import and require interop
+<ul>
+<li>️️⚠️ The Modules Team has requested that you do not publish ES Modules that can be used in Node.js until it's been resolved. I assume that modules published before this is resolved will likely break.</li>
+</ul>
+</li>
+<li>Module Loaders
+<ul>
+<li>⚠️  Very WIP</li>
+<li>A first implementation of the <code>--loader</code> API has shipped, but it's going to be improved upon and, as such, <em>change</em>.</li>
+</ul>
+</li>
+<li>A simpler way to <code>require</code> in ES Modules code.
+<ul>
+<li>The current implementation is a bit heavy-handed. The Modules team is working on lowering the barrier.</li>
+</ul>
+</li>
+<li>Package path maps
+<ul>
+<li>This would allow for less verbose imports in certain situations</li>
+</ul>
+</li>
+<li>Automatic entry point module type detection
+<ul>
+<li>Effectively, static analysis that would allow Node.js to figure out if a module is a CommonJS module or an ES Module.</li>
+</ul>
+</li>
+</ul>
+<h4 id="quick-esm-examples" tabindex="-1">Quick ESM Examples <a class="direct-link" href="#quick-esm-examples" aria-hidden="true">#</a></h4>
+<p>If you're interested in seeing what ESM in Node.js looks like, you can check out two repos I pushed out yesterday:</p>
+<ul>
+<li><a href="https://github.com/bnb/simple-esm">simple-esm</a> – an example of what ESM in Node.js looks like with the current ESM implementation</li>
+<li><a href="https://github.com/bnb/simple-esm-usage">simple-esm-usage</a> – an example of how you could use ESM modules from npm in Node.js if the current implementation were to ship unchanged (it's going to be changing, so this is more theory than practice)</li>
+</ul>
+<p>I'm planning to keep these repos (and the version of simple-esm published to npm) both up-to-date as the ESM implementation changes both for my own understanding and as a community resource to have a minimum viable example of ESM in Node.js.</p>
+<h3 id="v8-7.4" tabindex="-1">V8 7.4 <a class="direct-link" href="#v8-7.4" aria-hidden="true">#</a></h3>
+<p>This release included a major <strong>V8 upgrade</strong>, jumping forward several releases to the most recent version of V8 at time of release. This upgrade includes a plethora of really fantastic enhancements. I'm personally most interested in <a href="https://v8.dev/blog/v8-release-72#async-stack-traces">Zero-cost Async Stack Traces</a>, but there are a plethora of additional enhancements that are better outlined by Mathias Bynens from the V8 team:</p>
+<p><a href="https://twitter.com/mathias/status/1120700101637353473">https://twitter.com/mathias/status/1120700101637353473</a></p>
+<h3 id="tls-1.3" tabindex="-1">TLS 1.3 <a class="direct-link" href="#tls-1.3" aria-hidden="true">#</a></h3>
+<p>Next up, we have <strong>official TLS 1.3 support</strong>. This is an incredible improvement to previous TLS versions, and I'm super excited that it's now supported in a release line that'll be going LTS! Thankfully, this is a backward compatible change thanks to the underlying implementation in OpenSSL 1.1.1. Additionally, it's mentioned <a href="https://github.com/nodejs/node/pull/26209">in the PR</a> that it should be backported to other LTS release lines.</p>
+<p>If you're curious about the awesome parts of TLS 1.3, I recommend this <a href="https://www.ietf.org/blog/tls13/">blog post</a> from the IETF.</p>
+<h3 id="worker-threads" tabindex="-1">Worker Threads <a class="direct-link" href="#worker-threads" aria-hidden="true">#</a></h3>
+<p>This is the first LTS release line that will include the currently-experimental work on Worker Threads. This release has removed the need to run Worker Threads with a flag, hopefully lowering the barrier to more widespread usage of the tool for parallelizing work in Node.js.</p>
+<p>If you're interested in trying out Worker Threads today, there are a few resources you can use to get started:</p>
+<ul>
+<li><a href="https://medium.com/@Trott/using-worker-threads-in-node-js-80494136dbb6">Using worker_threads in Node.js</a></li>
+<li><a href="https://hackernoon.com/simple-bidirectional-messaging-in-node-js-worker-threads-7fe41de22e3c">Simple bidirectional messaging in Node.js Worker Threads</a></li>
+<li><a href="https://blog.logrocket.com/node-js-multithreading-what-are-worker-threads-and-why-do-they-matter-48ab102f8b10">Node.js multithreading: What are Worker Threads and why do they matter?</a></li>
+<li><a href="https://nodejs.org/api/worker_threads.html">Official Node.js Worker Threads Docs</a></li>
+</ul>
+<h3 id="built-in-heap-snapshotting" tabindex="-1">Built-in Heap Snapshotting <a class="direct-link" href="#built-in-heap-snapshotting" aria-hidden="true">#</a></h3>
+<p>In this release, we also see built-in heap snapshotting adapted from the <a href="https://www.npmjs.com/package/heapdump">heapdump module</a> on npm. This is exposed via <code>v8.getHeapSnapshot()</code> and returns a readable stream.</p>
+<h2 id="other-notable-changes-and-improvements" tabindex="-1">Other Notable Changes and Improvements <a class="direct-link" href="#other-notable-changes-and-improvements" aria-hidden="true">#</a></h2>
+<ul>
+<li>Core Dependencies:
+<ul>
+<li>Upgraded to OpenSSL <a href="https://www.openssl.org/news/cl111.txt">1.1.1b</a> (<a href="https://github.com/nodejs/node/pull/26327">nodejs/node#26327</a>)</li>
+<li>Upgraded to ICU 63 (<a href="https://github.com/nodejs/node/pull/25852">nodejs/node#25852</a>)
+<ul>
+<li>There is also currently an <a href="https://github.com/nodejs/node/pull/27361">open PR</a> to further update to ICU 64.2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Node.js has started using <a href="https://github.com/nodejs/llhttp">llhttp</a> as its default parser (<a href="https://github.com/nodejs/node/issues/24730">nodejs/node#24730</a>)</li>
+<li>Invalid <code>main</code> entries in <code>package.json</code> will now throw an error (<a href="https://github.com/nodejs/node/pull/26823">nodejs/node#26823</a>)</li>
+<li><code>node --debug</code> is now EOL – use <code>node --inspect</code> instead (<a href="https://github.com/nodejs/node/pull/25828">nodejs/node#25828</a>)</li>
+<li>TLS 1.0 and 1.1 are now disabled by default (<a href="https://github.com/nodejs/node/pull/23814">nodejs/node#23814</a>)</li>
+</ul>
+<h2 id="fin" tabindex="-1">Fin <a class="direct-link" href="#fin" aria-hidden="true">#</a></h2>
+<p>Hopefully this overview of the new release is helpful to you! If you've got any questions about the new features that've shipped, when you can start expecting to use ESM in Node.js, or anything else about Node.js v12 I'm happy to be a resource for you to hopefully find the answers you're looking for!</p>
+
+</section>
+<section class="poke">
+</section>
+  </seciton>
+  <footer></footer>
+</body>
+</html>

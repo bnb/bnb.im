@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Securely Automating npm publish with the New npm Automation Tokens</title>
+  <meta name="description" content="Today, npm announced automation tokens. Let&#39;s go over what automation tokens are, what they&#39;re useful for, and how to use them.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+<meta name="twitter:card" content="" />
+<meta name="twitter:creator" content= />
+<meta property="og:url" content="/posts/securely-automating-npm-publish-with-the-new-npm-automation-tokens/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image" content="" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title">Securely Automating npm publish with the New npm Automation Tokens</h2>
+  <sub>Originally posted on <time datetime="2020-10-02">02 Oct 2020</time>
+</sub>
+  <p>Today, npm has shipped automation tokens 🎉</p>
+<p>Previously, if you wanted to automatically publish an npm module from CI/CD you had a choice - have 2FA turned off and allow publishing via a token <strong>or</strong> have 2FA turned on and build a custom tool to allow you to input a 2FA code when your CI/CD is trying to publish.</p>
+<p>This was a challenging system since it made users choose between smooth DX or security. This has been impactful historically - there have been cases (for example, the <a href="https://eslint.org/blog/2018/07/postmortem-for-malicious-package-publishes">eslint-scope incident</a>) where maintainers' accounts were hijacked and impactful modules were compromised since they didn't have 2FA for user publishes turned on.</p>
+<p>Since 2FA on publish was introduced, folks in the ecosystem have been asking for the ability to have some way to automatically publish modules from CI while also having 2FA for user-publishes turned on.</p>
+<p>Today, the npm team delivered one of the proposed solutions: automation tokens.</p>
+<h2 id="what-are-automation-tokens" tabindex="-1">What are Automation Tokens? <a class="direct-link" href="#what-are-automation-tokens" aria-hidden="true">#</a></h2>
+<p>Automation tokens are effectively publish tokens that a user can create to publish a module from an automated process. They skip the OTP (one-time password) check and ship it.</p>
+<p>Say, for example, that you're the maintainer of a module called <code>good-first-issue</code>. Instead of having to pull <code>good-first-issue</code> locally and publish after opening up your 2FA app and typing in the OTP, you could instead set up your favorite CI - GitHub Actions CI, CircleCI, Travis, or whatever else - to automatically publish whenever certain conditions are met. <a href="https://semantic-release.gitbook.io/semantic-release/">Semantic Release</a> is a pretty wonderful example of this kind of automation.</p>
+<p>This has the obvious benefit of streamlining workflows and reducing maintainer burden. It also helps reduce risk - in pulling down and publishing or having to build a custom publishing system both have their own additional levels of potential risk. With automation tokens, we can now pretty easily just ship code where we build it.</p>
+<h2 id="how-can-i-use-automation-tokens" tabindex="-1">How can I Use Automation Tokens? <a class="direct-link" href="#how-can-i-use-automation-tokens" aria-hidden="true">#</a></h2>
+<p>To publish with Automation Tokens today, you'll want to do a few things to get going.</p>
+<p>First, to actually publish to a module with an automation token, you'll need to update the module's <code>Settings</code>. Specifically, you'll need to change the module's <code>Publishing Access</code> from whatever it was previously (either <code>Two-factor authentication is not required</code> or <code>Require two-factor authentication to publish</code>) to the new option, <code>Require two-factor authentication or automation tokens</code>.</p>
+<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/iz61wxyav8obn4yvfyuj.png" alt="Screenshot of npm's access page, showing off the new option"></p>
+<p>Once you've updated that, you'll now be able to use Automation Tokens for publishing that module.</p>
+<p>To get an automation token, you'll want to head over to your user settings. From that, you'll open up the Access Tokens page and then create a new token. When you start the token creation flow, you'll have the option to select <code>Automation</code>. Once you do, click <code>Generate Token</code> and you'll be shown the token once - copy it, and you're all set.</p>
+<h2 id="looking-forward" tabindex="-1">Looking Forward <a class="direct-link" href="#looking-forward" aria-hidden="true">#</a></h2>
+<p>There are a handful of use cases where this current implementation is extremely useful - specifically, my perspective is that it's most useful where you're an individual maintainer with a limited set of projects.</p>
+<p>That said, this is the first step in the right direction for more granular controls for all kinds of maintainers to securely manage their modules with a good DX while being as secure as possible. In speaking with the npm team, they're exploring further iteration in this space that I'm super excited for.</p>
+
+</section>
+<section class="poke">
+</section>
+  </seciton>
+  <footer></footer>
+</body>
+</html>

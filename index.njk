@@ -1,0 +1,24 @@
+---
+layout: layouts/index.njk
+---
+<section id='content'>
+  <section>
+    <h2>Who I Am</h2>
+    <p>I'm Tierny Cyren, a Senior Cloud Developer Advocate at Microsoft. I do work on JavaScript, including Node.js, Electron, TC39, npm, and the OpenJS Foundation.</p>
+  </section>
+  <section>
+    <h2>Blog</h2>
+    {%- for post in collections.post -%}
+    <article>
+        {% if post.data.series %}
+          <h3 class="post-list-entry"><a href="{{ post.url | urlize }}">{{ post.data.title }}</a>  as a part of the <a href="{{ 'series/' + post.data.series | urlize }}">{{ seriesData[post.data.series].title }}</a></h3> series.
+        {% else %}
+          <h3 class="post-list-entry"><a href="{{ post.url | urlize }}">{{ post.data.title }}</a></h3>
+        {% endif %}
+        {%- if post.data.page.excerpt -%}
+          <description class="post-list-description">{{ post.data.page.excerpt | toHTML | safe}} <a href="{{ post.url | urlize }}" class="post-list-read-more">Continue reading</a></description>
+        {%- endif -%}
+      {%- endfor -%}
+   </article>
+  </section>
+</section>

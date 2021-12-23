@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-post
+---
+<section class="post container column">
+  <h1 class="post-title">{{ title }}</h2>
+  <sub>Originally posted on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>{% if series %} as part {{ part }} of the <a href="{{ '/series/' + series | urlize }}">{{ seriesData[series].title }}</a> series.{% endif %}
+</sub>
+  {{ content | safe }}
+</section>
+<section class="poke">
+  {%- if collections.posts %}
+  {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+  {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+  {%- if nextPost or previousPost %}
+  <hr>
+  <ul>
+    {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | urlize }}">{{ nextPost.data.title }}</a></li>{% endif %}
+    {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | urlize }}">{{ previousPost.data.title }}</a></li>{% endif %}
+  </ul>
+  {%- endif %}
+  {%- endif %}
+</section>

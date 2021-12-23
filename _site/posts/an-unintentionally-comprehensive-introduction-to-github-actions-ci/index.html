@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Unintentionally Comprehensive Introduction to GitHub Actions CI</title>
+  <meta name="description" content="I recently started working on some templates for GitHub Actions CI that Node.js and JavaScript folks could simply copy/paste to instantly get cross-platform CI builds for free inside of GitHub. In this post, we go over those templates and walk line-by-line over one of them to better understand the composition of a GitHub Action CI template.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+<meta name="twitter:card" content="" />
+<meta name="twitter:creator" content= />
+<meta property="og:url" content="/posts/an-unintentionally-comprehensive-introduction-to-github-actions-ci/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image" content="" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title">An Unintentionally Comprehensive Introduction to GitHub Actions CI</h2>
+  <sub>Originally posted on <time datetime="2021-10-27">27 Oct 2021</time>
+</sub>
+  <p>We're currently approaching GitHub Actions v2 shipping publicly for <em>everyone</em> to use. I'm personally super excited about this because it means I don't need to configure an external service to run my CI – I can slap in some YAML, and I'm off with a cross-platform (!) CI system with multiple versions of Node.js installed.</p>
+<p>For me, that's bliss. No need to go to an external site; everything is very neatly contained. That said, when I've used other CI services in the past (primarily Travis CI and Azure Pipelines) I've generally just copy/pasted someone else's CI configuration from the beginning and then tweaked it with additional context.</p>
+<p>This time though, there's minimal prior context. During the beta of Actions v2, GitHub has published a few different CI templates that I could copy/paste certain parts from. However, there are a few standards I hold all of my projects to:</p>
+<ul>
+<li><code>npm install</code> should pass on the latest versions of all operating systems</li>
+<li><code>npm test</code> should pass on the latest versions of all operating systems</li>
+<li><code>npm install</code> and <code>npm test</code> should succeed without fail on all <a href="https://github.com/nodejs/release#release-schedule">currently supported</a> Node.js versions</li>
+</ul>
+<p>This ends up meaning I have a matrix of anywhere from 9 (3 versions multiplied by three operating systems) to 12 (4 versions multiplied by three operating systems) CI runs on every project at any time. I've found that the implementation of <em>how</em> to achieve this varies greatly depending on the CI system.</p>
+<p>Given that there's not going to be a massive amount of prior art on release, I figured I'd begin building out some comprehensive templates so at launch people will have something to easily copy/paste and then tweak to suit their exact needs.</p>
+<h1 id="github-actions-ci-templates" tabindex="-1">GitHub Actions CI Templates <a class="direct-link" href="#github-actions-ci-templates" aria-hidden="true">#</a></h1>
+<p>After working on adding GitHub Actions CI to <a href="https://github.com/cutenode/good-first-issue">good-first-issue</a>, I figured I should probably abstract the CI file into a repo, so it's a bit more accessible.</p>
+<p>As such, last night, I built out <a href="https://github.com/cutenode/github-actions-ci-templates">GitHub Actions CI Templates</a>. Initially, I shipped it with a single template that covered my needs around Node.js and npm, but as of about an hour ago I've added two additional templates: Node.js and Yarn, and Node.js and pnpm.</p>
+<p>If you'd like to check out the templates, they're all relatively straightforward as far as YAML goes:</p>
+<ul>
+<li><a href="https://github.com/cutenode/github-actions-ci-templates/blob/master/templates/javascript/nodejs-cross-platform-ci.yml">Node.js Cross-Platform</a>:
+<ul>
+<li>Runs builds on:
+<ul>
+<li>Ubuntu (Latest),</li>
+<li>Windows (Latest),</li>
+<li>macOS (Latest)</li>
+</ul>
+</li>
+<li>Using all versions of Node.js that are <a href="https://github.com/nodejs/release#release-schedule">currently supported</a> by the Node.js project,</li>
+<li>Using <code>npm install</code> and <code>npm test</code>.</li>
+</ul>
+</li>
+<li><a href="https://github.com/cutenode/github-actions-ci-templates/blob/master/templates/javascript/yarn-nodejs-cross-platform-ci.yml">Node.js Cross-Platform (using Yarn)</a>
+<ul>
+<li>Runs builds on:
+<ul>
+<li>Ubuntu (Latest),</li>
+<li>Windows (Latest),</li>
+<li>macOS (Latest)</li>
+</ul>
+</li>
+<li>Using all versions of Node.js that are <a href="https://github.com/nodejs/release#release-schedule">currently supported</a> by the Node.js project,</li>
+<li>Using <code>yarn install</code> and <code>yarn test</code>.</li>
+</ul>
+</li>
+<li><a href="https://github.com/cutenode/github-actions-ci-templates/blob/master/templates/javascript/pnpm-nodejs-cross-platform-ci.yml">Node.js Cross-Platform (using pnpm)</a>:
+<ul>
+<li>Runs builds on:
+<ul>
+<li>Ubuntu (Latest),</li>
+<li>Windows (Latest),</li>
+<li>macOS (Latest)</li>
+</ul>
+</li>
+<li>Using all versions of Node.js that are <a href="https://github.com/nodejs/release#release-schedule">currently supported</a> by the Node.js project.</li>
+<li>Using <code>pnpm install</code> and <code>pnpm test</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="dissecting-the-github-actions-yaml-for-the-templates" tabindex="-1">Dissecting the GitHub Actions YAML for the Templates <a class="direct-link" href="#dissecting-the-github-actions-yaml-for-the-templates" aria-hidden="true">#</a></h2>
+<p>The templates all follow a relatively similar structure. I figured I'd walk you through each line of code of the <a href="https://github.com/cutenode/github-actions-ci-templates/blob/master/templates/javascript/nodejs-cross-platform-ci.yml">Node.js Cross-Platform</a> file to help ensure that they're understandable to you. Let's go line by line, with code on the top and the description on the bottom:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Node.js Cross<span class="token punctuation">-</span>platform CI (using Yarn)</code></pre>
+<p>The above line is the title of the entire CI script, as it'll show up in the <code>Actions</code> tab of the GitHub repo.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#name">Workflow syntax docs - <code>name</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>push<span class="token punctuation">]</span></code></pre>
+<p>The above line indicates the trigger for a run. For most CI cases, <code>[push]</code> will be ideal since you want it to run every time you push code to the repo or to a PR.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#on">Workflow syntax docs - <code>on</code></a></li>
+<li><a href="https://help.github.com/en/articles/events-that-trigger-workflows">Workflow trigger docs</a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span></code></pre>
+<p>Workflows are composed of one or more jobs. This line is an indicator that we've got multiple jobs to be run.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobs">Workflow syntax docs - <code>jobs</code></a></li>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#usage-limits">Usage limits</a>, for context on limits around jobs</li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">build</span><span class="token punctuation">:</span></code></pre>
+<p>This one is the <code>job_id</code> of our specific job. Since we're running a build, I named this <code>build</code> but this specific name has no semantic meaning inside of GitHub Actions CI itself.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_id">Workflow syntax docs - <code>jobs.&lt;job_id&gt;</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> $</code></pre>
+<p>This is a required property, which tells the CI run what kind of machine it should be running on. In our case, we've added some complexity by adding a matrix of operating systems that need to be built against. That said, the context of the matrix gets hoisted, and we can use that context here.</p>
+<p>One key thing to note from the docs:</p>
+<blockquote>
+<p>Each job runs with a fresh instance of the virtual environment specified in by runs-on.</p>
+</blockquote>
+<p>Meaning, every job is running a clean instance of whatever OS is selected. This is table stakes for CI, but it's always useful to keep it in mind. ❤️</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idruns-on">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.runs-on</code></a></li>
+<li><a href="https://help.github.com/en/articles/virtual-environments-for-github-actions">Virtual environments for GitHub Actions</a>, which lists all the possible supported values for this property</li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">strategy</span><span class="token punctuation">:</span></code></pre>
+<p>Having a <code>strategy</code> line is the way to begin defining a matrix of environments to run your builds in.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategy">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.strategy</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">      <span class="token key atrule">matrix</span><span class="token punctuation">:</span></code></pre>
+<p>The tl;dr of a matrix is that it's the set of all the pieces of context you'll want to run against. The most straightforward matrix is one row – for example, multiple Node.js versions on a <em>single</em> platform.</p>
+<p>A simple matrix:</p>
+<table>
+<thead>
+<tr>
+<th>ubuntu-latest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js 8</td>
+</tr>
+<tr>
+<td>Node.js 10</td>
+</tr>
+<tr>
+<td>Node.js 12</td>
+</tr>
+</tbody>
+</table>
+<p>That said, JavaScript and Node.js applications are effectively run on all three of the major operating systems in the world as a part of developer workflows. Often, we'll want to run on the three major operating systems to ensure that there are no unexpected platform-specific bugs that are going to occur – especially in open source when there are very few direct paths to end-users. Luckily, a matrix makes this relatively straightforward.</p>
+<p>By adding in multiple operating systems, our matrix gets more complex:</p>
+<table>
+<thead>
+<tr>
+<th>ubuntu-latest</th>
+<th>macos-latest</th>
+<th>windows-latest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+</tr>
+<tr>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+</tr>
+<tr>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+</tr>
+</tbody>
+</table>
+<p>But... that's only the <em>latest</em> versions of each platform. What about older versions that we may often need to support? Well, it turns out that we can also use older versions of each platform in GitHub Actions CI, which could even further complicate the matrix:</p>
+<table>
+<thead>
+<tr>
+<th>ubuntu-latest</th>
+<th>ubuntu-16.04</th>
+<th>macos-latest</th>
+<th>macOS-10.14</th>
+<th>windows-latest</th>
+<th>windows-2016</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+</tr>
+<tr>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+</tr>
+<tr>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+</tr>
+</tbody>
+</table>
+<p>And this is currenlty a downtime for Node.js builds. Half of the year (every year) there are 4 supported release lines, which would look more like this:</p>
+<table>
+<thead>
+<tr>
+<th>ubuntu-latest</th>
+<th>ubuntu-16.04</th>
+<th>macos-latest</th>
+<th>macOS-10.14</th>
+<th>windows-latest</th>
+<th>windows-2016</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+<td>Node.js 8</td>
+</tr>
+<tr>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+<td>Node.js 10</td>
+</tr>
+<tr>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+<td>Node.js 12</td>
+</tr>
+<tr>
+<td>Node.js 13</td>
+<td>Node.js 13</td>
+<td>Node.js 13</td>
+<td>Node.js 13</td>
+<td>Node.js 13</td>
+<td>Node.js 13</td>
+</tr>
+</tbody>
+</table>
+<p>A matrix is super useful in helping us programmatically define such a list without actually having to define each of these contexts individually. This utility mostly comes when you start adding more platforms and versions, but thankfully the overhead of doing that is incredibly low from the configuration side of things (see the following sections for more context)</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.strategy.matrix</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">        <span class="token key atrule">os</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>ubuntu<span class="token punctuation">-</span>latest<span class="token punctuation">,</span> windows<span class="token punctuation">-</span>latest<span class="token punctuation">,</span> macOS<span class="token punctuation">-</span>latest<span class="token punctuation">]</span></code></pre>
+<p>The above is effectively a variable that we're assigning to the matrix, which can be dynamically called. In our case, we're just saying that the <code>os</code> variable on <code>matrix</code> (so <code>matrix.os</code>) is going to be each of these. The <em>how</em> is still a bit magic to me, but... it works, seemingly by iterating over each of them when they're called. When used in conjunction with another variable (like <code>node-version</code>), they're iterated over to create something like the tables above effectively.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/virtual-environments-for-github-actions">Virtual environments for GitHub Actions</a>, which is where you can find information about all of the operating systems currently available.</li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">        <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>8.x<span class="token punctuation">,</span> 10.x<span class="token punctuation">,</span> 12.x<span class="token punctuation">]</span></code></pre>
+<p>Another variable where we're going to define the Node.js versions we'd want to be running.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://github.com/actions/setup-node">actions/setup-node</a> – the GitHub Action we pass versions to, which defines the acceptable syntax for versions</li>
+<li><a href="https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions">Software in virtual environments for GitHub Actions<br>
+</a> – an exhaustive list of software available in each virtual environment (OS) by default</li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">steps</span><span class="token punctuation">:</span></code></pre>
+<p>Each job contains a set of <code>steps</code>. This specific line is where we indicate that we're going to begin defining the steps.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idsteps">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.steps</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v1</code></pre>
+<p>Tells our workflow that we're going to be using the GitHub Action that can be found at <code>actions/checkout</code> which maps to the GitHub org/repo at [<a href="http://gihub.com/actions/checkout">gihub.com/actions/checkout</a>]. It's also worth noting that <code>@v1</code> which is a tagged and released version that can be found in the <a href="https://github.com/actions/checkout/releases/tag/v1.0.0">GitHub Releases</a> for the repo.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://github.com/actions/checkout">actions/checkout</a>, an action that checks out your repository to <code>$GITHUB_WORKSPACE</code> in the virtual environment.</li>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsuses">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.steps.uses</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Use Node.js $NaN on $</code></pre>
+<p>The name to display for the job in the UIs that it's rendered within, given the various variables that we've inserted using <code>matrix</code>.</p>
+<blockquote>
+<p><strong>Note:</strong> There seems to be a bug where this does not render properly  – instead of rendering as a tagged template literal, the Actions UI renders as a string.</p>
+</blockquote>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idname">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.name</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">      <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v1</code></pre>
+<p>Defines an external action – in this case, the [<a href="http://github.com/actions/setup-node">github.com/actions/setup-node</a>] action at version 1.x.x (as released via the GitHub repo). In our case, this is an action that provides a super handy interface to install arbitrary versions of Node.js other than the version that comes baked into the VMs that are provided. My guess is that this will be a default action for <em>anyone</em> who is running JavaScript or Node.js builds simply because it handles so much for you by default.</p>
+<p>It's worth noting that actions consumed with <code>uses:</code> can be sourced from within the same repository, from a public repository, and from a Docker image published to Docker Hub.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsuses">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.steps.uses</code></a></li>
+<li><a href="https://github.com/actions/setup-node">actions/setup-node</a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">      <span class="token key atrule">with</span><span class="token punctuation">:</span></code></pre>
+<p>This is a <code>map</code> (my assumption is that this is a <code>map</code> in the sense of YAML's definition of a map) of the parameters defined in the action. In our case, <code>actions/setup-node</code> needs a version to run with.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepswith">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.steps.with</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">        <span class="token key atrule">node-version</span><span class="token punctuation">:</span> $NaN</code></pre>
+<p>The <code>actions/setup-node</code> action needs a version of Node.js to run, via the <code>node-version:</code> property. Since we named the variable for Node.js versions in our Matrix <code>node-versions</code>, we're able to pass <code>matrix.node-version</code> to the <code>node-version:</code> property.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepswith">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.steps.with</code></a></li>
+<li><a href="https://github.com/actions/setup-node">actions/setup-node</a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> npm install and test</code></pre>
+<p>We're again defining the name of a job. In this case, there's no dynamic information since the commands we're going to be running are pretty static.</p>
+<p>I use <code>npm install</code> and <code>npm test</code>, but your applications may vary in install/build/test/ci commands – my recommendation for this is to tweak both the title and the actual commands, so it's extremely clear what's being run.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_id">Workflow syntax docs - <code>jobs.&lt;job_id&gt;</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">      <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string"><br>        npm install<br>        npm test</span></code></pre>
+<p>This is an interesting set of lines for those unfamiliar with YAML. We start with using a <code>run</code> property for the job, which allows us to run any command on the system. In our case, we're going to use this to run <code>npm install</code> and <code>npm test</code>... but those are two different commands, that need to be run separately. The pipe (<code>|</code>) is a tool defined in the <a href="https://yaml.org/spec/1.2/spec.html#id2795688">YAML spec</a> as Literal Style. In our case, it allows us to write multiple lines that execute independently without having to use multiple <code>run:</code> commands or multiple jobs. Basically, it's shorthand that enables use to be looser in how we're able to build out our file.</p>
+<blockquote>
+<p><strong>Note:</strong> It may be worth using <code>npm ci</code> rather than <code>npm install</code> to install dependencies, given that <code>npm ci</code> was tailor-made for CI environments. You can find more details on <code>npm ci</code> in the <a href="https://docs.npmjs.com/cli/ci">official documentation</a>.</p>
+</blockquote>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsrun">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.steps.run</code></a></li>
+<li><a href="https://docs.npmjs.com/cli/install">npm install</a></li>
+<li><a href="https://docs.npmjs.com/cli/test">npm test</a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">      <span class="token key atrule">env</span><span class="token punctuation">:</span></code></pre>
+<p>Allows us to set up environment variables in our virtual environments with relative ease.</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsenv">Workflow syntax docs - <code>jobs.&lt;job_id&gt;.steps.env</code></a></li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">        <span class="token key atrule">CI</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
+<p>This one is a personal preference, and also happens to be the default for the simplest Node.js workflow suggested by GitHub. Simply sets an environment variable that can be easily picked up on by various tools. GitHub</p>
+<p>Relevant docs:</p>
+<ul>
+<li><a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables">Virtual environments for GitHub Actions – Environment Variables</a></li>
+</ul>
+<h2 id="what's-next" tabindex="-1">What's next? <a class="direct-link" href="#what's-next" aria-hidden="true">#</a></h2>
+<p>Currently, GitHub Actions CI is in a semi-public beta as a part of GitHub Actions v2 – they've invited a bunch of folks who applied to use it. That said, if you feel like this is a repeat of what happened when GitHub Actions initially shipped last year, you'll be happy to know that in the <a href="https://youtu.be/E1OunoCyuhY?t=2070">GitHub Special Event</a> in which GitHub Actions CI and GitHub Actions v2 were shared, Nat Friedman said that GitHub Actions CI and GitHub Actions v2, along with GitHub Package Registry, is shipping to everyone on November 13th – the first day of <a href="https://githubuniverse.com/">GitHub Universe</a>.</p>
+<p>So, in just over a month from the date of publishing this article, you'll be able to start using GitHub Actions CI on any and every public project for free. 🎉</p>
+<p>If you've got any questions or comments about what I've talked about in this post, or if there's more you'd like to learn about GitHub Actions CI or GitHub Actions v2, I'd be more than happy to see if I can either answer your questions in the comments directly, make good free and public repos that can help give you answers, or write more posts on the subject if you'd find that helpful!</p>
+
+</section>
+<section class="poke">
+</section>
+  </seciton>
+  <footer></footer>
+</body>
+</html>

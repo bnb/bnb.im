@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Exports: Supporting both import and require()</title>
+  <meta name="description" content="On conditional exports and enabling end-users to use both import and require() with your module.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+<meta name="twitter:card" content="" />
+<meta name="twitter:creator" content= />
+<meta property="og:url" content="/posts/conditional-exports-supporting-both-import-and-require/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image" content="" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title">Conditional Exports: Supporting both import and require()</h2>
+  <sub>Originally posted on <time datetime="2021-06-17">17 Jun 2021</time> as part 3 of the <a href="/series/esm-in-node-js">ESM in Node.js</a> series.
+</sub>
+  <p>Now that we've both gone over how to make Node.js <a href="https://dev.to/bnb/implicit-esm-in-node-js-with-type-module-np">implicitly</a> and <a href="https://dev.to/bnb/explicit-esm-in-node-js-with-mjs-3ooh">explicitly</a> parse your code as ESM, we can get into some of the more meaty and interesting bits of ESM in Node.js.</p>
+<p>To me, one of the most interesting features is <strong>Conditional Exports</strong>. With conditional exports, you can have a single module export both ESM (allowing it to be <code>import</code>ed, with all the features of <code>import</code> that you'd expect) and CommonJS (allowing it to be <code>require()</code>ed.)</p>
+<p>From a broader perspective, this is an amazing tool for transition. Whether you're a maintainer of an open-source module or charged with supporting1 internal end-users on an SDK with a long support cycle, this helps ease the shock of going from CommonJS to ESM, or simply helps you support both use cases for as long as your consumers require.</p>
+<h2 id="setting-up-conditional-exports" tabindex="-1">Setting up Conditional Exports <a class="direct-link" href="#setting-up-conditional-exports" aria-hidden="true">#</a></h2>
+<p>Let's take the <code>package.json</code> we used in the <a href="https://dev.to/bnb/implicit-esm-in-node-js-with-type-module-np">Implicit ESM</a> article, and exapand on that:</p>
+<pre class="language-diff"><code class="language-diff">{<br><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> "name": "apollo-lunar-module",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "version": "0.0.1",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "description": "A simple, fast, nice lunar lander module",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "main": "index.js",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "type": "module",<br></span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> "exports": {<br></span><span class="token prefix inserted">+</span><span class="token line">   "import": "./main.js",<br></span><span class="token prefix inserted">+</span><span class="token line">   "require": "./main.cjs"<br></span><span class="token prefix inserted">+</span><span class="token line"> },<br></span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> "scripts": {<br></span><span class="token prefix unchanged"> </span><span class="token line">   "lint": "standard"<br></span><span class="token prefix unchanged"> </span><span class="token line"> },<br></span><span class="token prefix unchanged"> </span><span class="token line"> "author": "Tierney Cyren &lt;hello@bnb.im> (https://bnb.im/)",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "license": "MIT",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "devDependencies": {<br></span><span class="token prefix unchanged"> </span><span class="token line">   "standard": "^16.0.3"<br></span><span class="token prefix unchanged"> </span><span class="token line"> }<br></span></span>}</code></pre>
+<p>You can see we've added the following code:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token comment">// ...</span><br>  <span class="token property">"exports"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"import"</span><span class="token operator">:</span> <span class="token string">"./main.js"</span><span class="token punctuation">,</span> <span class="token comment">// doesn't have to be `main`</span><br>    <span class="token property">"require"</span><span class="token operator">:</span> <span class="token string">"./main.cjs"</span> <span class="token comment">// doesn't have to be `main`</span><br>  <span class="token punctuation">}</span><br>  <span class="token comment">// ...</span><br><span class="token punctuation">}</span></code></pre>
+<p>You should note that we've got <code>&quot;type&quot;: &quot;module&quot;</code> in our package.json, meaning that <code>.js</code> will be interpreted as ESM and to use CommonJS in this module, we'll need to use the <code>.cjs</code> extension.</p>
+<p>The utility of having both ESM and CommonJS in the same project becomes apparent here. We're now able to enable <em>both</em> ESM and CommonJS users to consume our package without having to install a different module.</p>
+<p>Now, it is worth noting that you can't just copy/paste your code from <code>main.js</code> into <code>main.cjs</code> - you'll actually need to make it work as CommonJS code, which probably also means figuring out how to support both use cases in both export styles. If you'd like a solid example of how to do this for realsies, <a href="https://twitter.com/MylesBorins">Myles Borins</a> built <a href="https://github.com/mylesborins/node-osc">node-osc</a> and has a <a href="https://github.com/MylesBorins/node-osc/blob/main/rollup.config.mjs">rollup configuration</a> that does ESM to CommonJS conversion for this exact use case. Additionally, there are a number of codemods that exist (and I've apparently <a href="https://twitter.com/bitandbang/status/1404929283500478470">signed myself up</a> to work on yet another codemod for this) that can help with this.</p>
+<h2 id="consuming-a-module-that-has-conditional-exports" tabindex="-1">Consuming a Module that has Conditional Exports <a class="direct-link" href="#consuming-a-module-that-has-conditional-exports" aria-hidden="true">#</a></h2>
+<p>Thankfully, conditional exports were built in such a way that they're <em>largely</em> invisible to end-users of your module with <em>one</em> caveat.</p>
+<p>The caveat: if your end-users are somehow consuming the same module both as ESM and as CommonJS, the <em>instance</em> is of the ESM and CommonJS versions are not the same. Both ESM and CommonJS have been built so the instance is shared, but in the case of using <em>both</em> the instance will not be the same. For most folks this <em>likely</em> won't be problematic for a number of reasons, but it is still a possibility. The most likely way this'll surface is through <em>you</em> using a conditionally exported module one way and a dependency in <code>node_modules</code> using it a different way.</p>
+<p>Outside of that, you'd use modules with conditional exports however you would normally.</p>
+<p>Let's take the example of <code>apollo-lunar-module</code> that we've been using:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> apollo-lunar-module</code></pre>
+<p>To use it in ESM:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> lander <span class="token keyword">from</span> <span class="token string">"apollo-lunar-module"</span></code></pre>
+<p>And if we wanted to import (hypothetical) named exports from <code>main.js</code> with ESM:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> abortGuidancePanel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"apollo-lunar-module"</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> plssCondensateContainerAssy <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"apollo-lunar-module"</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> crewLog <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"apollo-lunar-module"</span></code></pre>
+<p>To use it in CommonJS:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> lander <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"apollo-lunar-module"</span><span class="token punctuation">)</span></code></pre>
+<p>And, again, if we wanted to consume (hypothetical) named exports, exposed by <code>main.cjs</code>:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> abortGuidancePanel <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"apollo-lunar-module"</span><span class="token punctuation">)</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> plssCondensateContainerAssy <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"apollo-lunar-module"</span><span class="token punctuation">)</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> crewLog <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"apollo-lunar-module"</span><span class="token punctuation">)</span></code></pre>
+<p>Either way, as an end-user, conditional exports make support for ESM or for CommonJS effectively invisible to those who are using your modules the other way. This ends up creating a pretty wonderful solution for end-users, enabling maintainers to ensure they're supporting both ESM and CommonJS consumers <em>if they want to</em>.</p>
+
+</section>
+<section class="poke">
+</section>
+  </seciton>
+  <footer></footer>
+</body>
+</html>

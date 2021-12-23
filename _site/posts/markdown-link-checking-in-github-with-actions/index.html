@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Link Checking in GitHub with Actions</title>
+  <meta name="description" content="If you maintain any repo for a sufficient amount of time, you&#39;ll end up finding that various Markdown links will eventually break. With GitHub Actions you can address this challenge with ease.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+<meta name="twitter:card" content="" />
+<meta name="twitter:creator" content= />
+<meta property="og:url" content="/posts/markdown-link-checking-in-github-with-actions/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image" content="" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title">Markdown Link Checking in GitHub with Actions</h2>
+  <sub>Originally posted on <time datetime="2021-05-05">05 May 2021</time>
+</sub>
+  <p>Having been a part of the Node.js project since the io.js 1.0 announcement, one of the things I've grown extremely familiar with is how untouched Markdown documents that are supposed to provide a foundation can rot over time.</p>
+<p>More specifically, a project on GitHub can slightly tweak how it operates every now and then. Those changes might not be enough to justify a documentation change since they're not meaningfully different enough.</p>
+<p>If enough of these pile up you can end up with some blind spots on how your foundational documents haven't kept up with the times. This can often be remedied by manual inspection, but even then there's things that you might miss.</p>
+<p>One of those things I've often missed when doing that manual inspection is broken links. Specifically, if a file is moved at some point but all references to it aren't updated you end up in a situation where those references point to a 404.</p>
+<p>I've also had a handful of experiences with external links to smaller sites die because they decided to completely redesign the site and its structure... and if we're honest, I've only noticed those when I've really tried to find things that are broken. I'm <strong>sure</strong> others who are less familiar with that documentation have hit them more often.</p>
+<p>Various forms of link rot like this are something that I've struggled to fight with different tooling for years. Now, thankfully, I've found the exact setup I've always wanted.</p>
+<h2 id="linkinator-and-github-actions" tabindex="-1">Linkinator and GitHub Actions <a class="direct-link" href="#linkinator-and-github-actions" aria-hidden="true">#</a></h2>
+<p>A friend, <a href="https://twitter.com/justinbeckwith">Justin Beckwith</a>, published a tool that serves both as a CLI and a module called <a href="https://github.com/JustinBeckwith/linkinator">Linkinator</a> some time ago that focused on finding broken links within HTML sites. He extended it to work with Markdown <a href="https://github.com/JustinBeckwith/linkinator/issues/73#issuecomment-737661545">relatively recently</a> as well.</p>
+<p>He <em>also</em> published a <a href="https://github.com/JustinBeckwith/linkinator-action">Linkinator GitHub Action</a> that consumes Linkinator as a module and uses that to cleanly integrate with GitHub repositories.</p>
+<p>Even more recently, he added <a href="https://github.com/JustinBeckwith/linkinator-action/pull/45">the <code>retry</code> functionality</a> from the module to the Action.</p>
+<p>With <code>retry</code> and the foundation of the rest of the work Justin's put into Linkinator, my problems with Markdown link rot in GitHub have now been entirely solved.</p>
+<p>Let's get into how.</p>
+<h2 id="markdown-link-rot-begone:-using-the-action" tabindex="-1">Markdown Link Rot Begone: Using the Action <a class="direct-link" href="#markdown-link-rot-begone:-using-the-action" aria-hidden="true">#</a></h2>
+<p>The first space I've set up Linkinator is in the Node.js Community Committee repo via <a href="https://github.com/nodejs/community-committee/pull/658">#658</a>. Specifically, this PR adds the Linkinator GitHub Action and fixes all (but one, which has been fixed in a different unmerged PR) broken links in the repository. As it turns out, there were quite a few... including some in very notable places, like the README.</p>
+<p>The setup is pretty standard for a single purpose GitHub Action. There's some pretty decent documentation of the expected YAML on <a href="https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions">GitHub's Docs site</a>. I'll walk through each line with you:</p>
+<h3 id="setting-up-triggers" tabindex="-1">Setting up Triggers <a class="direct-link" href="#setting-up-triggers" aria-hidden="true">#</a></h3>
+<p>To start, we set up <a href="https://docs.github.com/en/actions/reference/events-that-trigger-workflows">the triggers</a> for the Action. The first line will always be <code>on:</code> but from there you can do a lot.</p>
+<p>In this specific case, I've set it up to run on push to the default branch (thanks to the handy <code>$default-branch</code> macro, it doesn't matter what the name is!), on PRs (this could be more verbose to run less often), and on <code>workflow_dispatch</code> which allows us to run it manually via the GitHub Actions UI if we want to.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">on</span><span class="token punctuation">:</span><br>  <span class="token key atrule">push</span><span class="token punctuation">:</span><br>    <span class="token key atrule">branches</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> $default<span class="token punctuation">-</span>branch<br>  <span class="token key atrule">pull_request</span><span class="token punctuation">:</span><br>  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span></code></pre>
+<h3 id="the-name" tabindex="-1">The Name <a class="direct-link" href="#the-name" aria-hidden="true">#</a></h3>
+<p>Next, we have the name which is what will appear in the GitHub UI. In this case, I just went with <code>Linkinator CI</code> but you can change this to whatever you'd like.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Linkinator CI</code></pre>
+<h3 id="the-job" tabindex="-1">The Job <a class="direct-link" href="#the-job" aria-hidden="true">#</a></h3>
+<p>The beginning of the jobs section is, again, relatively standard. We include the <code>jobs</code> property under which we start defining the work that'll be done.</p>
+<p>In this case, we name the (only!) step <code>linkinator</code> since I like to try to keep to as small yet as descriptive of a job name as is possible.</p>
+<p>Then, we tell Actions to run this on <code>ubuntu-latest</code> and add the property <code>steps</code> to start defining what we're going to do in the job.</p>
+<p>From there, we then we declare that we want to use the <a href="https://github.com/actions/checkout">actions/checkout</a> action which by default checks out the repo this is running in and sets things up nicely for us.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">linkinator</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br>    <span class="token key atrule">steps</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2</code></pre>
+<p>Next, we're going to actually include the <code>linkinator</code> step. We call the Linkinator action from Justin's repo directly. We also pass a few of <a href="https://github.com/JustinBeckwith/linkinator-action#inputs">Linkinator's inputs</a> via the <code>with</code> property:</p>
+<ul>
+<li><code>paths</code>: we're specifically checking for all markdown files in the project, recursively with <a href="https://en.wikipedia.org/wiki/Glob_(programming)">globbing</a>.</li>
+<li>markdown: asserting to Linkinator that we're specifically looking for markdown files (as opposed to HTML files).</li>
+<li>retry: for GitHub repos that have links to GitHub this is super important - if we get timed out because of a rate limit, the Action will respectfully retry until they get a non-rate-limited response.</li>
+</ul>
+<pre class="language-yaml"><code class="language-yaml">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> JustinBeckwith/linkinator<span class="token punctuation">-</span>action@v1<br>        <span class="token key atrule">with</span><span class="token punctuation">:</span><br>          <span class="token key atrule">paths</span><span class="token punctuation">:</span> <span class="token string">"**/*.md"</span><br>          <span class="token key atrule">markdown</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><br>          <span class="token key atrule">retry</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
+<h3 id="the-whole-configuration" tabindex="-1">The Whole Configuration <a class="direct-link" href="#the-whole-configuration" aria-hidden="true">#</a></h3>
+<p>Putting all of that together, we get the following:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">on</span><span class="token punctuation">:</span><br>  <span class="token key atrule">push</span><span class="token punctuation">:</span><br>    <span class="token key atrule">branches</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> $default<span class="token punctuation">-</span>branch<br>  <span class="token key atrule">pull_request</span><span class="token punctuation">:</span><br>  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span><br><span class="token key atrule">name</span><span class="token punctuation">:</span> Linkinator CI<br><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">linkinator</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br>    <span class="token key atrule">steps</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2<br>      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> JustinBeckwith/linkinator<span class="token punctuation">-</span>action@v1<br>        <span class="token key atrule">with</span><span class="token punctuation">:</span><br>          <span class="token key atrule">paths</span><span class="token punctuation">:</span> <span class="token string">"**/*.md"</span><br>          <span class="token key atrule">markdown</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><br>          <span class="token key atrule">retry</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
+<p>By popping this as a new file into <code>./github/workflows/</code> (say, <code>./github/workflows/linkinator.yml</code>) and pushing it to your repo, you'll start getting link checks on every push and PR plus whenever you want to manually run it.</p>
+<p>Genuinely happy with this solution and I hope it helps someone else as much as it's (going to be) helping me ❤️</p>
+
+</section>
+<section class="poke">
+</section>
+  </seciton>
+  <footer></footer>
+</body>
+</html>

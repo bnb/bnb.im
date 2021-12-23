@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implicit ESM in Node.js with &quot;type&quot;: &quot;module&quot;</title>
+  <meta name="description" content="A brief article on the usage of &quot;type&quot;: &quot;module&quot; in package.json to have .js files parsed as ECMAScript Modules (ESM).">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+<meta name="twitter:card" content="" />
+<meta name="twitter:creator" content= />
+<meta property="og:url" content="/posts/implicit-esm-in-node-js-with-type-module/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image" content="" />
+
+
+</head>
+<body class="mono">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1>Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://twitter.com/bitandbang" class="p-l-1rem">Twitter</a>
+        <a href="https://github.com/bnb" class="p-l-1rem">GitHub</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title">Implicit ESM in Node.js with &quot;type&quot;: &quot;module&quot;</h2>
+  <sub>Originally posted on <time datetime="2021-06-16">16 Jun 2021</time> as part 2 of the <a href="/series/esm-in-node-js">ESM in Node.js</a> series.
+</sub>
+  <p>Continuing the Node.js ESM content, I'd like to talk about the comparitively straightforward alternative to <a href="https://dev.to/bnb/explicit-esm-in-node-js-with-mjs-3ooh">using .mjs</a> to get your Node.js applications to run as ECMAScript Modules (ESM) rather than CommonJS: including <code>&quot;type&quot;: &quot;module&quot;</code> in your <code>package.json</code>.</p>
+<h2 id="usage-of-&quot;type&quot;:-&quot;module&quot;" tabindex="-1">Usage of <code>&quot;type&quot;: &quot;module&quot;</code> <a class="direct-link" href="#usage-of-&quot;type&quot;:-&quot;module&quot;" aria-hidden="true">#</a></h2>
+<p>Let's assume we've started with the following <code>package.json</code> for a zero (production) dependency application:</p>
+<pre><code>{
+  &quot;name&quot;: &quot;apollo-lunar-module&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;description&quot;: &quot;A simple, fast, nice lunar lander module&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;lint&quot;: &quot;standard&quot;
+  },
+  &quot;author&quot;: &quot;Tierney Cyren &lt;hello@bnb.im&gt; (https://bnb.im/)&quot;,
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;standard&quot;: &quot;^16.0.3&quot;
+  }
+}
+</code></pre>
+<p>To have implicit ESM - that is, have our <code>.js</code> files parsed as ESM - we' need to make the following change:</p>
+<pre class="language-diff"><code class="language-diff">{<br><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> "name": "apollo-lunar-module",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "version": "0.0.1",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "description": "A simple, fast, nice lunar lander module",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "main": "index.js",<br></span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> "type": "module",<br></span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> "scripts": {<br></span><span class="token prefix unchanged"> </span><span class="token line">   "lint": "standard"<br></span><span class="token prefix unchanged"> </span><span class="token line"> },<br></span><span class="token prefix unchanged"> </span><span class="token line"> "author": "Tierney Cyren &lt;hello@bnb.im> (https://bnb.im/)",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "license": "MIT",<br></span><span class="token prefix unchanged"> </span><span class="token line"> "devDependencies": {<br></span><span class="token prefix unchanged"> </span><span class="token line">   "standard": "^16.0.3"<br></span><span class="token prefix unchanged"> </span><span class="token line"> }<br></span></span>}</code></pre>
+<p>This <em>specifically</em> tells Node.js to parse your <code>.js</code> files under this <code>package.json</code> as ESM. Otherwise, by default (or when you use <code>&quot;type&quot;: &quot;commonjs&quot;</code>), Node.js will parse your <code>.js</code> files as CommonJS. There's a few things to note:</p>
+<p>Node.js specifically looks for the <em>closest</em> <code>package.json</code> to determine whether or not to parse <code>.js</code> as ESM or CommonJS.</p>
+<p>&quot;<em>Closest</em>&quot; is important here. If there's a <code>package.json</code> that's <em>closer</em> to <code>.js</code> files than your project's <code>package.json</code>, and it <em>does not</em> have <code>&quot;type&quot;: &quot;module&quot;</code> (or a <a href="https://nodejs.org/api/packages.html#packages_dual_commonjs_es_module_packages">dual export</a>, which is out of the scope of this post), CommonJS will be used for those <code>.js</code> files. The most common/obvious example of this is the code within your <code>/node_modules/</code> that may not be ESM, and shouldn't be parsed as such.</p>
+<p>Further, it's worth noting that explicitly using <code>.cjs</code> overrides <code>&quot;type&quot;: &quot;module&quot;</code>. This is extremely useful if you're converting a codebase from CommonJS to ESM.</p>
+<h2 id="why-&quot;type&quot;:-&quot;module&quot;" tabindex="-1">Why <code>&quot;type&quot;: &quot;module&quot;</code>? <a class="direct-link" href="#why-&quot;type&quot;:-&quot;module&quot;" aria-hidden="true">#</a></h2>
+<h3 id="the-quick-answer" tabindex="-1">The Quick Answer <a class="direct-link" href="#the-quick-answer" aria-hidden="true">#</a></h3>
+<p>For you, the user, the straightforward answer to this is that using <code>&quot;type&quot;: &quot;module&quot;</code> is a better developer experience than having to explicitly use <code>.mjs</code> in every single JavaScript file in your project if you're going to have a non-trivial number of files.</p>
+<h3 id="the-answer-with-more-context" tabindex="-1">The Answer With More Context <a class="direct-link" href="#the-answer-with-more-context" aria-hidden="true">#</a></h3>
+<p>Using <code>&quot;type&quot;: &quot;module&quot;</code> is often going to be a better developer experience for maintainers for a number of reasons:</p>
+<ul>
+<li>It minimizes manual changes and potential mistakes, allowing a single line of text to control parsing.</li>
+<li>It makes migrating from CommonJS to ESM easier.
+<ul>
+<li>It depends on how you'd like to do it, but one strategy is to chunk out work of converting your applications to ESM one bit at a time by setting <code>&quot;type&quot;: &quot;module&quot;</code> and converting all the CommonJS code to use the <code>.cjs</code> file extension.</li>
+</ul>
+</li>
+<li>It allows ecosystem tooling to quickly determine if your projects are using ESM or not.
+<ul>
+<li>Note that JSON modules (and therefore importing <code>package.json</code>) are only supported behind the <code>--experimental-json-modules</code> flag. It does seem that necessary proposals to streamline this seem to be making pretty decent progress through the relevant standards processes.</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section class="poke">
+</section>
+  </seciton>
+  <footer></footer>
+</body>
+</html>
