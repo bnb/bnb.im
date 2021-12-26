@@ -2,7 +2,7 @@ const { DateTime } = require("luxon")
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it")
 const markdownItAnchor = require("markdown-it-anchor")
-const seriesData = require("./_data/seriesData.json")
+const seriesData = require("./data/seriesData.json")
 
 
 // config largely taken from https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js
@@ -172,9 +172,9 @@ module.exports = function(eleventyConfig) {
     // These are all optional (defaults are shown):
     dir: {
       input: ".",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
+      includes: "includes",
+      data: "data",
+      output: "pages"
     }
   }
 }
