@@ -174,7 +174,7 @@ module.exports = function(eleventyConfig) {
       input: ".",
       includes: "includes",
       data: "data",
-      output: "pages"
+      output: "docs"
     }
   }
 }
