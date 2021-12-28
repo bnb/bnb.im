@@ -1,6 +1,7 @@
 ---
 title: An Unintentionally Comprehensive Introduction to GitHub Actions CI
 layout: post
+date: 2019-10-02
 description: I recently started working on some templates for GitHub Actions CI that Node.js and JavaScript folks could simply copy/paste to instantly get cross-platform CI builds for free inside of GitHub. In this post, we go over those templates and walk line-by-line over one of them to better understand the composition of a GitHub Action CI template.
 tags:
   - post

@@ -8,7 +8,7 @@ layout: layouts/index.njk
   </section>
   <section>
     <h2>Blog</h2>
-    {%- for post in collections.post -%}
+    {%- for post in collections.post | reverse -%}
     <article>
         {% if post.data.series %}
           <h3 class="post-list-entry"><a href="{{ post.url | urlize }}">{{ post.data.title }}</a>  as a part of the <a href="{{ 'series/' + post.data.series | urlize }}">{{ seriesData[post.data.series].title }}</a></h3> series.
