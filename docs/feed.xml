@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tierney Cyren</title>
+  <subtitle>Writings about development.</subtitle>
+  <link href="https://bnb.im/feed.xml" rel="self"/>
+  <link href="https://bnb.im/"/>
+  <updated>2021-06-17T00:00:00Z</updated>
+  <id>https://bnb.im/</id>
+  <author>
+    <name>Tierney Cyren</name>
+    <email>hello@bnb.im</email>
+  </author>
+  
+  <entry>
+    <title>My 🔥 First Experience Attending TC39</title>
+    <link href="https://bnb.im/posts/my-first-experience-attending-tc39/"/>
+    <updated>2019-04-15T00:00:00Z</updated>
+    <id>https://bnb.im/posts/my-first-experience-attending-tc39/</id>
+    <content type="html">&lt;p&gt;A few weeks ago I had the opportunity to attend TC39, the ECMA technical committee that defines the ECMAScript specification, for the first time. As a first-timer, the experience wasn&#39;t what I expected and I want to share what it was like being there. I&#39;d like to share that experience with y&#39;all 💖&lt;/p&gt;
+&lt;h2 id=&quot;what-the-heck-is-tc39&quot; tabindex=&quot;-1&quot;&gt;What the heck is TC39 &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#what-the-heck-is-tc39&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;TC39 is a Technical Committee (hence TC) under &lt;a href=&quot;https://www.ecma-international.org/&quot;&gt;ECMA International&lt;/a&gt; that defines the ECMAScript standard – better known as JavaScript. There&#39;s a pretty good article outlining what the differences between the two are &lt;a href=&quot;https://medium.freecodecamp.org/whats-the-difference-between-javascript-and-ecmascript-cba48c73a2b5&quot;&gt;over on FreeCodeCamp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;tl;dr: TC39 builds the specification that browser engines implement that lets &lt;em&gt;you&lt;/em&gt; run JavaScript.&lt;/p&gt;
+&lt;h2 id=&quot;terminology&quot; tabindex=&quot;-1&quot;&gt;Terminology &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#terminology&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I wanted to build a tiny list of terminology because there is a lot of words that are commonly used in the meetings. Trying to interpret the terminology while also keeping up with the discussions was a challenge. Going into the meeting, I knew none of the terminology. Over three days I ended up catching on. In the rest of this article, I&#39;ll be using some of these terms – I wanted to put them up front so y&#39;all will be able to refer to them 💖&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Proposal&lt;/strong&gt;: A proposal is a suggested addition to ECMAScript. For example, &lt;code&gt;import()&lt;/code&gt; and &lt;code&gt;BigInt&lt;/code&gt; are both proposals. You can find the full list of proposals &lt;a href=&quot;https://github.com/tc39/proposals&quot;&gt;on GitHub&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stages&lt;/strong&gt;: The mechanism that TC39 uses to advance proposals. I would argue this is a consensus mechanism, though others may disagree. You can find the entire staging process in the &lt;a href=&quot;https://tc39.github.io/process-document/&quot;&gt;process document&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plenary&lt;/strong&gt;: The part of the meeting in which proposals are being discussed. Effectively, when everyone is in the room discussing proposals.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normative&lt;/strong&gt;: Typically brought up in the context of &amp;quot;normative changes&amp;quot;, when something is normative it&#39;s a requirement in the spec that&#39;s not reflected correctly. A &amp;quot;normative change&amp;quot; is a change that is intended to resolve such an issue. Basically, they&#39;re bugs in the spec. See &lt;a href=&quot;https://dev.to/allenwb&quot;&gt;@allenwb&lt;/a&gt;&#39;s &lt;a href=&quot;https://dev.to/allenwb/comment/a5eg&quot;&gt;comment&lt;/a&gt; on this post for more context!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delegate&lt;/strong&gt;: An individual representing a member (members are corporate entities) of ECMA International.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Invited Expert&lt;/strong&gt;: Someone who is invited by the Secretariat General (a role currently held by &lt;a href=&quot;https://www.linkedin.com/in/istv%C3%A1n-sebesty%C3%A9n-81733a7/&quot;&gt;Istvan Sebestyen&lt;/a&gt; – you can see the job description &lt;a href=&quot;https://www.ecma-international.org/news/Call_for_new_Ecma_SG_March%202018.pdf&quot;&gt;here&lt;/a&gt;) or a member or of TC39 (as far as I can tell?) as a domain expert. They are not delegates themselves.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;expectation-vs.-reality&quot; tabindex=&quot;-1&quot;&gt;Expectation vs. Reality &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#expectation-vs.-reality&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;what-were-my-expectations-going-in&quot; tabindex=&quot;-1&quot;&gt;What were my expectations going in? &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#what-were-my-expectations-going-in&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In the context of the plenary session, I was expecting was an extremely high barrier in terms of a computer science education and in terms of understanding how specifications work. That is &lt;em&gt;not&lt;/em&gt; my background, so I was... nervous about that expectation.&lt;/p&gt;
+&lt;p&gt;As an extension of that expectation, I was confident that I wasn&#39;t going to be able to contribute to the meeting much at all – I was expecting to observe the meeting to figure out if there was a path to meaningful contributions for me.&lt;/p&gt;
+&lt;h3 id=&quot;how-did-my-expectations-stack-up-to-reality&quot; tabindex=&quot;-1&quot;&gt;How did my expectations stack up to reality? &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#how-did-my-expectations-stack-up-to-reality&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In reality, the technical barrier was a lot lower than my expectations. There was a lot I didn&#39;t understand, but that mostly seemed to stem from not being familiar with the specification and how certain parts of it work – less of a &amp;quot;you&#39;re not coming from a computer-science background&amp;quot; and more of a &amp;quot;you&#39;re not familiar with this specific context.&amp;quot; I know I can catch up on context, but I don&#39;t think I can reasonably catch up on a comp-sci degree.&lt;/p&gt;
+&lt;p&gt;This isn&#39;t to say that a computer science background wouldn&#39;t be helpful (it absolutely would), but I&#39;m not feeling left out because I don&#39;t have one. There is a &lt;em&gt;tremendous&lt;/em&gt; amount of work that can be done with other skills. Technical writing, reviewing, contributor onboarding, and even experience with JavaScript as a developer of any level are all traits that are appreciated in the meetings and in work on GitHub.&lt;/p&gt;
+&lt;p&gt;Additionally, I was surprised that there were multiple paths to non-trivial contributions that weren&#39;t just technical contributions. Just like any good open-source project, TC39 seemed to value non-code contributions. I now realize how... silly my expectation of not being able to contribute was because the vast majority of the work done in TC39 isn&#39;t actually about writing code. There is absolutely code written (see, for example, the &lt;a href=&quot;https://github.com/tc39/proposal-realms&quot;&gt;Realms proposal&lt;/a&gt;, which has a shim, examples, and other bits of code) but an immense amount of the work seems to be writing docs, building consensus, and other work to help surface both the specification and the processes via which the specification are built.&lt;/p&gt;
+&lt;p&gt;I was incredibly happy to be able to assist with meeting minutes – of which there were roughly two dozen pages written on each of the three days. As someone with ADHD, it was awesome to be able to follow along with the discussion by typing out what I was hearing (this personally helps me commit information to memory more easily) and work with 1-2 other people at a time on getting content into the minutes as a team. Additionally, there were several points when I hit a limit of being able to focus on the discussions, and I was able to spin out at those points and focus on something else. Everyone who was working on the minutes was incredibly friendly, and I felt like that contribution was valued – something I&#39;d 100% not expected out of the first meeting.&lt;/p&gt;
+&lt;h2 id=&quot;timeline&quot; tabindex=&quot;-1&quot;&gt;Timeline &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#timeline&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;TC39 meetings span three days. I&#39;m not sure what the plan usually is, but this meeting was Tuesday, Wednesday, and Thursday. I assume they intentionally put it in the middle of the week so delegates can travel and attend on their work-week, rather than forcing them to travel over the weekends.&lt;/p&gt;
+&lt;p&gt;Let&#39;s dig into what each day looked like in terms of what happened in plenary and planned activities.&lt;/p&gt;
+&lt;h3 id=&quot;day-1:&quot; tabindex=&quot;-1&quot;&gt;Day 1: &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#day-1:&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Plenary session:
+&lt;ul&gt;
+&lt;li&gt;Started with What seemed to me to be boilerplate kickoff presentations (some metrics reporting about the spec&lt;/li&gt;
+&lt;li&gt;Some high level &amp;quot;normative&amp;quot; presentations&lt;/li&gt;
+&lt;li&gt;Advancement of a few non-controversial proposals through the stages&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;After plenary, there was a first-timers meetup, led by &lt;a href=&quot;https://twitter.com/gesa&quot;&gt;Aki Rose Braun&lt;/a&gt; – one of the TC39 co-chairs.
+&lt;ul&gt;
+&lt;li&gt;I found it helpful to identify who else was also at the meeting for the first time (a few people from Netflix, IBM, GitHub, and of course myself from Microsoft).&lt;/li&gt;
+&lt;li&gt;This meetup provided a space for me to get the vast majority of my questions answered!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;day-2:&quot; tabindex=&quot;-1&quot;&gt;Day 2: &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#day-2:&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Plenary session:
+&lt;ul&gt;
+&lt;li&gt;Discussions of the more meaty/controversial proposals started.
+&lt;ul&gt;
+&lt;li&gt;Multiple people told me this would be how it went on Day 1.&lt;/li&gt;
+&lt;li&gt;The proposals discussed were all at various stages – 1, 2, and 3.
+&lt;ul&gt;
+&lt;li&gt;I&#39;d not expected this much diversity in the levels of maturity of each proposal, but it was exciting to see how the conversations were slightly different at each stage.&lt;/li&gt;
+&lt;li&gt;One of the biggest takeaways from this experience was that certain types of concerns only come up at certain stages, and some concerns can be ignored until a proposal reaches a given stage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;One or two discussions went into overtime and had additional time allotted to them later so we could continue working through the other proposals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Ended with a dinner for the entire attending membership (and invited experts) of TC39.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;day-3:&quot; tabindex=&quot;-1&quot;&gt;Day 3: &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#day-3:&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Plenary session:
+&lt;ul&gt;
+&lt;li&gt;Almost identical in structure to Day 2.&lt;/li&gt;
+&lt;li&gt;Major difference that I noticed in &lt;em&gt;this&lt;/em&gt; meeting – not sure if this is standard practice – was that the the proposals for features that typically get a lot of attention from the broader JavaScript ecosystem were on Day 3, as opposed to the features that get less widespread attention.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Ended with the &lt;a href=&quot;https://twitter.com/concoquere/status/1111401201424195584?s=20&quot;&gt;Modern JavaScript: /runtimes/&lt;/a&gt; meetup that was organized by &lt;a href=&quot;https://twitter.com/MylesBorins/&quot;&gt;Myles Borins&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There were a few constants between all the days:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Breakfast and lunch were provided by the venue each day.&lt;/li&gt;
+&lt;li&gt;There was about an hour for lunch, and several 5-15 minute breaks throughout the day.&lt;/li&gt;
+&lt;li&gt;Individuals – myself included – dropped out often to attend meetings or complete their normal work that they needed to do. Plenty of space was available to do this, and it wasn&#39;t looked down upon at all.&lt;/li&gt;
+&lt;li&gt;Each night, some tangent of attendees ended up going out to grab dinner as a group whether or not there was something officially planned.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Something I&#39;d not expected in any way was the hallway track – during lunches, breaks, and at the dinners I attended, I had many excellent discussions with people who I&#39;d not met before. Everyone was incredibly warm and welcoming – probably &lt;em&gt;more so&lt;/em&gt; because I was a first-time attendee.&lt;/p&gt;
+&lt;p&gt;Also worth noting that this specific meeting was graciously hosted in the Google NYC offices, thanks to &lt;a href=&quot;https://twitter.com/MylesBorins/&quot;&gt;Myles Borins&lt;/a&gt; and the cast of JavaScript Googlers in NYC.&lt;/p&gt;
+&lt;h2 id=&quot;takeaways&quot; tabindex=&quot;-1&quot;&gt;Takeaways &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/my-first-experience-attending-tc39/#takeaways&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Even though I&#39;d come in with few expectations, the entire experience broke the mold that I thought it would fit in.&lt;/p&gt;
+&lt;p&gt;Every single delegate that I talked to was extremely encouraging of new participants, absolutely following the same structure and practices that I&#39;ve come to expect from open-source projects – straying from how I&#39;d assumed standards bodies operated in general. My unique personal background was valued. I was warmly welcomed and gently encouraged to contribute however I felt comfortable. The kind of non-technical work that I end up doing – documentation, first-timer onboarding, and context building – is something the group is looking to do &lt;em&gt;more&lt;/em&gt; of.&lt;/p&gt;
+&lt;p&gt;One of the threads that were brought up each day in various ways was engagement with the broader JavaScript community – not as a question, but more as a value. Much as my assumptions about standards bodies were challenged by work that&#39;s already been completed around encouraging new delegates and their participation, I&#39;m extraordinarily happy to see that the individuals who represent TC39&#39;s membership care about this and are holding it more like a core value and less as &amp;quot;something we should probably do&amp;quot;, as I assumed.&lt;/p&gt;
+&lt;p&gt;Overall, the experience was different than anything else I&#39;ve ever done in terms of technology and community. I fairly confident I&#39;m going to continue participating as a delegate, and see how I can meaningfully contribute to processes, community, and the spec itself.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Using npx and npm scripts to Reduce the Burden of Developer Tools</title>
+    <link href="https://bnb.im/posts/using-npx-and-npm-scripts-to-reduce-the-burden-of-developer-tools/"/>
+    <updated>2019-04-22T00:00:00Z</updated>
+    <id>https://bnb.im/posts/using-npx-and-npm-scripts-to-reduce-the-burden-of-developer-tools/</id>
+    <content type="html">&lt;p&gt;On Friday, I was working on a &lt;a href=&quot;https://github.com/bnb/step-by-step-express-workshop&quot;&gt;workshop-ified version&lt;/a&gt; of &lt;a href=&quot;https://github.com/bnb/step-by-step-express&quot;&gt;Step by Step Express&lt;/a&gt; for &lt;a href=&quot;http://flawlesshacks.com/&quot;&gt;Flawless Hacks&lt;/a&gt; in Brooklyn.&lt;/p&gt;
+&lt;p&gt;In the workshop-ified version, I&#39;ve modified each step so there is an &lt;code&gt;app.js&lt;/code&gt; and an &lt;code&gt;app.complete.js&lt;/code&gt; so that attendees could start with a clean slate from the previous step and know what they&#39;re aiming for to complete in the step that they&#39;re working on.&lt;/p&gt;
+&lt;p&gt;I figured there was probably a tool on npm that would allow me to lower the barrier even further to let attendees/users know what they need to do to complete the step and check their code against &lt;code&gt;app.complete.js&lt;/code&gt; if their code isn&#39;t doing what they think it is.&lt;/p&gt;
+&lt;p&gt;After a bit of searching, I was able to find &lt;a href=&quot;https://www.npmjs.com/package/prettydiff&quot;&gt;Pretty Diff&lt;/a&gt;, which exposes a CLI tool that allows you to diff two files, and show the difference in the console.&lt;/p&gt;
+&lt;p&gt;I tested the CLI a bit after globally installing it and was able to figure out that because of how I structured the changes (&lt;code&gt;app.js&lt;/code&gt; and &lt;code&gt;app.complete.js&lt;/code&gt; in each folder in addition to each folder having its own &lt;code&gt;package.json&lt;/code&gt;), I was able to use the same command for every single step:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; source:&lt;span class=&quot;token string&quot;&gt;&quot;app.js&quot;&lt;/span&gt; diff:&lt;span class=&quot;token string&quot;&gt;&quot;app.complete.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Awesome! I found a tool that will hopefully lower the barrier to finding success with the code that they&#39;ll be writing. There&#39;s only one problem: they&#39;ll need the CLI to be installed for the above command to work. That sounds like a &lt;em&gt;fantastic&lt;/em&gt; way to increase the barrier to entry and waste time on tooling that was intended to improve the experience, not take away from it 😱&lt;/p&gt;
+&lt;h2 id=&quot;enter-npx&quot; tabindex=&quot;-1&quot;&gt;Enter npx &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/using-npx-and-npm-scripts-to-reduce-the-burden-of-developer-tools/#enter-npx&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Luckily, there&#39;s this excellent tool that everyone who has a modern version of &lt;code&gt;npm&lt;/code&gt; installed already has: &lt;code&gt;npx&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In case you&#39;re not familiar, &lt;code&gt;npx&lt;/code&gt; is a CLI that the &lt;code&gt;npm&lt;/code&gt; team ships which automagically executes a CLI from a module on the npm registry. Ideally, most modules will only ship one top-level command – for those modules, you can simply run &lt;code&gt;npx &amp;lt;module name&amp;gt;&lt;/code&gt; and the command will be executed.&lt;/p&gt;
+&lt;p&gt;In our case, we&#39;re looking to run the &lt;code&gt;prettydiff&lt;/code&gt; module and pass the &lt;code&gt;diff&lt;/code&gt; command. Luckily, &lt;code&gt;npx&lt;/code&gt; makes this super easy:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;npx prettydiff &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; source:&lt;span class=&quot;token string&quot;&gt;&quot;app.js&quot;&lt;/span&gt; diff:&lt;span class=&quot;token string&quot;&gt;&quot;app.complete.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Workshop attendees can 100% run this in any of the steps&#39; directories and they&#39;ll be able to see a diff of the before/after!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://thepracticaldev.s3.amazonaws.com/i/hczjz1wyriurmcsjfdhr.png&quot; alt=&quot;What a terminal looks like after a participant runs  in the step-two directory&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Awesome! I&#39;ve found a workable solution... that is 58 characters long and has some weird syntax that may be difficult to remember for everyone. It works, but it&#39;s not necessarily ideal. Luckily, we can make it even easier.&lt;/p&gt;
+&lt;h2 id=&quot;using-npm-scripts&quot; tabindex=&quot;-1&quot;&gt;Using npm scripts &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/using-npx-and-npm-scripts-to-reduce-the-burden-of-developer-tools/#using-npm-scripts&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;npm scripts are a super handy utility in our toolbelt that makes repetitive tasks and long commands easy. Awesomely, you can use &lt;code&gt;npx&lt;/code&gt; inside of npm scripts – meaning you can use &lt;strong&gt;any&lt;/strong&gt; CLI on npm to do work in your project without ever needing to actually install it. This is fantastic for build steps, productivity tools, and (in our case) diffing code.&lt;/p&gt;
+&lt;p&gt;In my case, I added a &lt;code&gt;diff&lt;/code&gt; command to my &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;  &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;lint&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;standard&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;diff&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npx prettydiff diff source:\&quot;app.js\&quot; diff:\&quot;app.complete.js\&quot;&quot;&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, instead of needing to write out &lt;code&gt;npx prettydiff diff source:&amp;quot;app.js&amp;quot; diff:&amp;quot;app.complete.js&amp;quot;&lt;/code&gt; attendees of my workshop can just type &lt;code&gt;npm run diff&lt;/code&gt; and the command will execute 🤗&lt;/p&gt;
+&lt;h2 id=&quot;fin&quot; tabindex=&quot;-1&quot;&gt;Fin &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/using-npx-and-npm-scripts-to-reduce-the-burden-of-developer-tools/#fin&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I love npx and think npx + npm scripts is a super powerful combination that allows end-users of our JavaScript code to reduce the cognitive load of repetitive commands that aid their workflow. I wanted to share this quick example of how I&#39;ve used it in hopes of enabling others to focus more on code rather than getting caught up on workflows ✨&lt;/p&gt;
+&lt;p&gt;If you&#39;ve got any questions about npx, npm scripts, or anything else I&#39;ve talked about in this article, please don&#39;t hesitate to ask in the comments – more than happy to answer any questions you may have!&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>The Awesome Features that Just Landed with Node.js v12</title>
+    <link href="https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/"/>
+    <updated>2019-04-25T00:00:00Z</updated>
+    <id>https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/</id>
+    <content type="html">&lt;p&gt;This week, we saw the release of Node.js v12, the next Node.js release line that will become LTS. I wanted to go through the various posts that went out and the changelog and condense the information into an easily consumable digest of what&#39;s new in Node.js v12.x to share with everyone. 💖&lt;/p&gt;
+&lt;h2 id=&quot;the-changes&quot; tabindex=&quot;-1&quot;&gt;The 🔥 Changes &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#the-changes&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Let&#39;s dig into some of the most important and remarkable changes that have landed in v12.0.0!&lt;/p&gt;
+&lt;h3 id=&quot;new-es-modules-who-dis&quot; tabindex=&quot;-1&quot;&gt;New ES Modules, who dis &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#new-es-modules-who-dis&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;With the release of Node.js v12.0.0, we see the introduction of a new implementation of ES Modules in Node.js. 🎉&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; ES Modules features are still &lt;strong&gt;Experimental&lt;/strong&gt; and as such should &lt;em&gt;not&lt;/em&gt; be used in production code until they are finalized.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At release, this new implementation has replaced the previous implementation behind the &lt;code&gt;--experimental-modules&lt;/code&gt; flag. This is intended to help get the new implementation out there and tested so the project can get feedback. If all goes well (🤞), this can ship unflagged once Node.js v12 goes LTS in October!&lt;/p&gt;
+&lt;p&gt;Up front, I want to say this is going to be a tl;dr. If you&#39;re interested in a deeper dive into the new hotness around ESM in Node.js, please check out the blog post by &lt;a href=&quot;https://medium.com/@nodejs/announcing-a-new-experimental-modules-1be8d2d6c2ff&quot;&gt;the Modules Team&lt;/a&gt; on Medium.&lt;/p&gt;
+&lt;h4 id=&quot;previous-implementation&quot; tabindex=&quot;-1&quot;&gt;Previous implementation &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#previous-implementation&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Many of the previous implementation&#39;s features carried over. This includes ES2015 &lt;code&gt;import&lt;/code&gt; statements, various kinds of &lt;code&gt;export&lt;/code&gt;, Node.js &lt;code&gt;export&lt;/code&gt; support on all core modules, WIP imports for CommonJS, &lt;strong&gt;very&lt;/strong&gt; WIP loader API, and explicit ESM parsing if the &lt;code&gt;.mjs&lt;/code&gt; file extension is present.&lt;/p&gt;
+&lt;h4 id=&quot;new-implementation-features&quot; tabindex=&quot;-1&quot;&gt;New implementation features &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#new-implementation-features&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;These features are 100% new with the enhancements the Modules Team has been working on, and are available behind the &lt;code&gt;--experimental-modules&lt;/code&gt; flag in Node.js v12.0.0.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Import and export syntax in &lt;code&gt;.js&lt;/code&gt; files
+&lt;ul&gt;
+&lt;li&gt;there was lots of feedback that Node.js needs to provide a way to use import/export in &lt;code&gt;.js&lt;/code&gt; files.&lt;/li&gt;
+&lt;li&gt;Two different solutions were implemented for this (keep reading!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Support for &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt; in &lt;code&gt;package.json&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;If this is detected, Node.js will treat &lt;em&gt;all&lt;/em&gt; &lt;code&gt;.js&lt;/code&gt; files in your project as ES Modules.&lt;/li&gt;
+&lt;li&gt;If you still have CommonJS files, you can rename them with the &lt;code&gt;.cjs&lt;/code&gt; file extension, which will tell Node.js to parse them as CommonJS explicitly&lt;/li&gt;
+&lt;li&gt;An &lt;code&gt;--input-type&lt;/code&gt; flag for cases like &lt;code&gt;--eval&lt;/code&gt; and STDIN&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;current-wip-features&quot; tabindex=&quot;-1&quot;&gt;Current WIP Features &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#current-wip-features&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;These features are currently being worked on by the Modules team and are either implemented but are likely going to change &lt;em&gt;or&lt;/em&gt; are being worked on but did not ship in Node.js v12.0.0.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JSON imports
+&lt;ul&gt;
+&lt;li&gt;Currently does not work, but is being actively worked on.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;import and require interop
+&lt;ul&gt;
+&lt;li&gt;️️⚠️ The Modules Team has requested that you do not publish ES Modules that can be used in Node.js until it&#39;s been resolved. I assume that modules published before this is resolved will likely break.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Module Loaders
+&lt;ul&gt;
+&lt;li&gt;⚠️  Very WIP&lt;/li&gt;
+&lt;li&gt;A first implementation of the &lt;code&gt;--loader&lt;/code&gt; API has shipped, but it&#39;s going to be improved upon and, as such, &lt;em&gt;change&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;A simpler way to &lt;code&gt;require&lt;/code&gt; in ES Modules code.
+&lt;ul&gt;
+&lt;li&gt;The current implementation is a bit heavy-handed. The Modules team is working on lowering the barrier.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Package path maps
+&lt;ul&gt;
+&lt;li&gt;This would allow for less verbose imports in certain situations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Automatic entry point module type detection
+&lt;ul&gt;
+&lt;li&gt;Effectively, static analysis that would allow Node.js to figure out if a module is a CommonJS module or an ES Module.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;quick-esm-examples&quot; tabindex=&quot;-1&quot;&gt;Quick ESM Examples &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#quick-esm-examples&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;If you&#39;re interested in seeing what ESM in Node.js looks like, you can check out two repos I pushed out yesterday:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/bnb/simple-esm&quot;&gt;simple-esm&lt;/a&gt; – an example of what ESM in Node.js looks like with the current ESM implementation&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/bnb/simple-esm-usage&quot;&gt;simple-esm-usage&lt;/a&gt; – an example of how you could use ESM modules from npm in Node.js if the current implementation were to ship unchanged (it&#39;s going to be changing, so this is more theory than practice)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&#39;m planning to keep these repos (and the version of simple-esm published to npm) both up-to-date as the ESM implementation changes both for my own understanding and as a community resource to have a minimum viable example of ESM in Node.js.&lt;/p&gt;
+&lt;h3 id=&quot;v8-7.4&quot; tabindex=&quot;-1&quot;&gt;V8 7.4 &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#v8-7.4&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This release included a major &lt;strong&gt;V8 upgrade&lt;/strong&gt;, jumping forward several releases to the most recent version of V8 at time of release. This upgrade includes a plethora of really fantastic enhancements. I&#39;m personally most interested in &lt;a href=&quot;https://v8.dev/blog/v8-release-72#async-stack-traces&quot;&gt;Zero-cost Async Stack Traces&lt;/a&gt;, but there are a plethora of additional enhancements that are better outlined by Mathias Bynens from the V8 team:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/mathias/status/1120700101637353473&quot;&gt;https://twitter.com/mathias/status/1120700101637353473&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;tls-1.3&quot; tabindex=&quot;-1&quot;&gt;TLS 1.3 &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#tls-1.3&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Next up, we have &lt;strong&gt;official TLS 1.3 support&lt;/strong&gt;. This is an incredible improvement to previous TLS versions, and I&#39;m super excited that it&#39;s now supported in a release line that&#39;ll be going LTS! Thankfully, this is a backward compatible change thanks to the underlying implementation in OpenSSL 1.1.1. Additionally, it&#39;s mentioned &lt;a href=&quot;https://github.com/nodejs/node/pull/26209&quot;&gt;in the PR&lt;/a&gt; that it should be backported to other LTS release lines.&lt;/p&gt;
+&lt;p&gt;If you&#39;re curious about the awesome parts of TLS 1.3, I recommend this &lt;a href=&quot;https://www.ietf.org/blog/tls13/&quot;&gt;blog post&lt;/a&gt; from the IETF.&lt;/p&gt;
+&lt;h3 id=&quot;worker-threads&quot; tabindex=&quot;-1&quot;&gt;Worker Threads &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#worker-threads&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This is the first LTS release line that will include the currently-experimental work on Worker Threads. This release has removed the need to run Worker Threads with a flag, hopefully lowering the barrier to more widespread usage of the tool for parallelizing work in Node.js.&lt;/p&gt;
+&lt;p&gt;If you&#39;re interested in trying out Worker Threads today, there are a few resources you can use to get started:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://medium.com/@Trott/using-worker-threads-in-node-js-80494136dbb6&quot;&gt;Using worker_threads in Node.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://hackernoon.com/simple-bidirectional-messaging-in-node-js-worker-threads-7fe41de22e3c&quot;&gt;Simple bidirectional messaging in Node.js Worker Threads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.logrocket.com/node-js-multithreading-what-are-worker-threads-and-why-do-they-matter-48ab102f8b10&quot;&gt;Node.js multithreading: What are Worker Threads and why do they matter?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodejs.org/api/worker_threads.html&quot;&gt;Official Node.js Worker Threads Docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;built-in-heap-snapshotting&quot; tabindex=&quot;-1&quot;&gt;Built-in Heap Snapshotting &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#built-in-heap-snapshotting&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In this release, we also see built-in heap snapshotting adapted from the &lt;a href=&quot;https://www.npmjs.com/package/heapdump&quot;&gt;heapdump module&lt;/a&gt; on npm. This is exposed via &lt;code&gt;v8.getHeapSnapshot()&lt;/code&gt; and returns a readable stream.&lt;/p&gt;
+&lt;h2 id=&quot;other-notable-changes-and-improvements&quot; tabindex=&quot;-1&quot;&gt;Other Notable Changes and Improvements &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#other-notable-changes-and-improvements&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Core Dependencies:
+&lt;ul&gt;
+&lt;li&gt;Upgraded to OpenSSL &lt;a href=&quot;https://www.openssl.org/news/cl111.txt&quot;&gt;1.1.1b&lt;/a&gt; (&lt;a href=&quot;https://github.com/nodejs/node/pull/26327&quot;&gt;nodejs/node#26327&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Upgraded to ICU 63 (&lt;a href=&quot;https://github.com/nodejs/node/pull/25852&quot;&gt;nodejs/node#25852&lt;/a&gt;)
+&lt;ul&gt;
+&lt;li&gt;There is also currently an &lt;a href=&quot;https://github.com/nodejs/node/pull/27361&quot;&gt;open PR&lt;/a&gt; to further update to ICU 64.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Node.js has started using &lt;a href=&quot;https://github.com/nodejs/llhttp&quot;&gt;llhttp&lt;/a&gt; as its default parser (&lt;a href=&quot;https://github.com/nodejs/node/issues/24730&quot;&gt;nodejs/node#24730&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Invalid &lt;code&gt;main&lt;/code&gt; entries in &lt;code&gt;package.json&lt;/code&gt; will now throw an error (&lt;a href=&quot;https://github.com/nodejs/node/pull/26823&quot;&gt;nodejs/node#26823&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;node --debug&lt;/code&gt; is now EOL – use &lt;code&gt;node --inspect&lt;/code&gt; instead (&lt;a href=&quot;https://github.com/nodejs/node/pull/25828&quot;&gt;nodejs/node#25828&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;TLS 1.0 and 1.1 are now disabled by default (&lt;a href=&quot;https://github.com/nodejs/node/pull/23814&quot;&gt;nodejs/node#23814&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;fin&quot; tabindex=&quot;-1&quot;&gt;Fin &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-awesome-features-that-just-landed-with-node-js-v12/#fin&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Hopefully this overview of the new release is helpful to you! If you&#39;ve got any questions about the new features that&#39;ve shipped, when you can start expecting to use ESM in Node.js, or anything else about Node.js v12 I&#39;m happy to be a resource for you to hopefully find the answers you&#39;re looking for!&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>An Unintentionally Comprehensive Introduction to GitHub Actions CI</title>
+    <link href="https://bnb.im/posts/an-unintentionally-comprehensive-introduction-to-github-actions-ci/"/>
+    <updated>2019-10-02T00:00:00Z</updated>
+    <id>https://bnb.im/posts/an-unintentionally-comprehensive-introduction-to-github-actions-ci/</id>
+    <content type="html">&lt;p&gt;We&#39;re currently approaching GitHub Actions v2 shipping publicly for &lt;em&gt;everyone&lt;/em&gt; to use. I&#39;m personally super excited about this because it means I don&#39;t need to configure an external service to run my CI – I can slap in some YAML, and I&#39;m off with a cross-platform (!) CI system with multiple versions of Node.js installed.&lt;/p&gt;
+&lt;p&gt;For me, that&#39;s bliss. No need to go to an external site; everything is very neatly contained. That said, when I&#39;ve used other CI services in the past (primarily Travis CI and Azure Pipelines) I&#39;ve generally just copy/pasted someone else&#39;s CI configuration from the beginning and then tweaked it with additional context.&lt;/p&gt;
+&lt;p&gt;This time though, there&#39;s minimal prior context. During the beta of Actions v2, GitHub has published a few different CI templates that I could copy/paste certain parts from. However, there are a few standards I hold all of my projects to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;npm install&lt;/code&gt; should pass on the latest versions of all operating systems&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm test&lt;/code&gt; should pass on the latest versions of all operating systems&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm install&lt;/code&gt; and &lt;code&gt;npm test&lt;/code&gt; should succeed without fail on all &lt;a href=&quot;https://github.com/nodejs/release#release-schedule&quot;&gt;currently supported&lt;/a&gt; Node.js versions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This ends up meaning I have a matrix of anywhere from 9 (3 versions multiplied by three operating systems) to 12 (4 versions multiplied by three operating systems) CI runs on every project at any time. I&#39;ve found that the implementation of &lt;em&gt;how&lt;/em&gt; to achieve this varies greatly depending on the CI system.&lt;/p&gt;
+&lt;p&gt;Given that there&#39;s not going to be a massive amount of prior art on release, I figured I&#39;d begin building out some comprehensive templates so at launch people will have something to easily copy/paste and then tweak to suit their exact needs.&lt;/p&gt;
+&lt;h1 id=&quot;github-actions-ci-templates&quot; tabindex=&quot;-1&quot;&gt;GitHub Actions CI Templates &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/an-unintentionally-comprehensive-introduction-to-github-actions-ci/#github-actions-ci-templates&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;After working on adding GitHub Actions CI to &lt;a href=&quot;https://github.com/cutenode/good-first-issue&quot;&gt;good-first-issue&lt;/a&gt;, I figured I should probably abstract the CI file into a repo, so it&#39;s a bit more accessible.&lt;/p&gt;
+&lt;p&gt;As such, last night, I built out &lt;a href=&quot;https://github.com/cutenode/github-actions-ci-templates&quot;&gt;GitHub Actions CI Templates&lt;/a&gt;. Initially, I shipped it with a single template that covered my needs around Node.js and npm, but as of about an hour ago I&#39;ve added two additional templates: Node.js and Yarn, and Node.js and pnpm.&lt;/p&gt;
+&lt;p&gt;If you&#39;d like to check out the templates, they&#39;re all relatively straightforward as far as YAML goes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cutenode/github-actions-ci-templates/blob/master/templates/javascript/nodejs-cross-platform-ci.yml&quot;&gt;Node.js Cross-Platform&lt;/a&gt;:
+&lt;ul&gt;
+&lt;li&gt;Runs builds on:
+&lt;ul&gt;
+&lt;li&gt;Ubuntu (Latest),&lt;/li&gt;
+&lt;li&gt;Windows (Latest),&lt;/li&gt;
+&lt;li&gt;macOS (Latest)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Using all versions of Node.js that are &lt;a href=&quot;https://github.com/nodejs/release#release-schedule&quot;&gt;currently supported&lt;/a&gt; by the Node.js project,&lt;/li&gt;
+&lt;li&gt;Using &lt;code&gt;npm install&lt;/code&gt; and &lt;code&gt;npm test&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cutenode/github-actions-ci-templates/blob/master/templates/javascript/yarn-nodejs-cross-platform-ci.yml&quot;&gt;Node.js Cross-Platform (using Yarn)&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Runs builds on:
+&lt;ul&gt;
+&lt;li&gt;Ubuntu (Latest),&lt;/li&gt;
+&lt;li&gt;Windows (Latest),&lt;/li&gt;
+&lt;li&gt;macOS (Latest)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Using all versions of Node.js that are &lt;a href=&quot;https://github.com/nodejs/release#release-schedule&quot;&gt;currently supported&lt;/a&gt; by the Node.js project,&lt;/li&gt;
+&lt;li&gt;Using &lt;code&gt;yarn install&lt;/code&gt; and &lt;code&gt;yarn test&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cutenode/github-actions-ci-templates/blob/master/templates/javascript/pnpm-nodejs-cross-platform-ci.yml&quot;&gt;Node.js Cross-Platform (using pnpm)&lt;/a&gt;:
+&lt;ul&gt;
+&lt;li&gt;Runs builds on:
+&lt;ul&gt;
+&lt;li&gt;Ubuntu (Latest),&lt;/li&gt;
+&lt;li&gt;Windows (Latest),&lt;/li&gt;
+&lt;li&gt;macOS (Latest)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Using all versions of Node.js that are &lt;a href=&quot;https://github.com/nodejs/release#release-schedule&quot;&gt;currently supported&lt;/a&gt; by the Node.js project.&lt;/li&gt;
+&lt;li&gt;Using &lt;code&gt;pnpm install&lt;/code&gt; and &lt;code&gt;pnpm test&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;dissecting-the-github-actions-yaml-for-the-templates&quot; tabindex=&quot;-1&quot;&gt;Dissecting the GitHub Actions YAML for the Templates &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/an-unintentionally-comprehensive-introduction-to-github-actions-ci/#dissecting-the-github-actions-yaml-for-the-templates&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The templates all follow a relatively similar structure. I figured I&#39;d walk you through each line of code of the &lt;a href=&quot;https://github.com/cutenode/github-actions-ci-templates/blob/master/templates/javascript/nodejs-cross-platform-ci.yml&quot;&gt;Node.js Cross-Platform&lt;/a&gt; file to help ensure that they&#39;re understandable to you. Let&#39;s go line by line, with code on the top and the description on the bottom:&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Node.js Cross&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;platform CI (using Yarn)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above line is the title of the entire CI script, as it&#39;ll show up in the &lt;code&gt;Actions&lt;/code&gt; tab of the GitHub repo.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#name&quot;&gt;Workflow syntax docs - &lt;code&gt;name&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;push&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above line indicates the trigger for a run. For most CI cases, &lt;code&gt;[push]&lt;/code&gt; will be ideal since you want it to run every time you push code to the repo or to a PR.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#on&quot;&gt;Workflow syntax docs - &lt;code&gt;on&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/events-that-trigger-workflows&quot;&gt;Workflow trigger docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Workflows are composed of one or more jobs. This line is an indicator that we&#39;ve got multiple jobs to be run.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobs&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#usage-limits&quot;&gt;Usage limits&lt;/a&gt;, for context on limits around jobs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;  &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This one is the &lt;code&gt;job_id&lt;/code&gt; of our specific job. Since we&#39;re running a build, I named this &lt;code&gt;build&lt;/code&gt; but this specific name has no semantic meaning inside of GitHub Actions CI itself.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_id&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a required property, which tells the CI run what kind of machine it should be running on. In our case, we&#39;ve added some complexity by adding a matrix of operating systems that need to be built against. That said, the context of the matrix gets hoisted, and we can use that context here.&lt;/p&gt;
+&lt;p&gt;One key thing to note from the docs:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each job runs with a fresh instance of the virtual environment specified in by runs-on.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Meaning, every job is running a clean instance of whatever OS is selected. This is table stakes for CI, but it&#39;s always useful to keep it in mind. ❤️&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idruns-on&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.runs-on&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/virtual-environments-for-github-actions&quot;&gt;Virtual environments for GitHub Actions&lt;/a&gt;, which lists all the possible supported values for this property&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token key atrule&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Having a &lt;code&gt;strategy&lt;/code&gt; line is the way to begin defining a matrix of environments to run your builds in.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategy&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.strategy&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;      &lt;span class=&quot;token key atrule&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The tl;dr of a matrix is that it&#39;s the set of all the pieces of context you&#39;ll want to run against. The most straightforward matrix is one row – for example, multiple Node.js versions on a &lt;em&gt;single&lt;/em&gt; platform.&lt;/p&gt;
+&lt;p&gt;A simple matrix:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ubuntu-latest&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;That said, JavaScript and Node.js applications are effectively run on all three of the major operating systems in the world as a part of developer workflows. Often, we&#39;ll want to run on the three major operating systems to ensure that there are no unexpected platform-specific bugs that are going to occur – especially in open source when there are very few direct paths to end-users. Luckily, a matrix makes this relatively straightforward.&lt;/p&gt;
+&lt;p&gt;By adding in multiple operating systems, our matrix gets more complex:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ubuntu-latest&lt;/th&gt;
+&lt;th&gt;macos-latest&lt;/th&gt;
+&lt;th&gt;windows-latest&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;But... that&#39;s only the &lt;em&gt;latest&lt;/em&gt; versions of each platform. What about older versions that we may often need to support? Well, it turns out that we can also use older versions of each platform in GitHub Actions CI, which could even further complicate the matrix:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ubuntu-latest&lt;/th&gt;
+&lt;th&gt;ubuntu-16.04&lt;/th&gt;
+&lt;th&gt;macos-latest&lt;/th&gt;
+&lt;th&gt;macOS-10.14&lt;/th&gt;
+&lt;th&gt;windows-latest&lt;/th&gt;
+&lt;th&gt;windows-2016&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;And this is currenlty a downtime for Node.js builds. Half of the year (every year) there are 4 supported release lines, which would look more like this:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ubuntu-latest&lt;/th&gt;
+&lt;th&gt;ubuntu-16.04&lt;/th&gt;
+&lt;th&gt;macos-latest&lt;/th&gt;
+&lt;th&gt;macOS-10.14&lt;/th&gt;
+&lt;th&gt;windows-latest&lt;/th&gt;
+&lt;th&gt;windows-2016&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;td&gt;Node.js 8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;td&gt;Node.js 10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;td&gt;Node.js 12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js 13&lt;/td&gt;
+&lt;td&gt;Node.js 13&lt;/td&gt;
+&lt;td&gt;Node.js 13&lt;/td&gt;
+&lt;td&gt;Node.js 13&lt;/td&gt;
+&lt;td&gt;Node.js 13&lt;/td&gt;
+&lt;td&gt;Node.js 13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A matrix is super useful in helping us programmatically define such a list without actually having to define each of these contexts individually. This utility mostly comes when you start adding more platforms and versions, but thankfully the overhead of doing that is incredibly low from the configuration side of things (see the following sections for more context)&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.strategy.matrix&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;        &lt;span class=&quot;token key atrule&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; windows&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; macOS&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above is effectively a variable that we&#39;re assigning to the matrix, which can be dynamically called. In our case, we&#39;re just saying that the &lt;code&gt;os&lt;/code&gt; variable on &lt;code&gt;matrix&lt;/code&gt; (so &lt;code&gt;matrix.os&lt;/code&gt;) is going to be each of these. The &lt;em&gt;how&lt;/em&gt; is still a bit magic to me, but... it works, seemingly by iterating over each of them when they&#39;re called. When used in conjunction with another variable (like &lt;code&gt;node-version&lt;/code&gt;), they&#39;re iterated over to create something like the tables above effectively.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/virtual-environments-for-github-actions&quot;&gt;Virtual environments for GitHub Actions&lt;/a&gt;, which is where you can find information about all of the operating systems currently available.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;        &lt;span class=&quot;token key atrule&quot;&gt;node-version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;8.x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 10.x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 12.x&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Another variable where we&#39;re going to define the Node.js versions we&#39;d want to be running.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/actions/setup-node&quot;&gt;actions/setup-node&lt;/a&gt; – the GitHub Action we pass versions to, which defines the acceptable syntax for versions&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions&quot;&gt;Software in virtual environments for GitHub Actions&lt;br /&gt;
+&lt;/a&gt; – an exhaustive list of software available in each virtual environment (OS) by default&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each job contains a set of &lt;code&gt;steps&lt;/code&gt;. This specific line is where we indicate that we&#39;re going to begin defining the steps.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idsteps&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.steps&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Tells our workflow that we&#39;re going to be using the GitHub Action that can be found at &lt;code&gt;actions/checkout&lt;/code&gt; which maps to the GitHub org/repo at [&lt;a href=&quot;http://gihub.com/actions/checkout&quot;&gt;gihub.com/actions/checkout&lt;/a&gt;]. It&#39;s also worth noting that &lt;code&gt;@v1&lt;/code&gt; which is a tagged and released version that can be found in the &lt;a href=&quot;https://github.com/actions/checkout/releases/tag/v1.0.0&quot;&gt;GitHub Releases&lt;/a&gt; for the repo.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/actions/checkout&quot;&gt;actions/checkout&lt;/a&gt;, an action that checks out your repository to &lt;code&gt;$GITHUB_WORKSPACE&lt;/code&gt; in the virtual environment.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsuses&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.steps.uses&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Use Node.js $NaN on $&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The name to display for the job in the UIs that it&#39;s rendered within, given the various variables that we&#39;ve inserted using &lt;code&gt;matrix&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; There seems to be a bug where this does not render properly  – instead of rendering as a tagged template literal, the Actions UI renders as a string.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idname&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.name&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;      &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/setup&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;node@v1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Defines an external action – in this case, the [&lt;a href=&quot;http://github.com/actions/setup-node&quot;&gt;github.com/actions/setup-node&lt;/a&gt;] action at version 1.x.x (as released via the GitHub repo). In our case, this is an action that provides a super handy interface to install arbitrary versions of Node.js other than the version that comes baked into the VMs that are provided. My guess is that this will be a default action for &lt;em&gt;anyone&lt;/em&gt; who is running JavaScript or Node.js builds simply because it handles so much for you by default.&lt;/p&gt;
+&lt;p&gt;It&#39;s worth noting that actions consumed with &lt;code&gt;uses:&lt;/code&gt; can be sourced from within the same repository, from a public repository, and from a Docker image published to Docker Hub.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsuses&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.steps.uses&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/actions/setup-node&quot;&gt;actions/setup-node&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;      &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a &lt;code&gt;map&lt;/code&gt; (my assumption is that this is a &lt;code&gt;map&lt;/code&gt; in the sense of YAML&#39;s definition of a map) of the parameters defined in the action. In our case, &lt;code&gt;actions/setup-node&lt;/code&gt; needs a version to run with.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepswith&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.steps.with&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;        &lt;span class=&quot;token key atrule&quot;&gt;node-version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $NaN&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;actions/setup-node&lt;/code&gt; action needs a version of Node.js to run, via the &lt;code&gt;node-version:&lt;/code&gt; property. Since we named the variable for Node.js versions in our Matrix &lt;code&gt;node-versions&lt;/code&gt;, we&#39;re able to pass &lt;code&gt;matrix.node-version&lt;/code&gt; to the &lt;code&gt;node-version:&lt;/code&gt; property.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepswith&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.steps.with&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/actions/setup-node&quot;&gt;actions/setup-node&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; npm install and test&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We&#39;re again defining the name of a job. In this case, there&#39;s no dynamic information since the commands we&#39;re going to be running are pretty static.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;npm install&lt;/code&gt; and &lt;code&gt;npm test&lt;/code&gt;, but your applications may vary in install/build/test/ci commands – my recommendation for this is to tweak both the title and the actual commands, so it&#39;s extremely clear what&#39;s being run.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_id&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;      &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;&lt;br /&gt;        npm install&lt;br /&gt;        npm test&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is an interesting set of lines for those unfamiliar with YAML. We start with using a &lt;code&gt;run&lt;/code&gt; property for the job, which allows us to run any command on the system. In our case, we&#39;re going to use this to run &lt;code&gt;npm install&lt;/code&gt; and &lt;code&gt;npm test&lt;/code&gt;... but those are two different commands, that need to be run separately. The pipe (&lt;code&gt;|&lt;/code&gt;) is a tool defined in the &lt;a href=&quot;https://yaml.org/spec/1.2/spec.html#id2795688&quot;&gt;YAML spec&lt;/a&gt; as Literal Style. In our case, it allows us to write multiple lines that execute independently without having to use multiple &lt;code&gt;run:&lt;/code&gt; commands or multiple jobs. Basically, it&#39;s shorthand that enables use to be looser in how we&#39;re able to build out our file.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; It may be worth using &lt;code&gt;npm ci&lt;/code&gt; rather than &lt;code&gt;npm install&lt;/code&gt; to install dependencies, given that &lt;code&gt;npm ci&lt;/code&gt; was tailor-made for CI environments. You can find more details on &lt;code&gt;npm ci&lt;/code&gt; in the &lt;a href=&quot;https://docs.npmjs.com/cli/ci&quot;&gt;official documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsrun&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.steps.run&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.npmjs.com/cli/install&quot;&gt;npm install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.npmjs.com/cli/test&quot;&gt;npm test&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;      &lt;span class=&quot;token key atrule&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Allows us to set up environment variables in our virtual environments with relative ease.&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsenv&quot;&gt;Workflow syntax docs - &lt;code&gt;jobs.&amp;lt;job_id&amp;gt;.steps.env&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;        &lt;span class=&quot;token key atrule&quot;&gt;CI&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This one is a personal preference, and also happens to be the default for the simplest Node.js workflow suggested by GitHub. Simply sets an environment variable that can be easily picked up on by various tools. GitHub&lt;/p&gt;
+&lt;p&gt;Relevant docs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables&quot;&gt;Virtual environments for GitHub Actions – Environment Variables&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;what&#39;s-next&quot; tabindex=&quot;-1&quot;&gt;What&#39;s next? &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/an-unintentionally-comprehensive-introduction-to-github-actions-ci/#what&#39;s-next&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Currently, GitHub Actions CI is in a semi-public beta as a part of GitHub Actions v2 – they&#39;ve invited a bunch of folks who applied to use it. That said, if you feel like this is a repeat of what happened when GitHub Actions initially shipped last year, you&#39;ll be happy to know that in the &lt;a href=&quot;https://youtu.be/E1OunoCyuhY?t=2070&quot;&gt;GitHub Special Event&lt;/a&gt; in which GitHub Actions CI and GitHub Actions v2 were shared, Nat Friedman said that GitHub Actions CI and GitHub Actions v2, along with GitHub Package Registry, is shipping to everyone on November 13th – the first day of &lt;a href=&quot;https://githubuniverse.com/&quot;&gt;GitHub Universe&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So, in just over a month from the date of publishing this article, you&#39;ll be able to start using GitHub Actions CI on any and every public project for free. 🎉&lt;/p&gt;
+&lt;p&gt;If you&#39;ve got any questions or comments about what I&#39;ve talked about in this post, or if there&#39;s more you&#39;d like to learn about GitHub Actions CI or GitHub Actions v2, I&#39;d be more than happy to see if I can either answer your questions in the comments directly, make good free and public repos that can help give you answers, or write more posts on the subject if you&#39;d find that helpful!&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Jest and the `--changedSince` flag in GitHub Actions CI</title>
+    <link href="https://bnb.im/posts/jest-and-the-changedsince-flag-in-github-actions-ci/"/>
+    <updated>2020-04-09T00:00:00Z</updated>
+    <id>https://bnb.im/posts/jest-and-the-changedsince-flag-in-github-actions-ci/</id>
+    <content type="html">&lt;p&gt;Recently, I&#39;ve been working a lot more with GitHub Actions - both writing actions and creating CI pipelines for projects. Last week I picked up a project I started a bit ago: the &lt;a href=&quot;https://github.com/nodejs/examples&quot;&gt;nodejs/examples&lt;/a&gt; repository.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The examples repository is still in its early stages. As such, there&#39;s still a bunch of WIP work we&#39;re doing - we&#39;ve intentionally not talked a bunch publicly about it yet. That said, if you&#39;re interested in helping, feel free to reach out to me on &lt;a href=&quot;https://twitter.com/bitandbang&quot;&gt;Twitter&lt;/a&gt; or the &lt;a href=&quot;http://slack.openjsf.org/&quot;&gt;OpenJS Slack&lt;/a&gt; ❤️&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The goal of this repository is to be home to a bunch of distinct and well-tested examples of real-world Node.js that go beyond &amp;quot;hello, world!&amp;quot;. This means there&#39;s hopefully going to be a boatload of distinct projects in there.&lt;/p&gt;
+&lt;p&gt;This structure presents a challenge when trying to be straightforward for new contributions; specifically, it&#39;s a barrier to run a full test suite for many projects when someone submitting a PR only needs to see the results of the one they&#39;ve worked on.&lt;/p&gt;
+&lt;h2 id=&quot;jest&#39;s-solutions&quot; tabindex=&quot;-1&quot;&gt;Jest&#39;s Solutions &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/jest-and-the-changedsince-flag-in-github-actions-ci/#jest&#39;s-solutions&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Jest has a super handy &lt;a href=&quot;https://jestjs.io/docs/en/cli.html#--onlychanged&quot;&gt;&lt;code&gt;--onlyChanged&lt;/code&gt;&lt;/a&gt; feature that only tells you what has changed in the current repository. This is super duper handy, but the functionality is slightly unclear in one way: does it diff with master or just with the previous commit? It does indeed seem to be the latter (though I could totally be wrong!), which is not particularly helpful in the case of PRs with multiple commits.&lt;/p&gt;
+&lt;p&gt;As such, I looked through the flags that Jest exposes and found the &lt;a href=&quot;https://jestjs.io/docs/en/cli.html#--changedsince&quot;&gt;&lt;code&gt;--changedSince&lt;/code&gt;&lt;/a&gt; flag which compares the current work with a different branch. Since - in the case of nodejs/examples - master will always be a source of truth, this is perfect for the use case of potentially having multiple commits while still wanting to run only the tests relevant to a proposed change.&lt;/p&gt;
+&lt;h2 id=&quot;changedsince-and-github-actions-ci&quot; tabindex=&quot;-1&quot;&gt;&lt;code&gt;--changedSince&lt;/code&gt; and GitHub Actions CI &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/jest-and-the-changedsince-flag-in-github-actions-ci/#changedsince-and-github-actions-ci&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Previously, the &lt;code&gt;--onlyChanged&lt;/code&gt; flag worked flawlessly with GitHub Actions CI. When trying to simply change from &lt;code&gt;--onlyChanged&lt;/code&gt; to &lt;code&gt;--changedSince&lt;/code&gt;, the CI build immediately nuked itself with the following command:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;  ● Test suite failed to run&lt;br /&gt;&lt;br /&gt;    fatal: bad revision &lt;span class=&quot;token string&quot;&gt;&#39;^master&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This was bizarre to me since the test was working completely fine on my machine (shocker, I know). Upon investigating, this is a &lt;code&gt;git&lt;/code&gt; error and not a Jest error - Jest is merely acting as a courier for that error.&lt;/p&gt;
+&lt;p&gt;It turns out that the &lt;code&gt;actions/checkout&lt;/code&gt; GitHub Action does not checkout your full repository, but only the code relevant to the PR. As such, &lt;code&gt;master&lt;/code&gt; as a branch did not exist. Further, my specific use case of wanting to have &lt;code&gt;master&lt;/code&gt; in the run but have the PR branch checked out is not particularly well supported by &lt;code&gt;actions/checkout&lt;/code&gt; at present since it is somewhat of an edge case (though I did &lt;a href=&quot;https://github.com/actions/checkout/issues/214&quot;&gt;open an issue&lt;/a&gt; to request it).&lt;/p&gt;
+&lt;p&gt;While the examples are helpful, they don&#39;t solve my somewhat complex but not over the top use case. Layer on that I&#39;m not super excellent with git, and you have a challenging mixture.&lt;/p&gt;
+&lt;p&gt;I reached out to &lt;a href=&quot;https://twitter.com/codebytere/&quot;&gt;Shelley Vohr&lt;/a&gt;, who&#39;s extremely talented with git (amongst many other things) and explained what I was facing. She suggested that I&#39;d need to go one step beyond what the &lt;code&gt;actions/checkout&lt;/code&gt; repo recommended:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; fetch --no-tags --prune --depth&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; origin +refs/heads/*:refs/remotes/origin/* &lt;span class=&quot;token comment&quot;&gt;# fetches all branches&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... and needed to checkout &lt;code&gt;master&lt;/code&gt; with the following command:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b master &lt;span class=&quot;token comment&quot;&gt;# -b creates and checks out a new branch&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... and then switch back to the PR branch. Luckily, GitHub provides that data in the YAML config:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout $ &lt;span class=&quot;token comment&quot;&gt;# checks out the SHA of the HEAD from the PR&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This was all able to be combined as a part of a &lt;code&gt;run&lt;/code&gt; property in the YAML for the step, which runs whatever commands are passed to it:&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v2&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;&lt;br /&gt;        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/* # fetches all branches&lt;br /&gt;        git checkout -b master # -b creates and checks out a new branch&lt;br /&gt;        git checkout $ # checks out the SHA of the HEAD from the PR&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However, that&#39;s a rather bulky git fetch that can potentially artificially increase the build times as more branches are added to the repo. As such, I figured I should try to cut it down to just what I needed. After a bit of searching around, I found the &lt;code&gt;git fetch &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;&lt;/code&gt; structure. Since I know I&#39;ll always want to use master, this was a pretty easy change (while also ditching &lt;code&gt;--prune&lt;/code&gt; since it seems potentially useless in this case):&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v2&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;&lt;br /&gt;        git fetch --no-tags --depth=1 origin master&lt;br /&gt;        git checkout -b master&lt;br /&gt;        git checkout $&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In addition to all this YAML CI config, I also included a new npm script called &lt;code&gt;test:changedsince&lt;/code&gt; which is a handy shortcut for the Jest command I want to run:&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;  &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;jest --coverage&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;test:changedsince&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;jest --changedSince=master --coverage&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;lint&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;standard&quot;&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This new npm script took the place of the previous &lt;code&gt;test:onlychanged&lt;/code&gt; npm script in my final GitHub Actions CI YAML config, seen below. &lt;strong&gt;Note&lt;/strong&gt;: if you copy-paste this config into your own CI, you&#39;ll need ensure that you have &lt;code&gt;jest&lt;/code&gt; as a &lt;code&gt;devDependency&lt;/code&gt; so it&#39;s installed on your CI build.&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; tests(push) &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; install&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; lint&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; test&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;changedsince&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;push&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token key atrule&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;        &lt;span class=&quot;token key atrule&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; windows&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; macOS&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;        &lt;span class=&quot;token key atrule&quot;&gt;node-version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;10.x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 12.x&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v2&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;&lt;br /&gt;        git fetch --no-tags --depth=1 origin master&lt;br /&gt;        git checkout -b master&lt;br /&gt;        git checkout $&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Use Node.js $NaN on $&lt;br /&gt;      &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/setup&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;node@v1&lt;br /&gt;      &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;        &lt;span class=&quot;token key atrule&quot;&gt;node-version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $NaN&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; npm install&lt;br /&gt;      &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; npm install&lt;br /&gt;      &lt;span class=&quot;token key atrule&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;        &lt;span class=&quot;token key atrule&quot;&gt;CI&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt; &lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; npm run test&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;changedsince&lt;br /&gt;      &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; jest &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;changedSince=master &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;coverage&lt;br /&gt;      &lt;span class=&quot;token key atrule&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;        &lt;span class=&quot;token key atrule&quot;&gt;CI&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, this seems to be working perfectly - it&#39;ll diff changes between the current PR&#39;s &lt;code&gt;HEAD&lt;/code&gt; and &lt;code&gt;master&lt;/code&gt;, running only the tests that are different across &lt;em&gt;all&lt;/em&gt; commits and not just between the most recent commit and the one prior.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Securely Automating npm publish with the New npm Automation Tokens</title>
+    <link href="https://bnb.im/posts/securely-automating-npm-publish-with-the-new-npm-automation-tokens/"/>
+    <updated>2020-10-02T00:00:00Z</updated>
+    <id>https://bnb.im/posts/securely-automating-npm-publish-with-the-new-npm-automation-tokens/</id>
+    <content type="html">&lt;p&gt;Today, npm has shipped automation tokens 🎉&lt;/p&gt;
+&lt;p&gt;Previously, if you wanted to automatically publish an npm module from CI/CD you had a choice - have 2FA turned off and allow publishing via a token &lt;strong&gt;or&lt;/strong&gt; have 2FA turned on and build a custom tool to allow you to input a 2FA code when your CI/CD is trying to publish.&lt;/p&gt;
+&lt;p&gt;This was a challenging system since it made users choose between smooth DX or security. This has been impactful historically - there have been cases (for example, the &lt;a href=&quot;https://eslint.org/blog/2018/07/postmortem-for-malicious-package-publishes&quot;&gt;eslint-scope incident&lt;/a&gt;) where maintainers&#39; accounts were hijacked and impactful modules were compromised since they didn&#39;t have 2FA for user publishes turned on.&lt;/p&gt;
+&lt;p&gt;Since 2FA on publish was introduced, folks in the ecosystem have been asking for the ability to have some way to automatically publish modules from CI while also having 2FA for user-publishes turned on.&lt;/p&gt;
+&lt;p&gt;Today, the npm team delivered one of the proposed solutions: automation tokens.&lt;/p&gt;
+&lt;h2 id=&quot;what-are-automation-tokens&quot; tabindex=&quot;-1&quot;&gt;What are Automation Tokens? &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/securely-automating-npm-publish-with-the-new-npm-automation-tokens/#what-are-automation-tokens&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Automation tokens are effectively publish tokens that a user can create to publish a module from an automated process. They skip the OTP (one-time password) check and ship it.&lt;/p&gt;
+&lt;p&gt;Say, for example, that you&#39;re the maintainer of a module called &lt;code&gt;good-first-issue&lt;/code&gt;. Instead of having to pull &lt;code&gt;good-first-issue&lt;/code&gt; locally and publish after opening up your 2FA app and typing in the OTP, you could instead set up your favorite CI - GitHub Actions CI, CircleCI, Travis, or whatever else - to automatically publish whenever certain conditions are met. &lt;a href=&quot;https://semantic-release.gitbook.io/semantic-release/&quot;&gt;Semantic Release&lt;/a&gt; is a pretty wonderful example of this kind of automation.&lt;/p&gt;
+&lt;p&gt;This has the obvious benefit of streamlining workflows and reducing maintainer burden. It also helps reduce risk - in pulling down and publishing or having to build a custom publishing system both have their own additional levels of potential risk. With automation tokens, we can now pretty easily just ship code where we build it.&lt;/p&gt;
+&lt;h2 id=&quot;how-can-i-use-automation-tokens&quot; tabindex=&quot;-1&quot;&gt;How can I Use Automation Tokens? &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/securely-automating-npm-publish-with-the-new-npm-automation-tokens/#how-can-i-use-automation-tokens&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To publish with Automation Tokens today, you&#39;ll want to do a few things to get going.&lt;/p&gt;
+&lt;p&gt;First, to actually publish to a module with an automation token, you&#39;ll need to update the module&#39;s &lt;code&gt;Settings&lt;/code&gt;. Specifically, you&#39;ll need to change the module&#39;s &lt;code&gt;Publishing Access&lt;/code&gt; from whatever it was previously (either &lt;code&gt;Two-factor authentication is not required&lt;/code&gt; or &lt;code&gt;Require two-factor authentication to publish&lt;/code&gt;) to the new option, &lt;code&gt;Require two-factor authentication or automation tokens&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://dev-to-uploads.s3.amazonaws.com/i/iz61wxyav8obn4yvfyuj.png&quot; alt=&quot;Screenshot of npm&#39;s access page, showing off the new option&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Once you&#39;ve updated that, you&#39;ll now be able to use Automation Tokens for publishing that module.&lt;/p&gt;
+&lt;p&gt;To get an automation token, you&#39;ll want to head over to your user settings. From that, you&#39;ll open up the Access Tokens page and then create a new token. When you start the token creation flow, you&#39;ll have the option to select &lt;code&gt;Automation&lt;/code&gt;. Once you do, click &lt;code&gt;Generate Token&lt;/code&gt; and you&#39;ll be shown the token once - copy it, and you&#39;re all set.&lt;/p&gt;
+&lt;h2 id=&quot;looking-forward&quot; tabindex=&quot;-1&quot;&gt;Looking Forward &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/securely-automating-npm-publish-with-the-new-npm-automation-tokens/#looking-forward&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There are a handful of use cases where this current implementation is extremely useful - specifically, my perspective is that it&#39;s most useful where you&#39;re an individual maintainer with a limited set of projects.&lt;/p&gt;
+&lt;p&gt;That said, this is the first step in the right direction for more granular controls for all kinds of maintainers to securely manage their modules with a good DX while being as secure as possible. In speaking with the npm team, they&#39;re exploring further iteration in this space that I&#39;m super excited for.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>The New npm diff Command</title>
+    <link href="https://bnb.im/posts/the-new-npm-diff-command/"/>
+    <updated>2021-04-02T00:00:00Z</updated>
+    <id>https://bnb.im/posts/the-new-npm-diff-command/</id>
+    <content type="html">&lt;p&gt;With the recent &lt;a href=&quot;https://github.blog/2021-02-02-npm-7-is-now-generally-available/&quot;&gt;release of npm@7&lt;/a&gt;, we&#39;ve gotten a few neat new features in npm.&lt;/p&gt;
+&lt;p&gt;One of the ones that I imagine can go under the radar for most folks is the &lt;code&gt;npm diff&lt;/code&gt; command. It&#39;s a relatively... advanced command that has immense potential utility.&lt;/p&gt;
+&lt;h2 id=&quot;preface&quot; tabindex=&quot;-1&quot;&gt;Preface &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#preface&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There&#39;s a few things we should establish as baseline assumptions before digging in.&lt;/p&gt;
+&lt;p&gt;First, I&#39;m going to be talking about a &amp;quot;local version&amp;quot; and a &amp;quot;remote version&amp;quot;.&lt;/p&gt;
+&lt;p&gt;The local version will be a module in your current working directory - so, if I wanted to diff my local &lt;code&gt;liblice&lt;/code&gt; module with the remote published version, I&#39;d need to have that on disk and either have it as my current working directory or pass it as a path to the command. For the sake of this article, we&#39;re going to assume anytime we&#39;re diffing a local version it&#39;s in the current working directory.&lt;/p&gt;
+&lt;p&gt;The remote version will be one that&#39;s on your default registry. For the vast majority of folks, this will be the default npm registry (a.k.a. &lt;a href=&quot;https://registry.npmjs.com/&quot;&gt;https://registry.npmjs.com&lt;/a&gt;). However, if you&#39;re trying to diff a module published to an alternative registry (say, an internal corporate registry) or if you&#39;ve changed your default registry to a mirror or internal cache, that would be the registry the remote version would be checking. This is some super nice flexibility that comes free with the diff command that enables some pretty nice theoretical advanced workflows.&lt;/p&gt;
+&lt;h2 id=&quot;diffing-the-local-version-with-the-latest-remote-version&quot; tabindex=&quot;-1&quot;&gt;Diffing the Local Version with the Latest Remote Version &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#diffing-the-local-version-with-the-latest-remote-version&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The raw command will diff the local version of a module with the remote version. This is particularly useful for module maintainers, contributors, and those floating local patches on a module (to patch a security vulnerability, for example).&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will output &lt;em&gt;all&lt;/em&gt; differences between the local version and the remote version. With a single change (replacing &lt;code&gt;pass&lt;/code&gt; with &lt;code&gt;return&lt;/code&gt;) in &lt;a href=&quot;http://readme.md/&quot;&gt;README.md&lt;/a&gt; to use a better word, here&#39;s an example of what output would look like:&lt;/p&gt;
+&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;$ npm diff&lt;br /&gt;diff --git a/README.md b/README.md&lt;br /&gt;index v1.1.0..v1.1.0 100644&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;--- a/README.md&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;+++ b/README.md&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;@@ -10,7 +10,7 @@&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;## Usage&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;temporalts can pass all Node.js LTS release line temporal information, or the temporal information for a _specific_ release line.&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;temporalts can return all Node.js LTS release line temporal information, or the temporal information for a _specific_ release line.&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;### `temporalts()`&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;diffing-individual-local-file(s)-with-the-latest-remote-version&quot; tabindex=&quot;-1&quot;&gt;Diffing Individual Local File(s) with the Latest Remote Version &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#diffing-individual-local-file(s)-with-the-latest-remote-version&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you&#39;ve made more than a single tiny change to your module, diffing a single file from the local version with the remote version.&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# the general structure&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.paths&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# specific examples&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; README.md&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; /lib/handler.js&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; SECURITY.md /public/index.html&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Instead of getting a diff for all files, you&#39;ll only get diffs for any paths you passed. If you passed a single path, you&#39;ll get a single diff; if you passed multiple, you&#39;ll get multiple.&lt;/p&gt;
+&lt;p&gt;This functionality can be &lt;em&gt;particularly&lt;/em&gt; useful in a handful of cases: generating changelogs, checking how something works in the currently published version, or even as a prepublish check to make sure you&#39;re only shipping changes you intended to ship.&lt;/p&gt;
+&lt;h2 id=&quot;diffing-local-version-with-a-specific-remote-version&quot; tabindex=&quot;-1&quot;&gt;Diffing Local Version with a Specific Remote Version &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#diffing-local-version-with-a-specific-remote-version&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Similar to &lt;a href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#diffing-the-local-version-with-the-latest-remote-version&quot;&gt;Diffing the Local Version with the Latest Remote Version&lt;/a&gt;, you can diff your local version of a module with the remote version, but with any specific version.&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As an example, here&#39;s an excerpt from running &lt;code&gt;npm diff --diff=1.0.1&lt;/code&gt; on &lt;a href=&quot;https://npm.im/temporalts&quot;&gt;temporalts@1.1.0&lt;/a&gt;. There&#39;s a single version between these two - v1.0.1 was &lt;em&gt;also&lt;/em&gt; published, and we&#39;re able to compare what we &lt;em&gt;currently&lt;/em&gt; have with a &lt;em&gt;previous&lt;/em&gt; version that&#39;s not &lt;code&gt;@latest&lt;/code&gt;. There&#39;s a few uses for this, like checking what&#39;s changed in a module while upgrading, changelog authoring, or pre-publish change validation (especially if you&#39;re using &lt;code&gt;files&lt;/code&gt; in package.json to limit which files you&#39;re publishing).&lt;/p&gt;
+&lt;p&gt;We can also diff &lt;em&gt;forward&lt;/em&gt; - for example, if I were to publish &lt;code&gt;temporalts@2.0.0&lt;/code&gt;, I&#39;d be able to diff between v1.1.0 and v2.0.0. This is useful, particularly if you&#39;re looking forward for upgrades or at pre-release versions.&lt;/p&gt;
+&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;$ npm diff --diff==1.0.0                                                                                &lt;br /&gt;diff --git a/examples/12.js b/examples/12.js&lt;br /&gt;deleted file mode 100644&lt;br /&gt;index v1.0.0..v1.1.0 &lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;--- a/examples/12.js&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;+++ b/examples/12.js&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;@@ -1,12 +0,0 @@&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;const temporalts = require(&#39;../&#39;)&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;async function prettyPrint () {&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  const version = &#39;v12&#39;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  const data = await temporalts(version)&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  console.log()&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  console.log(`We are ${data.currentPercentOfLTSLifeSpanWithoutDecimal}% through the lifespan of the Node.js ${version} LTS release line.\n${data.currentPercentOfLTSLifeSpanAsProgressBar} `)&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  console.log()&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;}&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;prettyPrint()&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;\ No newline at end of file&lt;br /&gt;diff --git a/helpers/fetchSchedule.js b/helpers/fetchSchedule.js&lt;br /&gt;index v1.0.0..v1.1.0 100644&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;--- a/helpers/fetchSchedule.js&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;+++ b/helpers/fetchSchedule.js&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;@@ -12,4 +12,4 @@&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  }&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;}&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;module.exports = fetchSchedule&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;module.exports.fetchSchedule = fetchSchedule&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;diff --git a/index.js b/index.js&lt;br /&gt;index v1.0.0..v1.1.0 100644&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;--- a/index.js&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;+++ b/index.js&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;@@ -1,3 +1,3 @@&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;const lts = require(&#39;exports/lts.js&#39;)&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;const lts = require(&#39;./exports/lts.js&#39;)&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;[... more file diffs, dropped for length]&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;diffing-individual-local-file(s)-with-a-specific-remote-version&quot; tabindex=&quot;-1&quot;&gt;Diffing Individual Local File(s) with a Specific Remote Version &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#diffing-individual-local-file(s)-with-a-specific-remote-version&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;As an extension of &lt;a href=&quot;https://bnb.im/posts/the-new-npm-diff-command/&quot;&gt;Diffing Local Version with a Specific Remote Version&lt;/a&gt;, you can also pass in a single file to diff.&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# the general structure&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.paths&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# specific examples&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; README.md&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; /lib/handler.js&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; SECURITY.md /public/index.html&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As an example, if we diff &lt;code&gt;index.js&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;$ npm diff --diff==1.0.0 index.js&lt;br /&gt;diff --git a/index.js b/index.js&lt;br /&gt;index v1.0.0..v1.1.0 100644&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;--- a/index.js&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;+++ b/index.js&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;@@ -1,3 +1,3 @@&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;const lts = require(&#39;exports/lts.js&#39;)&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;const lts = require(&#39;./exports/lts.js&#39;)&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;module.exports = lts&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;diffing-two-remote-versions&quot; tabindex=&quot;-1&quot;&gt;Diffing Two Remote Versions &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#diffing-two-remote-versions&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There is also a very valid reason you may want to diff two versions of the same module you&#39;ve got that aren&#39;t locally stored. &lt;code&gt;npm diff&lt;/code&gt; allows you to do this with package identifiers (a.k.a. &lt;code&gt;pkg-identifier&lt;/code&gt;) which is something along the lines of &lt;code&gt;package@semver-range&lt;/code&gt; - so, for example, &lt;code&gt;node@12.10.0&lt;/code&gt;, &lt;code&gt;fastify@latest&lt;/code&gt;, &lt;code&gt;babel@7.0.0-rc.1&lt;/code&gt;, and &lt;code&gt;npm@7&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# the general structure&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;pkg-identifier&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;pkg-identifier&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# specific example&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;gatsby@2.32.3 --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;gatsby@latest&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we try to run the latter command - comparing a slightly older version of Gatsby to the latest version - we&#39;ll get about 19mb of diff output at time of publishing (the latest version of Gatsby is presently &lt;code&gt;gatsby@3.2.0&lt;/code&gt; if you&#39;d like to try to reproduce this output exactly). Unfortunately, that&#39;s far too much to include in a blog post, but you should try running it yourself.&lt;/p&gt;
+&lt;p&gt;As with any actively developed module - or any sufficiently modified module from one package identifier to another - this diff will only get bigger as the maintainers published newer and newer versions, making more changes.&lt;/p&gt;
+&lt;h2 id=&quot;diffing-individual-files-from-two-remote-versions&quot; tabindex=&quot;-1&quot;&gt;Diffing Individual Files from Two Remote Versions &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#diffing-individual-files-from-two-remote-versions&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;As with previous &lt;code&gt;npm diff&lt;/code&gt; commands, you can pass in individual files or paths to filter your diff&#39;s output and you&#39;ll get just a diff for that file or path.&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# the general structure&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;pkg-identifier&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;pkg-identifier&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# specific examples&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;fastify@3.13.0 --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;fastify@latest package.json&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;fastify@3.13.0 --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;fastify@latest /lib/errors.js&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt; --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;fastify@3.13.0 --diff&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;fastify@latest README.md /lib/context.js&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&#39;s what the output for the first command there looks like:&lt;/p&gt;
+&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;$ npm diff --diff=fastify@3.13.0 --diff=fastify@latest package.json&lt;br /&gt;diff --git a/package.json b/package.json&lt;br /&gt;index v3.13.0..v3.14.1 100644&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;--- a/package.json&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;+++ b/package.json&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token coord&quot;&gt;@@ -1,6 +1,6 @@&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;{&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  &quot;name&quot;: &quot;fastify&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  &quot;version&quot;: &quot;3.13.0&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  &quot;version&quot;: &quot;3.14.1&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  &quot;description&quot;: &quot;Fast and low overhead web framework, for Node.js&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  &quot;main&quot;: &quot;fastify.js&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;  &quot;type&quot;: &quot;commonjs&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token coord&quot;&gt;@@ -177,7 +177,7 @@&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;    &quot;abstract-logging&quot;: &quot;^2.0.0&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;    &quot;ajv&quot;: &quot;^6.12.2&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;    &quot;avvio&quot;: &quot;^7.1.2&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;    &quot;fast-json-stringify&quot;: &quot;^2.2.1&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;    &quot;fast-json-stringify&quot;: &quot;^2.5.2&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;    &quot;fastify-error&quot;: &quot;^0.3.0&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;    &quot;fastify-warning&quot;: &quot;^0.2.0&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;    &quot;find-my-way&quot;: &quot;^4.0.0&quot;,&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;useful-flags&quot; tabindex=&quot;-1&quot;&gt;Useful Flags &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/the-new-npm-diff-command/#useful-flags&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;npm diff&lt;/code&gt; command also provides some helpful flags to limit the diff output to only &lt;em&gt;relevant&lt;/em&gt; changes, depending on your goal.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--diff-ignore-all-space&lt;/code&gt;: Ignores all changes that are exclusively space. Extremely useful for limiting changes to only what matters, especially after linter runs.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--diff-name-only&lt;/code&gt;: Limits outputs to &lt;em&gt;only&lt;/em&gt; filenames of files with changes for the command. Extremely useful for getting an overview of what&#39;s changed and figuring out which files to drill down into.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Markdown Link Checking in GitHub with Actions</title>
+    <link href="https://bnb.im/posts/markdown-link-checking-in-github-with-actions/"/>
+    <updated>2021-05-05T00:00:00Z</updated>
+    <id>https://bnb.im/posts/markdown-link-checking-in-github-with-actions/</id>
+    <content type="html">&lt;p&gt;Having been a part of the Node.js project since the io.js 1.0 announcement, one of the things I&#39;ve grown extremely familiar with is how untouched Markdown documents that are supposed to provide a foundation can rot over time.&lt;/p&gt;
+&lt;p&gt;More specifically, a project on GitHub can slightly tweak how it operates every now and then. Those changes might not be enough to justify a documentation change since they&#39;re not meaningfully different enough.&lt;/p&gt;
+&lt;p&gt;If enough of these pile up you can end up with some blind spots on how your foundational documents haven&#39;t kept up with the times. This can often be remedied by manual inspection, but even then there&#39;s things that you might miss.&lt;/p&gt;
+&lt;p&gt;One of those things I&#39;ve often missed when doing that manual inspection is broken links. Specifically, if a file is moved at some point but all references to it aren&#39;t updated you end up in a situation where those references point to a 404.&lt;/p&gt;
+&lt;p&gt;I&#39;ve also had a handful of experiences with external links to smaller sites die because they decided to completely redesign the site and its structure... and if we&#39;re honest, I&#39;ve only noticed those when I&#39;ve really tried to find things that are broken. I&#39;m &lt;strong&gt;sure&lt;/strong&gt; others who are less familiar with that documentation have hit them more often.&lt;/p&gt;
+&lt;p&gt;Various forms of link rot like this are something that I&#39;ve struggled to fight with different tooling for years. Now, thankfully, I&#39;ve found the exact setup I&#39;ve always wanted.&lt;/p&gt;
+&lt;h2 id=&quot;linkinator-and-github-actions&quot; tabindex=&quot;-1&quot;&gt;Linkinator and GitHub Actions &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/markdown-link-checking-in-github-with-actions/#linkinator-and-github-actions&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A friend, &lt;a href=&quot;https://twitter.com/justinbeckwith&quot;&gt;Justin Beckwith&lt;/a&gt;, published a tool that serves both as a CLI and a module called &lt;a href=&quot;https://github.com/JustinBeckwith/linkinator&quot;&gt;Linkinator&lt;/a&gt; some time ago that focused on finding broken links within HTML sites. He extended it to work with Markdown &lt;a href=&quot;https://github.com/JustinBeckwith/linkinator/issues/73#issuecomment-737661545&quot;&gt;relatively recently&lt;/a&gt; as well.&lt;/p&gt;
+&lt;p&gt;He &lt;em&gt;also&lt;/em&gt; published a &lt;a href=&quot;https://github.com/JustinBeckwith/linkinator-action&quot;&gt;Linkinator GitHub Action&lt;/a&gt; that consumes Linkinator as a module and uses that to cleanly integrate with GitHub repositories.&lt;/p&gt;
+&lt;p&gt;Even more recently, he added &lt;a href=&quot;https://github.com/JustinBeckwith/linkinator-action/pull/45&quot;&gt;the &lt;code&gt;retry&lt;/code&gt; functionality&lt;/a&gt; from the module to the Action.&lt;/p&gt;
+&lt;p&gt;With &lt;code&gt;retry&lt;/code&gt; and the foundation of the rest of the work Justin&#39;s put into Linkinator, my problems with Markdown link rot in GitHub have now been entirely solved.&lt;/p&gt;
+&lt;p&gt;Let&#39;s get into how.&lt;/p&gt;
+&lt;h2 id=&quot;markdown-link-rot-begone:-using-the-action&quot; tabindex=&quot;-1&quot;&gt;Markdown Link Rot Begone: Using the Action &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/markdown-link-checking-in-github-with-actions/#markdown-link-rot-begone:-using-the-action&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The first space I&#39;ve set up Linkinator is in the Node.js Community Committee repo via &lt;a href=&quot;https://github.com/nodejs/community-committee/pull/658&quot;&gt;#658&lt;/a&gt;. Specifically, this PR adds the Linkinator GitHub Action and fixes all (but one, which has been fixed in a different unmerged PR) broken links in the repository. As it turns out, there were quite a few... including some in very notable places, like the README.&lt;/p&gt;
+&lt;p&gt;The setup is pretty standard for a single purpose GitHub Action. There&#39;s some pretty decent documentation of the expected YAML on &lt;a href=&quot;https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions&quot;&gt;GitHub&#39;s Docs site&lt;/a&gt;. I&#39;ll walk through each line with you:&lt;/p&gt;
+&lt;h3 id=&quot;setting-up-triggers&quot; tabindex=&quot;-1&quot;&gt;Setting up Triggers &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/markdown-link-checking-in-github-with-actions/#setting-up-triggers&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;To start, we set up &lt;a href=&quot;https://docs.github.com/en/actions/reference/events-that-trigger-workflows&quot;&gt;the triggers&lt;/a&gt; for the Action. The first line will always be &lt;code&gt;on:&lt;/code&gt; but from there you can do a lot.&lt;/p&gt;
+&lt;p&gt;In this specific case, I&#39;ve set it up to run on push to the default branch (thanks to the handy &lt;code&gt;$default-branch&lt;/code&gt; macro, it doesn&#39;t matter what the name is!), on PRs (this could be more verbose to run less often), and on &lt;code&gt;workflow_dispatch&lt;/code&gt; which allows us to run it manually via the GitHub Actions UI if we want to.&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; $default&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;branch&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;pull_request&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;workflow_dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;the-name&quot; tabindex=&quot;-1&quot;&gt;The Name &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/markdown-link-checking-in-github-with-actions/#the-name&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Next, we have the name which is what will appear in the GitHub UI. In this case, I just went with &lt;code&gt;Linkinator CI&lt;/code&gt; but you can change this to whatever you&#39;d like.&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Linkinator CI&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;the-job&quot; tabindex=&quot;-1&quot;&gt;The Job &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/markdown-link-checking-in-github-with-actions/#the-job&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The beginning of the jobs section is, again, relatively standard. We include the &lt;code&gt;jobs&lt;/code&gt; property under which we start defining the work that&#39;ll be done.&lt;/p&gt;
+&lt;p&gt;In this case, we name the (only!) step &lt;code&gt;linkinator&lt;/code&gt; since I like to try to keep to as small yet as descriptive of a job name as is possible.&lt;/p&gt;
+&lt;p&gt;Then, we tell Actions to run this on &lt;code&gt;ubuntu-latest&lt;/code&gt; and add the property &lt;code&gt;steps&lt;/code&gt; to start defining what we&#39;re going to do in the job.&lt;/p&gt;
+&lt;p&gt;From there, we then we declare that we want to use the &lt;a href=&quot;https://github.com/actions/checkout&quot;&gt;actions/checkout&lt;/a&gt; action which by default checks out the repo this is running in and sets things up nicely for us.&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;linkinator&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, we&#39;re going to actually include the &lt;code&gt;linkinator&lt;/code&gt; step. We call the Linkinator action from Justin&#39;s repo directly. We also pass a few of &lt;a href=&quot;https://github.com/JustinBeckwith/linkinator-action#inputs&quot;&gt;Linkinator&#39;s inputs&lt;/a&gt; via the &lt;code&gt;with&lt;/code&gt; property:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;paths&lt;/code&gt;: we&#39;re specifically checking for all markdown files in the project, recursively with &lt;a href=&quot;https://en.wikipedia.org/wiki/Glob_(programming)&quot;&gt;globbing&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;markdown: asserting to Linkinator that we&#39;re specifically looking for markdown files (as opposed to HTML files).&lt;/li&gt;
+&lt;li&gt;retry: for GitHub repos that have links to GitHub this is super important - if we get timed out because of a rate limit, the Action will respectfully retry until they get a non-rate-limited response.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; JustinBeckwith/linkinator&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;action@v1&lt;br /&gt;        &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;          &lt;span class=&quot;token key atrule&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;**/*.md&quot;&lt;/span&gt;&lt;br /&gt;          &lt;span class=&quot;token key atrule&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;br /&gt;          &lt;span class=&quot;token key atrule&quot;&gt;retry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;the-whole-configuration&quot; tabindex=&quot;-1&quot;&gt;The Whole Configuration &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/markdown-link-checking-in-github-with-actions/#the-whole-configuration&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Putting all of that together, we get the following:&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; $default&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;branch&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;pull_request&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;workflow_dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Linkinator CI&lt;br /&gt;&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token key atrule&quot;&gt;linkinator&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest&lt;br /&gt;    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v2&lt;br /&gt;      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; JustinBeckwith/linkinator&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;action@v1&lt;br /&gt;        &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;          &lt;span class=&quot;token key atrule&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;**/*.md&quot;&lt;/span&gt;&lt;br /&gt;          &lt;span class=&quot;token key atrule&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;br /&gt;          &lt;span class=&quot;token key atrule&quot;&gt;retry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;By popping this as a new file into &lt;code&gt;./github/workflows/&lt;/code&gt; (say, &lt;code&gt;./github/workflows/linkinator.yml&lt;/code&gt;) and pushing it to your repo, you&#39;ll start getting link checks on every push and PR plus whenever you want to manually run it.&lt;/p&gt;
+&lt;p&gt;Genuinely happy with this solution and I hope it helps someone else as much as it&#39;s (going to be) helping me ❤️&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Explicit ESM in Node.js with .mjs</title>
+    <link href="https://bnb.im/posts/explicit-esm-in-node-js-with-mjs/"/>
+    <updated>2021-06-16T00:00:00Z</updated>
+    <id>https://bnb.im/posts/explicit-esm-in-node-js-with-mjs/</id>
+    <content type="html">&lt;p&gt;A while ago, Node.js introduced support for ECMAScript Modules (ESM). ESM is the &lt;strong&gt;standardized&lt;/strong&gt; modules implementation that&#39;s been built-in to JavaScript. This differs rather significantly from CommonJS (CJS), which is the module system that Node.js has shipped with for over a decade that make them &lt;em&gt;relatively&lt;/em&gt; incompatible.&lt;/p&gt;
+&lt;p&gt;There are a number of different components of Node.js that have been intentionally structured to allow you to use &lt;strong&gt;standard&lt;/strong&gt; (as in, how the ECMAScript Specification defines it) ESM by default and extend/augment that experience if you&#39;d like to.&lt;/p&gt;
+&lt;p&gt;Today, I want to get into one of the baisc elements of ESM in Node.js: the &lt;code&gt;.mjs&lt;/code&gt; and &lt;code&gt;.cjs&lt;/code&gt; extensions.&lt;/p&gt;
+&lt;h2 id=&quot;why-.mjs-(and-.cjs)&quot; tabindex=&quot;-1&quot;&gt;Why &lt;code&gt;.mjs&lt;/code&gt; (and &lt;code&gt;.cjs&lt;/code&gt;)? &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/explicit-esm-in-node-js-with-mjs/#why-.mjs-(and-.cjs)&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;the-quick-answer&quot; tabindex=&quot;-1&quot;&gt;The Quick Answer &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/explicit-esm-in-node-js-with-mjs/#the-quick-answer&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The straightforward answer to this is that having different file extensions allows you to be explicit in how you want to run your code - &lt;code&gt;.mjs&lt;/code&gt; will always be run as ESM, &lt;code&gt;.cjs&lt;/code&gt; will always be run as CommonJS.&lt;/p&gt;
+&lt;h3 id=&quot;the-answer-with-context&quot; tabindex=&quot;-1&quot;&gt;The Answer With Context &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/explicit-esm-in-node-js-with-mjs/#the-answer-with-context&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Because of the differences in how ESM and CommonJS work, Node.js runs them differently by default. This results in the runtime needing an indicator about which way you want to run your code - as ESM or as CommonJS.&lt;/p&gt;
+&lt;p&gt;There&#39;s three different ways that this indicator could be expressed: explicitly, implicitly, and by default.&lt;/p&gt;
+&lt;p&gt;To not break over a decade of projects and over a million modules that are expecting to Just Work, the default the project landed on was CommonJS - sensible, especially when you consider millions of lines of code and multitudes of applications already running in this way.&lt;/p&gt;
+&lt;p&gt;The way to &lt;em&gt;explicitly&lt;/em&gt; assert that the code you&#39;re running is ESM and should be run as such is to just use the &lt;code&gt;.mjs&lt;/code&gt; file extension (which, if you&#39;re concerned, is also supported in web browsers as long as the &lt;code&gt;Content-Type: text/javascript&lt;/code&gt; header is sent and is actually &lt;a href=&quot;https://v8.dev/features/modules#mjs&quot;&gt;recommended by V8&lt;/a&gt;). The official overview of this is documented in the &lt;a href=&quot;https://nodejs.org/api/packages.html#packages_determining_module_system&quot;&gt;determining module system&lt;/a&gt; section of the Node.js Packages documentation.&lt;/p&gt;
+&lt;p&gt;When you use &lt;code&gt;.mjs&lt;/code&gt;, Node.js &lt;em&gt;knows&lt;/em&gt; that you&#39;ve written ESM and will parse your JavaScript as such. The same is true for &lt;code&gt;.cjs&lt;/code&gt; - Node.js &lt;em&gt;knows&lt;/em&gt; that &lt;code&gt;.cjs&lt;/code&gt; should run as CommonJS, and will parse your JavaScript as CommonJS.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Implicit ESM in Node.js with &quot;type&quot;: &quot;module&quot;</title>
+    <link href="https://bnb.im/posts/implicit-esm-in-node-js-with-type-module/"/>
+    <updated>2021-06-16T00:00:00Z</updated>
+    <id>https://bnb.im/posts/implicit-esm-in-node-js-with-type-module/</id>
+    <content type="html">&lt;p&gt;Continuing the Node.js ESM content, I&#39;d like to talk about the comparitively straightforward alternative to &lt;a href=&quot;https://dev.to/bnb/explicit-esm-in-node-js-with-mjs-3ooh&quot;&gt;using .mjs&lt;/a&gt; to get your Node.js applications to run as ECMAScript Modules (ESM) rather than CommonJS: including &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt; in your &lt;code&gt;package.json&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;usage-of-&amp;quot;type&amp;quot;:-&amp;quot;module&amp;quot;&quot; tabindex=&quot;-1&quot;&gt;Usage of &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/implicit-esm-in-node-js-with-type-module/#usage-of-%22type%22:-%22module%22&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Let&#39;s assume we&#39;ve started with the following &lt;code&gt;package.json&lt;/code&gt; for a zero (production) dependency application:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;name&amp;quot;: &amp;quot;apollo-lunar-module&amp;quot;,
+  &amp;quot;version&amp;quot;: &amp;quot;0.0.1&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;A simple, fast, nice lunar lander module&amp;quot;,
+  &amp;quot;main&amp;quot;: &amp;quot;index.js&amp;quot;,
+  &amp;quot;scripts&amp;quot;: {
+    &amp;quot;lint&amp;quot;: &amp;quot;standard&amp;quot;
+  },
+  &amp;quot;author&amp;quot;: &amp;quot;Tierney Cyren &amp;lt;hello@bnb.im&amp;gt; (https://bnb.im/)&amp;quot;,
+  &amp;quot;license&amp;quot;: &amp;quot;MIT&amp;quot;,
+  &amp;quot;devDependencies&amp;quot;: {
+    &amp;quot;standard&amp;quot;: &amp;quot;^16.0.3&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To have implicit ESM - that is, have our &lt;code&gt;.js&lt;/code&gt; files parsed as ESM - we&#39; need to make the following change:&lt;/p&gt;
+&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;{&lt;br /&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;name&quot;: &quot;apollo-lunar-module&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;version&quot;: &quot;0.0.1&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;description&quot;: &quot;A simple, fast, nice lunar lander module&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;main&quot;: &quot;index.js&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;type&quot;: &quot;module&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;scripts&quot;: {&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;   &quot;lint&quot;: &quot;standard&quot;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; },&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;author&quot;: &quot;Tierney Cyren &amp;lt;hello@bnb.im&gt; (https://bnb.im/)&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;license&quot;: &quot;MIT&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;devDependencies&quot;: {&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;   &quot;standard&quot;: &quot;^16.0.3&quot;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; }&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This &lt;em&gt;specifically&lt;/em&gt; tells Node.js to parse your &lt;code&gt;.js&lt;/code&gt; files under this &lt;code&gt;package.json&lt;/code&gt; as ESM. Otherwise, by default (or when you use &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;commonjs&amp;quot;&lt;/code&gt;), Node.js will parse your &lt;code&gt;.js&lt;/code&gt; files as CommonJS. There&#39;s a few things to note:&lt;/p&gt;
+&lt;p&gt;Node.js specifically looks for the &lt;em&gt;closest&lt;/em&gt; &lt;code&gt;package.json&lt;/code&gt; to determine whether or not to parse &lt;code&gt;.js&lt;/code&gt; as ESM or CommonJS.&lt;/p&gt;
+&lt;p&gt;&amp;quot;&lt;em&gt;Closest&lt;/em&gt;&amp;quot; is important here. If there&#39;s a &lt;code&gt;package.json&lt;/code&gt; that&#39;s &lt;em&gt;closer&lt;/em&gt; to &lt;code&gt;.js&lt;/code&gt; files than your project&#39;s &lt;code&gt;package.json&lt;/code&gt;, and it &lt;em&gt;does not&lt;/em&gt; have &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt; (or a &lt;a href=&quot;https://nodejs.org/api/packages.html#packages_dual_commonjs_es_module_packages&quot;&gt;dual export&lt;/a&gt;, which is out of the scope of this post), CommonJS will be used for those &lt;code&gt;.js&lt;/code&gt; files. The most common/obvious example of this is the code within your &lt;code&gt;/node_modules/&lt;/code&gt; that may not be ESM, and shouldn&#39;t be parsed as such.&lt;/p&gt;
+&lt;p&gt;Further, it&#39;s worth noting that explicitly using &lt;code&gt;.cjs&lt;/code&gt; overrides &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt;. This is extremely useful if you&#39;re converting a codebase from CommonJS to ESM.&lt;/p&gt;
+&lt;h2 id=&quot;why-&amp;quot;type&amp;quot;:-&amp;quot;module&amp;quot;&quot; tabindex=&quot;-1&quot;&gt;Why &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt;? &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/implicit-esm-in-node-js-with-type-module/#why-%22type%22:-%22module%22&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;the-quick-answer&quot; tabindex=&quot;-1&quot;&gt;The Quick Answer &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/implicit-esm-in-node-js-with-type-module/#the-quick-answer&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;For you, the user, the straightforward answer to this is that using &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt; is a better developer experience than having to explicitly use &lt;code&gt;.mjs&lt;/code&gt; in every single JavaScript file in your project if you&#39;re going to have a non-trivial number of files.&lt;/p&gt;
+&lt;h3 id=&quot;the-answer-with-more-context&quot; tabindex=&quot;-1&quot;&gt;The Answer With More Context &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/implicit-esm-in-node-js-with-type-module/#the-answer-with-more-context&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Using &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt; is often going to be a better developer experience for maintainers for a number of reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It minimizes manual changes and potential mistakes, allowing a single line of text to control parsing.&lt;/li&gt;
+&lt;li&gt;It makes migrating from CommonJS to ESM easier.
+&lt;ul&gt;
+&lt;li&gt;It depends on how you&#39;d like to do it, but one strategy is to chunk out work of converting your applications to ESM one bit at a time by setting &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt; and converting all the CommonJS code to use the &lt;code&gt;.cjs&lt;/code&gt; file extension.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;It allows ecosystem tooling to quickly determine if your projects are using ESM or not.
+&lt;ul&gt;
+&lt;li&gt;Note that JSON modules (and therefore importing &lt;code&gt;package.json&lt;/code&gt;) are only supported behind the &lt;code&gt;--experimental-json-modules&lt;/code&gt; flag. It does seem that necessary proposals to streamline this seem to be making pretty decent progress through the relevant standards processes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Conditional Exports: Supporting both import and require()</title>
+    <link href="https://bnb.im/posts/conditional-exports-supporting-both-import-and-require/"/>
+    <updated>2021-06-17T00:00:00Z</updated>
+    <id>https://bnb.im/posts/conditional-exports-supporting-both-import-and-require/</id>
+    <content type="html">&lt;p&gt;Now that we&#39;ve both gone over how to make Node.js &lt;a href=&quot;https://dev.to/bnb/implicit-esm-in-node-js-with-type-module-np&quot;&gt;implicitly&lt;/a&gt; and &lt;a href=&quot;https://dev.to/bnb/explicit-esm-in-node-js-with-mjs-3ooh&quot;&gt;explicitly&lt;/a&gt; parse your code as ESM, we can get into some of the more meaty and interesting bits of ESM in Node.js.&lt;/p&gt;
+&lt;p&gt;To me, one of the most interesting features is &lt;strong&gt;Conditional Exports&lt;/strong&gt;. With conditional exports, you can have a single module export both ESM (allowing it to be &lt;code&gt;import&lt;/code&gt;ed, with all the features of &lt;code&gt;import&lt;/code&gt; that you&#39;d expect) and CommonJS (allowing it to be &lt;code&gt;require()&lt;/code&gt;ed.)&lt;/p&gt;
+&lt;p&gt;From a broader perspective, this is an amazing tool for transition. Whether you&#39;re a maintainer of an open-source module or charged with supporting1 internal end-users on an SDK with a long support cycle, this helps ease the shock of going from CommonJS to ESM, or simply helps you support both use cases for as long as your consumers require.&lt;/p&gt;
+&lt;h2 id=&quot;setting-up-conditional-exports&quot; tabindex=&quot;-1&quot;&gt;Setting up Conditional Exports &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/conditional-exports-supporting-both-import-and-require/#setting-up-conditional-exports&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Let&#39;s take the &lt;code&gt;package.json&lt;/code&gt; we used in the &lt;a href=&quot;https://dev.to/bnb/implicit-esm-in-node-js-with-type-module-np&quot;&gt;Implicit ESM&lt;/a&gt; article, and exapand on that:&lt;/p&gt;
+&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;{&lt;br /&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;name&quot;: &quot;apollo-lunar-module&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;version&quot;: &quot;0.0.1&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;description&quot;: &quot;A simple, fast, nice lunar lander module&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;main&quot;: &quot;index.js&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;type&quot;: &quot;module&quot;,&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;exports&quot;: {&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;   &quot;import&quot;: &quot;./main.js&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;   &quot;require&quot;: &quot;./main.cjs&quot;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; },&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;scripts&quot;: {&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;   &quot;lint&quot;: &quot;standard&quot;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; },&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;author&quot;: &quot;Tierney Cyren &amp;lt;hello@bnb.im&gt; (https://bnb.im/)&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;license&quot;: &quot;MIT&quot;,&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; &quot;devDependencies&quot;: {&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt;   &quot;standard&quot;: &quot;^16.0.3&quot;&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token line&quot;&gt; }&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can see we&#39;ve added the following code:&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token property&quot;&gt;&quot;exports&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;import&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./main.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// doesn&#39;t have to be `main`&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;require&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./main.cjs&quot;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// doesn&#39;t have to be `main`&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You should note that we&#39;ve got &lt;code&gt;&amp;quot;type&amp;quot;: &amp;quot;module&amp;quot;&lt;/code&gt; in our package.json, meaning that &lt;code&gt;.js&lt;/code&gt; will be interpreted as ESM and to use CommonJS in this module, we&#39;ll need to use the &lt;code&gt;.cjs&lt;/code&gt; extension.&lt;/p&gt;
+&lt;p&gt;The utility of having both ESM and CommonJS in the same project becomes apparent here. We&#39;re now able to enable &lt;em&gt;both&lt;/em&gt; ESM and CommonJS users to consume our package without having to install a different module.&lt;/p&gt;
+&lt;p&gt;Now, it is worth noting that you can&#39;t just copy/paste your code from &lt;code&gt;main.js&lt;/code&gt; into &lt;code&gt;main.cjs&lt;/code&gt; - you&#39;ll actually need to make it work as CommonJS code, which probably also means figuring out how to support both use cases in both export styles. If you&#39;d like a solid example of how to do this for realsies, &lt;a href=&quot;https://twitter.com/MylesBorins&quot;&gt;Myles Borins&lt;/a&gt; built &lt;a href=&quot;https://github.com/mylesborins/node-osc&quot;&gt;node-osc&lt;/a&gt; and has a &lt;a href=&quot;https://github.com/MylesBorins/node-osc/blob/main/rollup.config.mjs&quot;&gt;rollup configuration&lt;/a&gt; that does ESM to CommonJS conversion for this exact use case. Additionally, there are a number of codemods that exist (and I&#39;ve apparently &lt;a href=&quot;https://twitter.com/bitandbang/status/1404929283500478470&quot;&gt;signed myself up&lt;/a&gt; to work on yet another codemod for this) that can help with this.&lt;/p&gt;
+&lt;h2 id=&quot;consuming-a-module-that-has-conditional-exports&quot; tabindex=&quot;-1&quot;&gt;Consuming a Module that has Conditional Exports &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/conditional-exports-supporting-both-import-and-require/#consuming-a-module-that-has-conditional-exports&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Thankfully, conditional exports were built in such a way that they&#39;re &lt;em&gt;largely&lt;/em&gt; invisible to end-users of your module with &lt;em&gt;one&lt;/em&gt; caveat.&lt;/p&gt;
+&lt;p&gt;The caveat: if your end-users are somehow consuming the same module both as ESM and as CommonJS, the &lt;em&gt;instance&lt;/em&gt; is of the ESM and CommonJS versions are not the same. Both ESM and CommonJS have been built so the instance is shared, but in the case of using &lt;em&gt;both&lt;/em&gt; the instance will not be the same. For most folks this &lt;em&gt;likely&lt;/em&gt; won&#39;t be problematic for a number of reasons, but it is still a possibility. The most likely way this&#39;ll surface is through &lt;em&gt;you&lt;/em&gt; using a conditionally exported module one way and a dependency in &lt;code&gt;node_modules&lt;/code&gt; using it a different way.&lt;/p&gt;
+&lt;p&gt;Outside of that, you&#39;d use modules with conditional exports however you would normally.&lt;/p&gt;
+&lt;p&gt;Let&#39;s take the example of &lt;code&gt;apollo-lunar-module&lt;/code&gt; that we&#39;ve been using:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; apollo-lunar-module&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To use it in ESM:&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; lander &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;apollo-lunar-module&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And if we wanted to import (hypothetical) named exports from &lt;code&gt;main.js&lt;/code&gt; with ESM:&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; abortGuidancePanel &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;apollo-lunar-module&quot;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; plssCondensateContainerAssy &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;apollo-lunar-module&quot;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; crewLog &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;apollo-lunar-module&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To use it in CommonJS:&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; lander &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;apollo-lunar-module&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And, again, if we wanted to consume (hypothetical) named exports, exposed by &lt;code&gt;main.cjs&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; abortGuidancePanel &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;apollo-lunar-module&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; plssCondensateContainerAssy &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;apollo-lunar-module&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; crewLog &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;apollo-lunar-module&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Either way, as an end-user, conditional exports make support for ESM or for CommonJS effectively invisible to those who are using your modules the other way. This ends up creating a pretty wonderful solution for end-users, enabling maintainers to ensure they&#39;re supporting both ESM and CommonJS consumers &lt;em&gt;if they want to&lt;/em&gt;.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

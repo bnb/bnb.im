@@ -1,5 +1,6 @@
 const { DateTime } = require("luxon")
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight")
+const pluginRss = require("@11ty/eleventy-plugin-rss")
 const markdownIt = require("markdown-it")
 const markdownItAnchor = require("markdown-it-anchor")
 const seriesData = require("./data/seriesData.json")
@@ -13,6 +14,8 @@ module.exports = function(eleventyConfig) {
   const pluginEmbedTweet = require("eleventy-plugin-embed-tweet")
   eleventyConfig.addPlugin(pluginEmbedTweet)
 
+  // set up RSS feed
+  eleventyConfig.addPlugin(pluginRss)
 
   // Alias `layout: post` to `layout: layouts/post.njk`
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk")
