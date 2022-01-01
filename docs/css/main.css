@@ -6,8 +6,8 @@
 }
 
 body {
-  max-width: 800px;
-  min-width: 70%;
+  max-width: 600px;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -101,4 +101,8 @@ a:hover {
 
 .post-list-entry a {
   text-decoration: none;
+}
+
+.no-bold {
+  font-weight: normal;
 }

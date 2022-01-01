@@ -11,7 +11,7 @@ layout: layouts/index.njk
     {%- for post in collections.post | reverse -%}
     <article>
         {% if post.data.series %}
-          <h3 class="post-list-entry"><a href="{{ post.url | urlize }}">{{ post.data.title }}</a>  as a part of the <a href="{{ 'series/' + post.data.series | urlize }}">{{ seriesData[post.data.series].title }}</a></h3> series.
+          <h3 class="post-list-entry"><a href="{{ post.url | urlize }}">{{ post.data.title }}</a><span class="no-bold">, part of the</span> <a href="{{ 'series/' + post.data.series | urlize }}">{{ seriesData[post.data.series].title }}</a><span class="no-bold"> series<span></h3>
         {% else %}
           <h3 class="post-list-entry"><a href="{{ post.url | urlize }}">{{ post.data.title }}</a></h3>
         {% endif %}
