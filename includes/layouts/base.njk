@@ -8,13 +8,13 @@
   <meta name="description" content="{{ description or metadata.description }}">
   <link rel="stylesheet" href="{{ "/css/main.css" | urlize }}">
   <link rel="stylesheet" href="{{ "/css/prism.ghcolors.css" | urlize }}">
-<meta name="twitter:card" content="{{cardType}}" />
-<meta name="twitter:creator" content={{site.authorTwitterUrl}} />
-<meta property="og:url" content="{{site.url}}{{page.url}}" />
-<meta property="og:title" content="{{cardTitle}}" />
-<meta property="og:description" content="{% if excerpt %}{{excerpt}}{% else %}{{site.summary}}{% endif %}" />
-<meta name="twitter:image" content="{{cardImage}}" />
-<meta property="og:image" content="{{cardImage}}" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@bitandbang" />
+<meta property="og:url" content="https://bnb.im{{page.url}}" />
+<meta property="og:title" content="{{ title or metadata.title }}" />
+<meta property="og:description" content="{{ description or metadata.description }}" />
+<meta name="twitter:image" content="https://bnb.im/img/small-card.png" />
+<meta property="og:image" content="https://bnb.im/img/small-card.png" />
 
 
 </head>
