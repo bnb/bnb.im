@@ -1,8 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital@0;1&family=Lato:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital@0;1&display=swap');
 
 .mono {
-  font-family: 'Courier Prime', monospace;
+  font-family: 'DM Mono', monospace;
   line-height: 1.5rem;
+}
+
+.serif {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.5rem;
+}
+
+.sans {
+  font-family: 'Lato', sans-serif;
+    line-height: 1.5rem;
 }
 
 body {
@@ -84,7 +94,6 @@ a:hover {
   list-style: none;
   padding-left: 0;
 }
-
 
 .post-list-description::before {
   content: '> ';
