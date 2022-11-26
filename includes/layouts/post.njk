@@ -8,16 +8,3 @@ templateClass: tmpl-post
 </sub>
   {{ content | safe }}
 </section>
-{%- if collections.post %}
-<section>
-  {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-  {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
-  {%- if nextPost or previousPost %}
-  <hr>
-  <ul>
-    {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | urlize }}">{{ nextPost.data.title }}</a></li>{% endif %}
-    {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | urlize }}">{{ previousPost.data.title }}</a></li>{% endif %}
-  </ul>
-  {%- endif %}
-</section>
-{%- endif %}

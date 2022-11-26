@@ -21,10 +21,6 @@ body {
   margin: 0 auto;
 }
 
-footer {  
-  margin-bottom: 30rem;
-}
-
 img {
   max-width: 100%;
 }
@@ -114,4 +110,10 @@ a:hover {
 
 .no-bold {
   font-weight: normal;
+}
+
+.smiley {
+  margin-top: 40em;
+  margin-bottom: 40em;
+  text-align: center;
 }
