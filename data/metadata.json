@@ -2,9 +2,9 @@
   "title": "Tierney Cyren",
   "url": "https://bnb.im/",
   "language": "en",
-  "description": "On JavaScript, the Web, and software in general.",
+  "description": "On JavaScript, Node.js Software, Standards, and real life.",
   "feed": {
-    "subtitle": "On Node.js, JavaScript, the Web, and software in general.",
+    "subtitle": "On JavaScript, Node.js Software, Standards, and real life.",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "id": "https://bnb.im/"
