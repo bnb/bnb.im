@@ -11,7 +11,7 @@ tags:
 ---
 Last night, I was looking at Lobste.rs and saw that the top post was a [blog post](https://lgug2z.com/articles/normalize-identifying-corporate-devices-in-your-software/) from [LGUG2Z](https://bsky.app/profile/lgug2z.com) about MDM detection, using Rust. The post heavily implied that this could be used for ensuring butts-in-seats (hands-on-keyboards?) licenses are being followed - you can use your imagination on how detecting MDM would connect to that.<!-- excerpt -->
 
-The scripts looked pretty simple, so I thought it'd be fun to implement in JavaScript. I know no rust, and am definitely a bit rusty since I was [laid off](https://www.linkedin.com/posts/activity-7355591427763884032-1imJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAABOeUEQB_1xI46eoODDY40HH7EreVkdWrAA) a few months ago. In the past week I've been asked 6 times what I've worked on while not employed, which I've found... weird but understandable I guess. This seemed like a way to at least derust a little bit.
+The scripts looked pretty simple, so I thought it'd be fun to implement in JavaScript. I know no Rust, and am definitely a bit rusty since I was [laid off](https://www.linkedin.com/posts/activity-7355591427763884032-1imJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAABOeUEQB_1xI46eoODDY40HH7EreVkdWrAA) a few months ago. In the past week I've been asked 6 times what I've worked on while not employed, which I've found... weird but understandable I guess. This seemed like a way to at least derust a little bit.
 
 It seemed like The Node Way to make it a package, so I've published a zero-tests (PRs welcome) package to npm called [`is-mdm`](https://www.npmjs.com/package/is-mdm) that checks both macOS and Windows for MDM enrollment.
 
@@ -29,7 +29,7 @@ isMdm() // true if MDM is detected, otherwise it'll return false
 
 Basically, I converted the Rust version from the blog post and then added conditional checking of platforms through Node.js's provided `process.platform`. 
 
-The macOS check is pretty stragihtforward - it uses the exact command from the blog post:
+The macOS check is pretty straightforward - it uses the exact command from the blog post:
 
 ```js
 function isMdmMacOS() {
@@ -68,7 +68,7 @@ function isMdmWindows() {
 }
 ```
 
-and I've wrapped them both in a function that checks the platofmr and exported that function as the module:
+and I've wrapped them both in a function that checks the platform and exported that function as the module:
 ```js
 function isMdm() {
 	if (process.platform === "darwin") {
