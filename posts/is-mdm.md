@@ -1,16 +1,15 @@
 ---
 title: 'is-mdm: MDM detection in Node.js'
 layout: post
+description: A quick post about is-mdm, a package I wrote to detect MDM enrollment that was inspired by a Rust implementation found on Lobste.rs from LGUG2Z.
 date: 2025-10-30
-description: A quick post about is-mdm, a package I wrote to detect MDM enrollment that was inspired by a Rust implementation that 
 tags:
   - post
   - javascript
   - nodejs
   - package
 ---
-
-Last night, I was looking at Lobste.rs and saw that the top post was a [blog post](https://lgug2z.com/articles/normalize-identifying-corporate-devices-in-your-software/) from [LGUG2Z]() about MDM detection, using Rust. The post heavily implied that this could be used for ensuring butts-in-seats (hands-on-keyboards?) licenses are being followed - you can use your imagination on how detecting MDM would connect to that.
+Last night, I was looking at Lobste.rs and saw that the top post was a [blog post](https://lgug2z.com/articles/normalize-identifying-corporate-devices-in-your-software/) from [LGUG2Z](https://bsky.app/profile/lgug2z.com) about MDM detection, using Rust. The post heavily implied that this could be used for ensuring butts-in-seats (hands-on-keyboards?) licenses are being followed - you can use your imagination on how detecting MDM would connect to that.<!-- excerpt -->
 
 The scripts looked pretty simple, so I thought it'd be fun to implement in JavaScript. I know no rust, and am definitely a bit rusty since I was [laid off](https://www.linkedin.com/posts/activity-7355591427763884032-1imJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAABOeUEQB_1xI46eoODDY40HH7EreVkdWrAA) a few months ago. In the past week I've been asked 6 times what I've worked on while not employed, which I've found... weird but understandable I guess. This seemed like a way to at least derust a little bit.
 

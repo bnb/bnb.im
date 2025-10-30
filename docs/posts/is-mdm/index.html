@@ -5,14 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>is-mdm: MDM detection in Node.js</title>
-  <meta name="description" content="A quick post about is-mdm, a package I wrote to detect MDM enrollment that was inspired by a Rust implementation that">
+  <meta name="description" content="A quick post about is-mdm, a package I wrote to detect MDM enrollment that was inspired by a Rust implementation found on Lobste.rs from LGUG2Z.">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/prism.ghcolors.css">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@bitandbang" />
 <meta property="og:url" content="https://bnb.im/posts/is-mdm/" />
 <meta property="og:title" content="is-mdm: MDM detection in Node.js" />
-<meta property="og:description" content="A quick post about is-mdm, a package I wrote to detect MDM enrollment that was inspired by a Rust implementation that" />
+<meta property="og:description" content="A quick post about is-mdm, a package I wrote to detect MDM enrollment that was inspired by a Rust implementation found on Lobste.rs from LGUG2Z." />
 <meta name="twitter:image" content="https://bnb.im/img/small-card.png" />
 <meta property="og:image" content="https://bnb.im/img/small-card.png" />
 
@@ -36,7 +36,7 @@
   <h1 class="post-title serif">is-mdm: MDM detection in Node.js</h2>
   <sub>Originally posted on <time datetime="2025-10-30">30 Oct 2025</time>
 </sub>
-  <p>Last night, I was looking at <a href="http://Lobste.rs">Lobste.rs</a> and saw that the top post was a <a href="https://lgug2z.com/articles/normalize-identifying-corporate-devices-in-your-software/">blog post</a> from <a href="">LGUG2Z</a> about MDM detection, using Rust. The post heavily implied that this could be used for ensuring butts-in-seats (hands-on-keyboards?) licenses are being followed - you can use your imagination on how detecting MDM would connect to that.</p>
+  <p>Last night, I was looking at <a href="http://Lobste.rs">Lobste.rs</a> and saw that the top post was a <a href="https://lgug2z.com/articles/normalize-identifying-corporate-devices-in-your-software/">blog post</a> from <a href="https://bsky.app/profile/lgug2z.com">LGUG2Z</a> about MDM detection, using Rust. The post heavily implied that this could be used for ensuring butts-in-seats (hands-on-keyboards?) licenses are being followed - you can use your imagination on how detecting MDM would connect to that.</p>
 <p>The scripts looked pretty simple, so I thought it'd be fun to implement in JavaScript. I know no rust, and am definitely a bit rusty since I was <a href="https://www.linkedin.com/posts/activity-7355591427763884032-1imJ?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAABOeUEQB_1xI46eoODDY40HH7EreVkdWrAA">laid off</a> a few months ago. In the past week I've been asked 6 times what I've worked on while not employed, which I've found... weird but understandable I guess. This seemed like a way to at least derust a little bit.</p>
 <p>It seemed like The Node Way to make it a package, so I've published a zero-tests (PRs welcome) package to npm called <a href="https://www.npmjs.com/package/is-mdm"><code>is-mdm</code></a> that checks both macOS and Windows for MDM enrollment.</p>
 <h2 id="using-is-mdm" tabindex="-1">Using <code>is-mdm</code> <a class="direct-link" href="#using-is-mdm" aria-hidden="true">#</a></h2>
