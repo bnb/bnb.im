@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Tierney Cyren</title>
-  <subtitle>Writings about development.</subtitle>
+  <subtitle>Software and Selected Garbage</subtitle>
   <link href="https://bnb.im/feed.xml" rel="self"/>
   <link href="https://bnb.im/"/>
   <updated>2025-10-30T00:00:00Z</updated>
