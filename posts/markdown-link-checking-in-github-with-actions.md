@@ -9,6 +9,7 @@ tags:
   - opensource
   - github
   - javascript
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lodu42z"
 ---
 Having been a part of the Node.js project since the io.js 1.0 announcement, one of the things I've grown extremely familiar with is how untouched Markdown documents that are supposed to provide a foundation can rot over time.<!-- excerpt -->
 

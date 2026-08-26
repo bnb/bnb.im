@@ -8,6 +8,7 @@ tags:
   - javascript
   - nodejs
   - package
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lixqw2v"
 ---
 Last night, I was looking at Lobste.rs and saw that the top post was a [blog post](https://lgug2z.com/articles/normalize-identifying-corporate-devices-in-your-software/) from [LGUG2Z](https://bsky.app/profile/lgug2z.com) about MDM detection, using Rust. The post heavily implied that this could be used for ensuring butts-in-seats (hands-on-keyboards?) licenses are being followed - you can use your imagination on how detecting MDM would connect to that.<!-- excerpt -->
 

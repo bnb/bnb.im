@@ -9,6 +9,7 @@ tags:
   - webdev
   - beginners
   - node
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lrdq22l"
 ---
 Today, npm has shipped automation tokens 🎉
 

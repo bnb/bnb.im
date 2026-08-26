@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Essential Resources for Getting Started with AT Protocol</title>
+  <meta name="description" content="A set of critical links for anyone interested in getting started with AT Protocol and exploring the landscape">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.ghcolors.css">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:creator" content="@bitandbang" />
+  <meta property="og:url" content="https://bnb.im/posts/atproto-essential-resources/" />
+  <meta property="og:title" content="Essential Resources for Getting Started with AT Protocol" />
+  <meta property="og:description" content="A set of critical links for anyone interested in getting started with AT Protocol and exploring the landscape" />
+  <meta name="twitter:image" content="https://bnb.im/img/small-card.png" />
+  <meta property="og:image" content="https://bnb.im/img/small-card.png" />
+  <link rel="alternate" title="Tierney Cyren - Software and Selected Garbage" type="application/atom+xml" href="https://bnb.im/feed.xml">
+</head>
+<body class="sans">
+  <header class="global">
+    <section class="container">
+      <section class=grow-4>
+        <a href="/"><h1 class="serif">Tierney Cyren</h1></a>
+      </section>
+      <nav>
+        <a href="https://bsky.app/profile/bnb.im" class="p-l-1rem sans">Bluesky</a>
+        <a href="https://github.com/bnb" class="p-l-1rem sans">GitHub</a>
+        <a href="https://instagram.com/bitandbang" class="p-l-1rem sans">Instagram</a>
+      </nav>
+    </section>
+  </header>
+  <section>
+    <section class="post container column">
+  <h1 class="post-title serif">Essential Resources for Getting Started with AT Protocol</h2>
+  <sub>Originally posted on <time datetime="2026-08-25">25 Aug 2026</time>
+</sub>
+  <p>A number of times now, I've shared links with personal software engineering friends who I'm trying to convince to explore the AT Protocol. Rather than just sharing those links individually over and over again, I figured I'd just slap together a post so I can can copy/paste one link rather than more than a dozen.</p>
+<p>I'll update it in the future, and I'll put my most used emoji in these parentheses every time I update it, starting with my current most used emoji for the initial post because there are no rules: (💕)</p>
+<h2 id="understanding-the-at-protocol" tabindex="-1">Understanding the AT Protocol <a class="direct-link" href="#understanding-the-at-protocol" aria-hidden="true">#</a></h2>
+<ul>
+<li><a href="https://overreacted.io/a-social-filesystem/">A Social Filesystem</a> by Dan Abramov - required reading for understanding AT Protocol as a human who has used a computer.</li>
+<li><a href="https://overreacted.io/there-are-no-instances-in-atproto/">There Are No Instances in atproto</a> by Dan Abramov - really useful if you've ever even the fediverse. I originally got started in Tent which was orthogonal to the fediverse, but right at that same time I started learning about the fediverse as Mastodon and Diaspora* were getting their feet under them. Really good way to de-fediverse your brain so you can absorb how AT Protocol works from a clean slate, IMO. (Hacker News: I swear I'm not anti-fediverse.)</li>
+<li><a href="https://blog.joebasser.com/3msgtu45ir22f/l-quote/82_0-82_261#breaking-apart-the-platform">Let's Talk Money</a> by Joe Basser - a deep dive into money and the AT Protocol, specificially ending at the point of ATM (Atmosphere Money) which Joe is one of the developers of. IMO Atmosphere Money is a unique and good approach and I'm hopeful it actually ends up being successful.</li>
+<li><a href="https://atproto.com/blog/atproto-spaces-alpha">The Atproto Spaces Alpha is Live</a> by Daniel Holmgren - intro point to Atproto Spaces, which is effectively &quot;private data&quot; for the Atmosphere. I know a lot of folks were waiting for this to start building.</li>
+</ul>
+<h2 id="data" tabindex="-1">Data <a class="direct-link" href="#data" aria-hidden="true">#</a></h2>
+<p>Fundamentally, the AT Protocol is about data ownership. Lexicons define structure for data, data is stored in records on a Personal Data Server (PDS), and the protocol defines how data is moved. It's way more complicated than that, but that gets you like 80% of the way there in most cases. These are some resources that are useful for the data part of AT Protocol development.</p>
+<ul>
+<li><a href="https://happyview.dev/">HappyView</a> - a one-click deployable AppView. AppViews have been called &quot;the hardest part of AT Protocol Development&quot; (I've seen this and am too lazy to find the source), but HappyView legitimately makes it completely trivial.</li>
+<li><a href="https://github.com/bluesky-social/pds">bluesky-social/pds</a> - The reference PDS implementation from Bluesky. I've heard criticisms but it is the reference implementation, so...</li>
+<li><a href="https://tangled.org/tranquil.farm/tranquil-pds">Tranquil PDS</a> - I've had a number of folks tell me this is the best deployable PDS. I have no stake in it but there's some social proof for you.</li>
+</ul>
+<h2 id="utilities" tabindex="-1">Utilities <a class="direct-link" href="#utilities" aria-hidden="true">#</a></h2>
+<ul>
+<li><a href="https://www.microcosm.blue/">microcosm.blue</a> - open-source APIs that can be super useful for AT Protocol development, depending on what you're building.</li>
+<li><a href="https://pds.ls/">pdsls</a> - web interface for exploring the AT Protocol. It's got a pretty comprehensive record viewer + there's firehose, jetstream, spacedust, and labeler tooling.</li>
+<li><a href="https://atproto.at/">atproto.at</a> - a different web interface for exploring the AT Protocol. Bunch of good features, I prefer pdsls but <a href="http://atproto.at">atproto.at</a> has a really great UI.</li>
+<li><a href="https://atstore.fyi/">ATStore</a> - positioning itself as the &quot;AT Protocol App Directory&quot;, the ATStore is so far the steward of &quot;here's different apps that take advantage of the AT Protocol&quot;. I definitely have some complicated feelings about the ATStore, but it is the central hub for discovery currently.</li>
+<li><a href="https://atproto.md/">atproto.md</a> - Authless markdown representation of any AT Protocol record.</li>
+<li><a href="https://atmosphere.money/">atmosphere.money</a> - ATM (Atmosphere Money) is a jab at trying to get payments natively into the AT Protocol.</li>
+</ul>
+<h2 id="things-built-with-at-protocol" tabindex="-1">Things Built With AT Protocol <a class="direct-link" href="#things-built-with-at-protocol" aria-hidden="true">#</a></h2>
+<p>Just a number of things that are built on top of AT Protocol that are... neat and can show you some of the breadth of what is possible. I've found sharing this often helps people understand that it's not just about building a Twitter clone or social apps.</p>
+<ul>
+<li><a href="https://www.beaconbits.app/">BeaconBits</a> - check-in app, similar to swarm. It's browser-only, which I feel tanks its viability as a consumer app, but it's pretty nice in-browser.</li>
+<li><a href="https://atmowx.net/">atmowx</a> - weather data, on AT Protocol. Super cool to see data binded and visualized to the protocol.</li>
+<li><a href="https://map.adsb.at/">adsb</a> - flight data, crowdsourced onto the protocol. Super super cool, hits my special interests perfectly.</li>
+<li><a href="https://plyr.fm/">plyr.fm</a> - social music on the AT Protocol. Kinda like SoundCloud, but the songs are hosted in users' PDSes.</li>
+<li><a href="https://marque.at/">Marque</a> - domain registrar built on the AT Protocol. If you're building an app where users register and would want to get their own domain, you can use Marque as an interface for that - pretty nifty.</li>
+</ul>
+<p>Okay that's it. Hit me up at <a href="https://bsky.app/profile/bnb.im">@bnb.im</a> if you have suggestions. I might add them, I might not. If you made the thing I'll probably be more hesitant, but there's a shot.</p>
+
+</section>
+
+  </section>
+  <footer>
+    <p class="smiley">:)</p>
+  </footer>
+</body>
+</html>

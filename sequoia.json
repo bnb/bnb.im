@@ -1,0 +1,11 @@
+{
+  "$schema": "https://tangled.org/stevedylan.dev/sequoia/raw/main/sequoia.schema.json",
+  "siteUrl": "https://bnb.im",
+  "contentDir": "./posts",
+  "outputDir": "./docs",
+  "publicationUri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.publication/3mtxb2uyta22l",
+  "frontmatter": {
+    "publishDate": "date"
+  },
+  "publishContent": true
+}

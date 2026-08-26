@@ -23,6 +23,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-rss": "^1.1.2",
+    "sequoia-cli": "^0.5.7",
     "standard": "^17.0.0"
   },
   "dependencies": {

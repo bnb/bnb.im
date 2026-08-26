@@ -9,6 +9,7 @@ tags:
   - webdev
   - beginners
   - github
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3luefs2l"
 ---
 We're currently approaching GitHub Actions v2 shipping publicly for _everyone_ to use. I'm personally super excited about this because it means I don't need to configure an external service to run my CI – I can slap in some YAML, and I'm off with a cross-platform (!) CI system with multiple versions of Node.js installed.<!-- excerpt -->
 

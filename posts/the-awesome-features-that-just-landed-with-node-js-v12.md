@@ -9,6 +9,7 @@ tags:
   - javascript
   - webdev,
   - opensource
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lvsxb22"
 ---
 This week, we saw the release of Node.js v12, the next Node.js release line that will become LTS. I wanted to go through the various posts that went out and the changelog and condense the information into an easily consumable digest of what's new in Node.js v12.x to share with everyone. 💖<!-- excerpt -->
 

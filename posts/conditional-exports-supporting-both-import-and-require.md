@@ -7,6 +7,7 @@ tags:
   - post
 series: "esm-in-node-js"
 part: "3"
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lk7r32q"
 ---
 Now that we've both gone over how to make Node.js [implicitly](https://dev.to/bnb/implicit-esm-in-node-js-with-type-module-np) and [explicitly](https://dev.to/bnb/explicit-esm-in-node-js-with-mjs-3ooh) parse your code as ESM, we can get into some of the more meaty and interesting bits of ESM in Node.js.<!-- excerpt -->
 

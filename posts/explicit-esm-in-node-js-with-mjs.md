@@ -11,6 +11,7 @@ tags:
   - beginner
 series: "esm-in-node-js"
 part: "1"
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lmywt23"
 ---
 A while ago, Node.js introduced support for ECMAScript Modules (ESM). ESM is the **standardized** modules implementation that's been built-in to JavaScript. This differs rather significantly from CommonJS (CJS), which is the module system that Node.js has shipped with for over a decade that make them _relatively_ incompatible.<!-- excerpt -->
 

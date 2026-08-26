@@ -9,6 +9,7 @@ tags:
   - beginners
   - tutorial
   - node
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lsy462t"
 ---
 Recently, I've been working a lot more with GitHub Actions - both writing actions and creating CI pipelines for projects. Last week I picked up a project I started a bit ago: the [nodejs/examples](https://github.com/nodejs/examples) repository.<!-- excerpt -->
 

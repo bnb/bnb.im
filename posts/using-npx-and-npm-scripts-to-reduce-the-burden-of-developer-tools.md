@@ -9,6 +9,7 @@ tags:
   - webdev
   - productivity
   - beginners
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lx5ht2q"
 ---
 On Friday, I was working on a [workshop-ified version](https://github.com/bnb/step-by-step-express-workshop) of [Step by Step Express](https://github.com/bnb/step-by-step-express) for [Flawless Hacks](http://flawlesshacks.com/) in Brooklyn.
 

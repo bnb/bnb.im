@@ -11,6 +11,7 @@ tags:
   - beginner
 series: "esm-in-node-js"
 part: "2"
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lloo62v"
 ---
 Continuing the Node.js ESM content, I'd like to talk about the comparitively straightforward alternative to [using .mjs](https://dev.to/bnb/explicit-esm-in-node-js-with-mjs-3ooh) to get your Node.js applications to run as ECMAScript Modules (ESM) rather than CommonJS: including `"type": "module"` in your `package.json`.<!-- excerpt -->
 

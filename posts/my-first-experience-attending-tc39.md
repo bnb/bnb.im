@@ -9,6 +9,7 @@ tags:
   - webdev
   - opensource
   - tc39
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lyhtw2v"
 ---
 A few weeks ago I had the opportunity to attend TC39, the ECMA technical committee that defines the ECMAScript specification, for the first time. As a first-timer, the experience wasn't what I expected and I want to share what it was like being there. I'd like to share that experience with y'all 💖<!-- excerpt -->
 

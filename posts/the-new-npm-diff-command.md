@@ -10,6 +10,7 @@ tags:
   - webdev
   - beginners
   - node
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lpqkb2z"
 ---
 With the recent [release of npm@7](https://github.blog/2021-02-02-npm-7-is-now-generally-available/), we've gotten a few neat new features in npm.
 
