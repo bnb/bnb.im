@@ -6,6 +6,7 @@
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --watch --serve",
+    "prod": "npm run build && npm run sequoia:publish",
     "serve": "eleventy --serve",
     "sequoia:inject": "sequoia inject",
     "sequoia:publish": "sequoia publish",
