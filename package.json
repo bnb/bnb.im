@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
-    "serve": "eleventy --serve",
     "dev": "eleventy --watch --serve",
+    "serve": "eleventy --serve",
+    "sequoia:inject": "sequoia inject",
+    "sequoia:publish": "sequoia publish",
+    "sequoia:update": "sequoia update",
     "lint": "standard"
   },
   "repository": {
