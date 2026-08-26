@@ -899,6 +899,10 @@
 &lt;li&gt;&lt;a href=&quot;https://blog.joebasser.com/3msgtu45ir22f/l-quote/82_0-82_261#breaking-apart-the-platform&quot;&gt;Let&#39;s Talk Money&lt;/a&gt; by Joe Basser - a deep dive into money and the AT Protocol, specificially ending at the point of ATM (Atmosphere Money) which Joe is one of the developers of. IMO Atmosphere Money is a unique and good approach and I&#39;m hopeful it actually ends up being successful.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://atproto.com/blog/atproto-spaces-alpha&quot;&gt;The Atproto Spaces Alpha is Live&lt;/a&gt; by Daniel Holmgren - intro point to Atproto Spaces, which is effectively &amp;quot;private data&amp;quot; for the Atmosphere. I know a lot of folks were waiting for this to start building.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&quot;lexicons&quot; tabindex=&quot;-1&quot;&gt;Lexicons &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/atproto-essential-resources/#lexicons&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://standard.site/&quot;&gt;Standard.site&lt;/a&gt; - the community-owned long-form content lexicon. This is, in my opinion, the most important signal of community health beyond the launch and ~success of Bluesky. Community coming together around a standard format for a standard type of content, entirely separate from Bluesky PBC.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&quot;data&quot; tabindex=&quot;-1&quot;&gt;Data &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/atproto-essential-resources/#data&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Fundamentally, the AT Protocol is about data ownership. Lexicons define structure for data, data is stored in records on a Personal Data Server (PDS), and the protocol defines how data is moved. It&#39;s way more complicated than that, but that gets you like 80% of the way there in most cases. These are some resources that are useful for the data part of AT Protocol development.&lt;/p&gt;
 &lt;ul&gt;

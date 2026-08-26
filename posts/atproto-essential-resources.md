@@ -21,6 +21,10 @@ These are some posts I conisder to be staples of atmospheric thinking. I'm sure 
 - [Let's Talk Money](https://blog.joebasser.com/3msgtu45ir22f/l-quote/82_0-82_261#breaking-apart-the-platform) by Joe Basser - a deep dive into money and the AT Protocol, specificially ending at the point of ATM (Atmosphere Money) which Joe is one of the developers of. IMO Atmosphere Money is a unique and good approach and I'm hopeful it actually ends up being successful.
 - [The Atproto Spaces Alpha is Live](https://atproto.com/blog/atproto-spaces-alpha) by Daniel Holmgren - intro point to Atproto Spaces, which is effectively "private data" for the Atmosphere. I know a lot of folks were waiting for this to start building.
 
+## Lexicons
+
+- [Standard.site](https://standard.site/) - the community-owned long-form content lexicon. This is, in my opinion, the most important signal of community health beyond the launch and ~success of Bluesky. Community coming together around a standard format for a standard type of content, entirely separate from Bluesky PBC.
+
 ## Data
 
 Fundamentally, the AT Protocol is about data ownership. Lexicons define structure for data, data is stored in records on a Personal Data Server (PDS), and the protocol defines how data is moved. It's way more complicated than that, but that gets you like 80% of the way there in most cases. These are some resources that are useful for the data part of AT Protocol development.
