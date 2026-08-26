@@ -8,7 +8,6 @@ tags:
   - atprotocol
 atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lhnsg2t"
 ---
-
 A number of times now, I've shared links with personal software engineering friends who I'm trying to convince to explore the AT Protocol. Rather than just sharing those links individually over and over again, I figured I'd just slap together a post so I can can copy/paste one link rather than more than a dozen.<!-- excerpt -->
 
 I'll update it in the future, and I'll put my most used emoji in these parentheses every time I update it, starting with my current most used emoji for the initial post because there are no rules: (💕)
