@@ -8,13 +8,19 @@
   <meta name="description" content="{{ description or metadata.description }}">
   <link rel="stylesheet" href="{{ "/css/main.css" | urlize }}">
   <link rel="stylesheet" href="{{ "/css/prism.ghcolors.css" | urlize }}">
-  <meta name="twitter:card" content="summary" />
+  {% set isPost = tags and 'post' in tags %}
+  {% set socialImage = "https://bnb.im/img/social/" + page.fileSlug + ".png" if isPost else "https://bnb.im/img/small-card.png" %}
+  <meta name="twitter:card" content="{{ 'summary_large_image' if isPost else 'summary' }}" />
   <meta name="twitter:creator" content="@bitandbang" />
   <meta property="og:url" content="https://bnb.im{{page.url}}" />
   <meta property="og:title" content="{{ title or metadata.title }}" />
   <meta property="og:description" content="{{ description or metadata.description }}" />
-  <meta name="twitter:image" content="https://bnb.im/img/small-card.png" />
-  <meta property="og:image" content="https://bnb.im/img/small-card.png" />
+  <meta name="twitter:image" content="{{ socialImage }}" />
+  <meta property="og:image" content="{{ socialImage }}" />
+  {% if isPost %}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  {% endif %}
   <link rel="alternate" title="Tierney Cyren - Software and Selected Garbage" type="application/atom+xml" href="https://bnb.im/feed.xml">
 </head>
 <body class="sans">

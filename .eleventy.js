@@ -4,10 +4,20 @@ const pluginRss = require("@11ty/eleventy-plugin-rss")
 const markdownIt = require("markdown-it")
 const markdownItAnchor = require("markdown-it-anchor")
 const seriesData = require("./data/seriesData.json")
+const generateSocialImages = require("./lib/social-images.js")
+const path = require("path")
 
 
 // config largely taken from https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js
 module.exports = function(eleventyConfig) {
+  // generate per-post social cover images with satori after each build
+  eleventyConfig.on("eleventy.after", async ({ dir }) => {
+    await generateSocialImages({
+      postsDir: path.join(__dirname, "posts"),
+      outputDir: path.join(__dirname, dir.output, "img", "social")
+    })
+  })
+
   // set up Syntax Highlighting plugin
   eleventyConfig.addPlugin(pluginSyntaxHighlight)
 
