@@ -13,6 +13,9 @@ A number of times now, I've shared links with personal software engineering frie
 I'll update it in the future, and I'll put my most used emoji in these parentheses every time I update it, starting with my current most used emoji for the initial post because there are no rules: (💕)
 
 ## Understanding the AT Protocol
+
+These are some posts I conisder to be staples of atmospheric thinking. I'm sure there are more, but these are the ones that I've gone back to over and over again.
+
 - [A Social Filesystem](https://overreacted.io/a-social-filesystem/) by Dan Abramov - required reading for understanding AT Protocol as a human who has used a computer.
 - [There Are No Instances in atproto](https://overreacted.io/there-are-no-instances-in-atproto/) by Dan Abramov - really useful if you've ever even the fediverse. I originally got started in Tent which was orthogonal to the fediverse, but right at that same time I started learning about the fediverse as Mastodon and Diaspora* were getting their feet under them. Really good way to de-fediverse your brain so you can absorb how AT Protocol works from a clean slate, IMO. (Hacker News: I swear I'm not anti-fediverse.)
 - [Let's Talk Money](https://blog.joebasser.com/3msgtu45ir22f/l-quote/82_0-82_261#breaking-apart-the-platform) by Joe Basser - a deep dive into money and the AT Protocol, specificially ending at the point of ATM (Atmosphere Money) which Joe is one of the developers of. IMO Atmosphere Money is a unique and good approach and I'm hopeful it actually ends up being successful.
@@ -27,6 +30,8 @@ Fundamentally, the AT Protocol is about data ownership. Lexicons define structur
 - [Tranquil PDS](https://tangled.org/tranquil.farm/tranquil-pds) - I've had a number of folks tell me this is the best deployable PDS. I have no stake in it but there's some social proof for you.
 
 ## Utilities
+
+These are some utilities that I've either personally found useful when building for the AT Protocol or poked at and am looking forward to using but haven't had the need yet. 
 
 - [microcosm.blue](https://www.microcosm.blue/) - open-source APIs that can be super useful for AT Protocol development, depending on what you're building.
 - [pdsls](https://pds.ls/) - web interface for exploring the AT Protocol. It's got a pretty comprehensive record viewer + there's firehose, jetstream, spacedust, and labeler tooling.
