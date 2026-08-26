@@ -132,6 +132,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css")
   eleventyConfig.addPassthroughCopy("img")
 
+  // Copy the contents of `public` (.well-known, .nojekyll) to the output root
+  eleventyConfig.addPassthroughCopy({ "public": "/" })
+
   // Customize Markdown library and settings:
   const markdownOptions = {
     html: true,
