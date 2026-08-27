@@ -10,7 +10,7 @@ atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lhnsg
 ---
 A number of times now, I've shared links with personal software engineering friends who I'm trying to convince to explore the AT Protocol. Rather than just sharing those links individually over and over again, I figured I'd just slap together a post so I can can copy/paste one link rather than more than a dozen.<!-- excerpt -->
 
-I'll update it in the future, and I'll put my most used emoji in these parentheses every time I update it, starting with my current most used emoji for the initial post because there are no rules: (💕)
+I'll update it in the future, and I'll put my most used emoji in these parentheses every time I update it, starting with my current most used emoji for the initial post because there are no rules: (💕👀)
 
 ## Understanding the AT Protocol
 
@@ -19,7 +19,13 @@ These are some posts I conisder to be staples of atmospheric thinking. I'm sure 
 - [A Social Filesystem](https://overreacted.io/a-social-filesystem/) by Dan Abramov - required reading for understanding AT Protocol as a human who has used a computer.
 - [There Are No Instances in atproto](https://overreacted.io/there-are-no-instances-in-atproto/) by Dan Abramov - really useful if you've ever even the fediverse. I originally got started in Tent which was orthogonal to the fediverse, but right at that same time I started learning about the fediverse as Mastodon and Diaspora* were getting their feet under them. Really good way to de-fediverse your brain so you can absorb how AT Protocol works from a clean slate, IMO. (Hacker News: I swear I'm not anti-fediverse.)
 - [Let's Talk Money](https://blog.joebasser.com/3msgtu45ir22f/l-quote/82_0-82_261#breaking-apart-the-platform) by Joe Basser - a deep dive into money and the AT Protocol, specificially ending at the point of ATM (Atmosphere Money) which Joe is one of the developers of. IMO Atmosphere Money is a unique and good approach and I'm hopeful it actually ends up being successful.
+
+## Spaces
+
+This is a section I've added on the first edit of this post, as Spaces are *so* fundamental to how AT Protocol surfaces data. Spaces open up an entire new category of applications and an entirely unique set of features. Whether you want to build an AT Protocol Dropbox (please be kind to your PDS) or if you want to add Close Friends to your social app (Bluesky please), spaces enables *so* much that wasn't possible before.
+
 - [The Atproto Spaces Alpha is Live](https://atproto.com/blog/atproto-spaces-alpha) by Daniel Holmgren - intro point to Atproto Spaces, which is effectively "private data" for the Atmosphere. I know a lot of folks were waiting for this to start building.
+- [Reintroducing Spaces](https://dholms.leaflet.pub/3mu3p3ldwrc26) by Daniel Holmgren - the post-Spaces alpha launch post from Daniel. Honestly, reading this post is such a unique experience because it's like Daniel took everything I wanted to hear Spaces were and then put it onto Leaflet.
 
 ## Lexicons
 
