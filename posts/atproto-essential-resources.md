@@ -26,6 +26,7 @@ This is a section I've added on the first edit of this post, as Spaces are *so* 
 
 - [The Atproto Spaces Alpha is Live](https://atproto.com/blog/atproto-spaces-alpha) by Daniel Holmgren - intro point to Atproto Spaces, which is effectively "private data" for the Atmosphere. I know a lot of folks were waiting for this to start building.
 - [Reintroducing Spaces](https://dholms.leaflet.pub/3mu3p3ldwrc26) by Daniel Holmgren - the post-Spaces alpha launch post from Daniel. Honestly, reading this post is such a unique experience because it's like Daniel took everything I wanted to hear Spaces were and then put it onto Leaflet.
+- [Airspace](https://getair.space/) - Airspace is a developer tool that smooths out using your PDS as a CMS, auth layer, file storage and probably more (eventually). Honestly incredible framing of the PDS as a personal engineering hub.
 
 ## Lexicons
 
