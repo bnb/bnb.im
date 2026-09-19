@@ -10,7 +10,7 @@ atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mtxb3lhnsg
 ---
 A number of times now, I've shared links with personal software engineering friends who I'm trying to convince to explore the AT Protocol. Rather than just sharing those links individually over and over again, I figured I'd just slap together a post so I can can copy/paste one link rather than more than a dozen.<!-- excerpt -->
 
-I'll update it in the future, and I'll put my most used emoji in these parentheses every time I update it, starting with my current most used emoji for the initial post because there are no rules: (💕👀)
+I'll update it in the future, and I'll put my most used emoji in these parentheses every time I update it, starting with my current most used emoji for the initial post because there are no rules: (💕👀🙂‍↕️🙂‍↕️)
 
 ## Understanding the AT Protocol
 
@@ -39,6 +39,7 @@ Fundamentally, the AT Protocol is about data ownership. Lexicons define structur
 - [HappyView](https://happyview.dev/) - a one-click deployable AppView. AppViews have been called "the hardest part of AT Protocol Development" (I've seen this and am too lazy to find the source), but HappyView legitimately makes it completely trivial.
 - [bluesky-social/pds](https://github.com/bluesky-social/pds) - The reference PDS implementation from Bluesky. I've heard criticisms but it is the reference implementation, so...
 - [Tranquil PDS](https://tangled.org/tranquil.farm/tranquil-pds) - I've had a number of folks tell me this is the best deployable PDS. I have no stake in it but there's some social proof for you.
+- [pds.rip](https://pds.rip/) - a public PDS that automatically deletes all accounts every 7 days. Great for automated testing.
 
 ## Utilities
 
