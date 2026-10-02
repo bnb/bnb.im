@@ -27,6 +27,9 @@
   <meta name="at:canonical" content="{{ atUri }}" />
   <meta name="at:alternate" content="{{ atproto.publicationUri }}" />
   <meta name="at:author" content="at://{{ atproto.did }}" />
+  {# rendered here so `eleventy --watch` doesn't drop them; `sequoia inject` skips pages that already have them #}
+  <link rel="site.standard.document" href="{{ atUri }}">
+  <link rel="site.standard.publication" href="{{ atproto.publicationUri }}">
   {% endif %}
   <link rel="alternate" title="Tierney Cyren - Software and Selected Garbage" type="application/atom+xml" href="https://bnb.im/feed.xml">
 </head>

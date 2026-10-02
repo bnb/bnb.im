@@ -4,7 +4,7 @@
   <subtitle>Software and Selected Garbage</subtitle>
   <link href="https://bnb.im/feed.xml" rel="self"/>
   <link href="https://bnb.im/"/>
-  <updated>2026-08-25T00:00:00Z</updated>
+  <updated>2026-10-02T00:00:00Z</updated>
   <id>https://bnb.im/</id>
   <author>
     <name>Tierney Cyren</name>
@@ -937,6 +937,61 @@
 &lt;li&gt;&lt;a href=&quot;https://marque.at/&quot;&gt;Marque&lt;/a&gt; - domain registrar built on the AT Protocol. If you&#39;re building an app where users register and would want to get their own domain, you can use Marque as an interface for that - pretty nifty.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Okay that&#39;s it. Hit me up at &lt;a href=&quot;https://bsky.app/profile/bnb.im&quot;&gt;@bnb.im&lt;/a&gt; if you have suggestions. I might add them, I might not. If you made the thing I&#39;ll probably be more hesitant, but there&#39;s a shot.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>What is the Atmosphere: An Untech Introduction</title>
+    <link href="https://bnb.im/posts/what-is-the-atmosphere/"/>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <id>https://bnb.im/posts/what-is-the-atmosphere/</id>
+    <content type="html">&lt;p&gt;Today I&#39;ve had what&#39;s felt like a rather productive conversation on Bluesky - an absolutely novel experience.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://bsky.app/profile/bnb.im/post/3mwvwapoefs26&quot;&gt;https://bsky.app/profile/bnb.im/post/3mwvwapoefs26&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A lot of people know they&#39;ve got a Bluesky account, or at least know they could have one. That&#39;s great, and it&#39;s not quite accurate - or at least, it&#39;s not quite what I&#39;d hope you take away from Bluesky. Disambiguating this is genuinely the biggest problem facing both Bluesky and the developers building the next generation of the internet.&lt;/p&gt;
+&lt;h2 id=&quot;what-is-bluesky&quot; tabindex=&quot;-1&quot;&gt;What is Bluesky &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/what-is-the-atmosphere/#what-is-bluesky&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Bluesky is an app. It&#39;s a Public Benefit Corporation. It&#39;s a piece of infrastructure. It&#39;s a set of technical specifications. It&#39;s a microblogging platform. It&#39;s a host. It&#39;s a community.&lt;/p&gt;
+&lt;p&gt;Bluesky is misleading.&lt;/p&gt;
+&lt;p&gt;Bluesky is all of those things, and that creates a metric fuckload of confusion. Two people talking about Bluesky could be referring to entirely distinct slices and in that conversation have to figure out based off context clues they might not even know exist.&lt;/p&gt;
+&lt;p&gt;The most important thing I want anyone to take away from this article is that, for you, Bluesky should just be an app, like Twitter is an app. Twitter&#39;s on the internet, and relies on a bunch of software under the hood that you don&#39;t need to care about - it&#39;s not important to you.&lt;/p&gt;
+&lt;p&gt;The difference between Bluesky and Twitter is one level of evolution. Since Twitter was created, we realized that social media is an incredible way to collect, silo, and sell that data - whether it&#39;s to advertisers, to &lt;a href=&quot;https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal&quot;&gt;politicians&lt;/a&gt;, or to &lt;a href=&quot;https://en.wikipedia.org/wiki/Acquisition_of_Twitter_by_Elon_Musk&quot;&gt;malicious&lt;/a&gt; &lt;a href=&quot;https://www.npr.org/2025/12/18/nx-s1-5648844/tiktok-deal-oracle-trump&quot;&gt;takeovers&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The people who built Bluesky took a look at that and wondered what the next generation of social media could look like - an evolution where you fundamentally control your data, rather than aggregating it for others to exploit.&lt;/p&gt;
+&lt;p&gt;So Bluesky is the app built on top of that next generation of ideas, having taken what we learned was fucked up from Twitter and Facebook and Google and building a system that enables us to build a social internet without giving up our selves.&lt;/p&gt;
+&lt;p&gt;Bluesky, the app, is the first application in the Atmosphere.&lt;/p&gt;
+&lt;h2 id=&quot;what-is-the-atmosphere&quot; tabindex=&quot;-1&quot;&gt;What is the Atmosphere &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/what-is-the-atmosphere/#what-is-the-atmosphere&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The Atmosphere is an all-encompassing ecosystem of social media.&lt;/p&gt;
+&lt;p&gt;The Atmosphere is built on top of the set of ideas built up by the people building Bluesky &lt;em&gt;and&lt;/em&gt; the community of engineers and enthusiasts they&#39;ve built around those ideas.&lt;/p&gt;
+&lt;p&gt;There&#39;s a few analogies I like to use for what The Atmosphere is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Atmosphere is like the Internet: there&#39;s some protocols that power it (you&#39;ve probably seen &lt;code&gt;https://&lt;/code&gt; before, right?). The average person shouldn&#39;t care what they are, but it&#39;s nice to know there&#39;s some underlying piping that makes everything work.&lt;/li&gt;
+&lt;li&gt;The Atmosphere is like email but for social media: you have your email account and can use any email client - the built-in one in your phone, the Gmail client, Outlook (lol), or some third party one that you find because it does one thing that makes email make sense for you.&lt;/li&gt;
+&lt;li&gt;The Atmosphere is like your Google account: Google&#39;s got Gmail, Search, YouTube, and a million other services that are all based off of one account. You can sign in once and have your data across all apps. Imagine that, except it&#39;s controlled by you, not Google. Better yet, if a developer decides to kill their app that you were using... your data stays with you, as long as you want it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That&#39;s... a lot. It&#39;s a big promise. It&#39;s not yet delivered upon!&lt;/p&gt;
+&lt;p&gt;A lot of people are working on it and are very hopeful, but it takes time and getting things right and luck.&lt;/p&gt;
+&lt;p&gt;Straight up, the goal of the Atmosphere is to create the next version of the Internet&#39;s applications and that requires building apps that are cool, convincing people to use them, explaining what&#39;s different about using them vs. the old apps everyone&#39;s been conditioned to understand, and also finding a way to do all of this while paying rent.&lt;/p&gt;
+&lt;p&gt;All of that is dependent on expanding out of you thinking you&#39;ve got a &lt;em&gt;Bluesky account&lt;/em&gt; and realizing that what you actually have is an &lt;em&gt;Atmosphere account&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;what&#39;s-an-atmosphere-account&quot; tabindex=&quot;-1&quot;&gt;What&#39;s an Atmosphere Account &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/what-is-the-atmosphere/#what&#39;s-an-atmosphere-account&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The most important thing to take away from all this writing is that when you created a Bluesky account, you actually created an &lt;em&gt;Atmosphere account&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;An Atmosphere account is basically your personal database. When you sign in to apps, they&#39;re writing data to your Atmosphere account rather than using their own database.&lt;/p&gt;
+&lt;p&gt;Because it&#39;s written to your Atmosphere account, you retain the data. Even if the app&#39;s deleted in a fit of rage or siezed by the government the developer lives under or just dies a normal app death... your content has been stored in your account and is still yours.&lt;/p&gt;
+&lt;p&gt;So, when you make a post on Bluesky, you&#39;re actually recording a post to your Atmosphere account and Bluesky is just showing that to you and to other people. When you like a post on Bluesky? That&#39;s also recorded to your Atmosphere account. Repost? Yep, recorded to your Atmosphere account.&lt;/p&gt;
+&lt;p&gt;But the Atmosphere is... &lt;em&gt;supposed&lt;/em&gt; to be bigger than Bluesky, right?&lt;/p&gt;
+&lt;h2 id=&quot;the-atmosphere-beyond-bluesky&quot; tabindex=&quot;-1&quot;&gt;The Atmosphere Beyond Bluesky &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/what-is-the-atmosphere/#the-atmosphere-beyond-bluesky&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We&#39;re kind of in the same era of the early internet - The Atmosphere right now is more like everyone publishing their own HTML websites in 1990 than a completed platform. There&#39;s an massive amount of experimentation and exploration happening. I&#39;m going to share some examples of apps that &lt;em&gt;I personally&lt;/em&gt; think are polished enough for the average person to explore. If you&#39;re looking for more, maybe hit me up on Bluesky at &lt;a href=&quot;https://bsky.app/bnb.im&quot;&gt;@bnb.im&lt;/a&gt; - happy to point you in some fun directions.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://leaflet.pub/&quot;&gt;leaflet&lt;/a&gt;, &lt;a href=&quot;https://pckt.blog/&quot;&gt;pckt.blog&lt;/a&gt;, and &lt;a href=&quot;https://offprint.app/&quot;&gt;offprint&lt;/a&gt; - each of these are blogging platforms, built off the same underlying building blocks in the Atmosphere. They&#39;ve all collaborated to make sure that content is protable between apps while also building their own slice.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://atmo.rsvp/&quot;&gt;atmo.rsvp&lt;/a&gt; - this is a Partiful alternative built on the Atmosphere. It&#39;s pretty nice; definitely a few small improvements here and there but those are all trivial. I&#39;d honestly use this more personally if my network wasn&#39;t SO entrenched in Partiful.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://margin.at/&quot;&gt;margin.at&lt;/a&gt; - this is an annotation platfrom, built on the Atmosphere. Add the extension to your browser, sign in with your Atmospehre account, and you&#39;ll be able to leave comments anywhere on the web for others to see... and, of course, see the comments others have left.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://lexidraw.app/&quot;&gt;lexidraw&lt;/a&gt; - a collaborative drawing platform built on the Atmosphere. Sign in with your Atmosphere account, then create and share drawings with others in real-time. The drawings will be stored in your Atmosphere account, permanently.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sifa.id/&quot;&gt;sifa.id&lt;/a&gt; - a professional social networking platform... you guessed it, built on the Atmosphere. Sign in with your Atmosphere account and do whatever you&#39;d do on LinkedIn, but rather than them trying to extract $80/mo out of you for Premium you just get to use the site how you&#39;d want. I mostly use it as a lightweight resume tool.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That&#39;s just a few, I tried to mostly give non-microblog-y examples to show some of the diversity of where the Atmosphere &lt;em&gt;could&lt;/em&gt; go. It&#39;s going! But the burden of being useful is on developers building up the Atmosphere to convince &lt;em&gt;you&lt;/em&gt; that using your Atmosphere account for anything other than Bluesky is worth your time.&lt;/p&gt;
+&lt;h2 id=&quot;what&#39;s-next&quot; tabindex=&quot;-1&quot;&gt;What&#39;s Next &lt;a class=&quot;direct-link&quot; href=&quot;https://bnb.im/posts/what-is-the-atmosphere/#what&#39;s-next&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Ideally, the Atmopshere explodes in growth and everyone starts using it. Legacy social is forced to start impelmenting it and your data gets migrated to your Atmosphere account. From there, more people are able to start building off that data and making the social a better place with all the existing data.&lt;/p&gt;
+&lt;p&gt;That won&#39;t happen.&lt;/p&gt;
+&lt;p&gt;What will happen is that people are going to keep building. People who are deep in the Atmosphere will continue to have to educate, explain, and improve the systems that exist to make sure &lt;em&gt;you&lt;/em&gt; have a good experience in the Atmosphere.&lt;/p&gt;
+&lt;p&gt;What&#39;s next, though, is that you should start poking around more of the Atmosphere. Follow some cool people on Bluesky, engage with apps that aren&#39;t Bluesky, and tell the people making apps what they&#39;re doing well and what&#39;s not working for you. Tell them your ideas. Ask for what you want to see.&lt;/p&gt;
+&lt;p&gt;Anyway, if you&#39;re curious about more or have questions hit me up on Bluesky at &lt;a href=&quot;https://bsky.app/profile/bnb.im&quot;&gt;@bnb.im&lt;/a&gt; &amp;lt;3&lt;/p&gt;
 </content>
   </entry>
 </feed>

@@ -5,6 +5,7 @@ const markdownIt = require("markdown-it")
 const markdownItAnchor = require("markdown-it-anchor")
 const seriesData = require("./data/seriesData.json")
 const generateSocialImages = require("./lib/social-images.js")
+const blueskyEmbed = require("./lib/bluesky-embed.js")
 const path = require("path")
 
 
@@ -23,6 +24,9 @@ module.exports = function(eleventyConfig) {
 
   const pluginEmbedTweet = require("eleventy-plugin-embed-tweet")
   eleventyConfig.addPlugin(pluginEmbedTweet)
+
+  // turn bare bsky.app post links on their own line into static embeds
+  eleventyConfig.addPlugin(blueskyEmbed)
 
   // set up RSS feed
   eleventyConfig.addPlugin(pluginRss)
