@@ -123,6 +123,8 @@ module.exports = function(eleventyConfig) {
     // loop over the mapping (`k` is the series title)
     for (const [slug, { title, posts, description, date }] of mapping.entries()) {
       if (posts.length > 1) {
+        // order by part, since posts published on the same day tie on date
+        posts.sort((a, b) => Number(a.part) - Number(b.part))
         // add any series with multiple posts to the new array
         normalized.push({ slug, title, posts, description, date })
       }

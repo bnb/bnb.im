@@ -1,12 +1,14 @@
 {
   "name": "bnb.im",
   "version": "0.0.1",
+  "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "eleventy && sequoia inject",
     "dev": "eleventy --watch --serve",
     "prod": "npm run build && npm run sequoia:publish",
+    "publish": "node lib/publish.js",
     "serve": "eleventy --serve",
     "sequoia:login": "sequoia login",
     "sequoia:inject": "sequoia inject",
