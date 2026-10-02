@@ -7,6 +7,7 @@ tags:
   - post
   - atmosphere
   - beginners
+atUri: "at://did:plc:uashgn65n5z7aqwk5cbuba5c/site.standard.document/3mwwg6sy4e32e"
 ---
 Today I've had what's felt like a rather productive conversation on Bluesky - an absolutely novel experience.
 
