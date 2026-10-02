@@ -16,7 +16,7 @@ layout: layouts/index.njk
           <h3 class="post-list-entry"><a href="{{ post.url | urlize }}">{{ post.data.title }}</a></h3>
         {% endif %}
         {%- if post.data.page.excerpt -%}
-          <description class="post-list-description">{{ post.data.page.excerpt | toHTML | safe}} <a href="{{ post.url | urlize }}" class="post-list-read-more">Continue reading</a></description>
+          <description class="post-list-description">{{ post.data.page.excerpt | miniBlueskyEmbeds | toHTML | safe}} <a href="{{ post.url | urlize }}" class="post-list-read-more">Continue reading</a></description>
         {%- endif -%}
       {%- endfor -%}
    </article>

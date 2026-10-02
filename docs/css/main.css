@@ -398,3 +398,27 @@ a:hover {
 .bsky-embed-footer a {
   color: #707070;
 }
+
+/* the pared-down version used in post excerpts on the index */
+.bsky-embed-mini {
+  display: block;
+  margin: 0.75rem 0;
+  padding-left: 0.75rem;
+  border-left: 2px solid #e6e6e6;
+}
+
+.bsky-embed-mini-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #555;
+}
+
+.bsky-embed-mini-meta {
+  display: block;
+  color: #707070;
+  font-size: 0.85rem;
+  line-height: 1.5rem;
+  text-decoration: none;
+}
